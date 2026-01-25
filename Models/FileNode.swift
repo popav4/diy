@@ -1,8 +1,9 @@
 //
 //  FileNode.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  File system node representing a file or folder
+//  Optimized for memory efficiency with millions of files
 //
 
 import Foundation
@@ -15,10 +16,9 @@ enum FileNodeType: Equatable {
     case freeSpace
 }
 
-class FileNode: Identifiable, ObservableObject {
+class FileNode: Identifiable {
     let id = UUID()
-    let url: URL
-    let name: String
+    let path: String
     let isDirectory: Bool
     let isPackage: Bool
     var size: UInt64
@@ -30,21 +30,40 @@ class FileNode: Identifiable, ObservableObject {
     // Lazily computed properties
     private var _kindName: String?
     private var _utType: UTType?
-    private var _icon: NSImage?
 
     // MARK: - Initialization
 
-    init(url: URL, name: String? = nil, isDirectory: Bool = false, isPackage: Bool = false,
+    init(path: String, isDirectory: Bool = false, isPackage: Bool = false,
          size: UInt64 = 0, type: FileNodeType = .regular) {
-        self.url = url
-        self.name = name ?? url.lastPathComponent
+        self.path = path
         self.isDirectory = isDirectory
         self.isPackage = isPackage
         self.size = size
         self.type = type
     }
 
+    /// Convenience initializer from URL (extracts path)
+    convenience init(url: URL, name: String? = nil, isDirectory: Bool = false, isPackage: Bool = false,
+                     size: UInt64 = 0, type: FileNodeType = .regular) {
+        self.init(path: url.path, isDirectory: isDirectory, isPackage: isPackage, size: size, type: type)
+    }
+
     // MARK: - Computed Properties
+
+    /// Derived from path - no storage needed
+    var name: String {
+        (path as NSString).lastPathComponent
+    }
+
+    /// URL created on-demand when needed for API calls
+    var url: URL {
+        URL(fileURLWithPath: path)
+    }
+
+    /// File extension derived from path
+    var pathExtension: String {
+        (path as NSString).pathExtension
+    }
 
     var kindName: String {
         if let cached = _kindName {
@@ -74,42 +93,31 @@ class FileNode: Identifiable, ObservableObject {
             if isDirectory && !isPackage {
                 _utType = .folder
             } else {
-                _utType = UTType(filenameExtension: url.pathExtension) ?? .data
+                _utType = UTType(filenameExtension: pathExtension) ?? .data
             }
         }
         return _utType
     }
 
+    /// Icon computed on-demand - not cached in the model
     var icon: NSImage {
-        if let cached = _icon {
-            return cached
-        }
-
+        let img: NSImage
         switch type {
         case .freeSpace:
-            _icon = NSImage(systemSymbolName: "externaldrive", accessibilityDescription: "Free Space")
+            img = NSImage(systemSymbolName: "externaldrive", accessibilityDescription: "Free Space")
                 ?? NSImage(named: NSImage.folderName)!
         case .otherSpace:
-            _icon = NSImage(systemSymbolName: "questionmark.folder", accessibilityDescription: "Other Space")
+            img = NSImage(systemSymbolName: "questionmark.folder", accessibilityDescription: "Other Space")
                 ?? NSImage(named: NSImage.folderName)!
         case .regular:
-            _icon = NSWorkspace.shared.icon(forFile: url.path)
+            img = NSWorkspace.shared.icon(forFile: path)
         }
-
-        _icon?.size = NSSize(width: 16, height: 16)
-        return _icon ?? NSImage(named: NSImage.folderName)!
+        img.size = NSSize(width: 16, height: 16)
+        return img
     }
 
     var displayPath: String {
-        var components: [String] = []
-        var current: FileNode? = self
-
-        while let node = current {
-            components.insert(node.name, at: 0)
-            current = node.parent
-        }
-
-        return components.joined(separator: "/")
+        path
     }
 
     var isSpecialItem: Bool {

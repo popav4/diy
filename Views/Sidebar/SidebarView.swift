@@ -1,6 +1,6 @@
 //
 //  SidebarView.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Sidebar showing file kind statistics
 //

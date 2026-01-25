@@ -1,6 +1,6 @@
 //
 //  AppState.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Global application state management
 //
@@ -31,6 +31,7 @@ class AppState: ObservableObject {
     @AppStorage("ignoreCreatorCodes") var ignoreCreatorCodes = true
     @AppStorage("showFreeSpace") var showFreeSpace = true
     @AppStorage("showOtherSpace") var showOtherSpace = true
+    @AppStorage("useParallelScanning") var useParallelScanning = true
 
     // MARK: - Private
 
@@ -80,7 +81,8 @@ class AppState: ObservableObject {
             let root = try await newScanner.scan(
                 url: url,
                 showPackageContents: showPackageContents,
-                usePhysicalSize: showPhysicalSize
+                usePhysicalSize: showPhysicalSize,
+                useParallelScanning: useParallelScanning
             ) { [weak self] folder, files, folders in
                 Task { @MainActor in
                     self?.scanProgress = ScanProgress(

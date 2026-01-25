@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Main application view with NavigationSplitView
 //
@@ -85,7 +85,7 @@ struct ContentView: View {
         } else if let root = appState.rootNode {
             return root.name
         } else {
-            return "Disk Inventory X"
+            return "Disk Inventory Y"
         }
     }
 }

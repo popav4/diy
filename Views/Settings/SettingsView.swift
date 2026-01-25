@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Application settings/preferences
 //
@@ -35,6 +35,7 @@ struct GeneralSettingsTab: View {
     @AppStorage("ignoreCreatorCodes") private var ignoreCreatorCodes = true
     @AppStorage("showFreeSpace") private var showFreeSpace = true
     @AppStorage("showOtherSpace") private var showOtherSpace = true
+    @AppStorage("useParallelScanning") private var useParallelScanning = true
 
     var body: some View {
         Form {
@@ -57,6 +58,11 @@ struct GeneralSettingsTab: View {
 
                 Toggle("Show other space", isOn: $showOtherSpace)
                     .help("Display space used by other files on the volume")
+            }
+
+            Section("Scanning") {
+                Toggle("Parallel scanning", isOn: $useParallelScanning)
+                    .help("Scan directories in parallel for faster results. Disable for sequential scanning if you experience issues.")
             }
         }
         .formStyle(.grouped)
@@ -106,7 +112,7 @@ struct AboutTab: View {
                 .font(.system(size: 64))
                 .foregroundStyle(.blue)
 
-            Text("Disk Inventory X")
+            Text("Disk Inventory Y")
                 .font(.title)
                 .fontWeight(.bold)
 

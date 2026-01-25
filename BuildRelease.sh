@@ -9,8 +9,8 @@ cd "$(dirname "$0")"
 
 echo "Building Disk Inventory Y (Swift)..."
 
-xcodebuild -project DiskInventoryX.xcodeproj \
-           -scheme DiskInventoryX \
+xcodebuild -project DiskInventoryY.xcodeproj \
+           -scheme DiskInventoryY \
            -configuration Release \
            -derivedDataPath build \
            CODE_SIGN_IDENTITY="-" \
@@ -19,7 +19,7 @@ xcodebuild -project DiskInventoryX.xcodeproj \
 
 # Rename to Disk Inventory Y
 rm -rf "build/Build/Products/Release/Disk Inventory Y.app"
-mv "build/Build/Products/Release/DiskInventoryX.app" "build/Build/Products/Release/Disk Inventory Y.app"
+mv "build/Build/Products/Release/DiskInventoryY.app" "build/Build/Products/Release/Disk Inventory Y.app"
 
 # Update Info.plist with new name
 /usr/libexec/PlistBuddy -c "Set :CFBundleName 'Disk Inventory Y'" "build/Build/Products/Release/Disk Inventory Y.app/Contents/Info.plist"
@@ -36,4 +36,4 @@ echo "App location: build/Build/Products/Release/Disk Inventory Y.app"
 # Verify architecture
 echo ""
 echo "Architecture:"
-lipo -info "build/Build/Products/Release/Disk Inventory Y.app/Contents/MacOS/DiskInventoryX"
+lipo -info "build/Build/Products/Release/Disk Inventory Y.app/Contents/MacOS/DiskInventoryY"

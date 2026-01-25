@@ -1,6 +1,6 @@
 //
 //  FileKindStatistic.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Statistics for a file type/kind
 //

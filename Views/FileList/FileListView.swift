@@ -1,6 +1,6 @@
 //
 //  FileListView.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Outline view showing file hierarchy
 //

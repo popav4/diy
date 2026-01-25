@@ -2,7 +2,7 @@
 //  DiskInventoryYApp.swift
 //  DiskInventoryY
 //
-//  Modern SwiftUI rewrite of Disk Inventory X
+//  Modern SwiftUI rewrite of Disk Inventory Y
 //  GPL v3 License
 //
 

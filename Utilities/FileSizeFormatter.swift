@@ -1,6 +1,6 @@
 //
 //  FileSizeFormatter.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Human-readable file size formatting
 //

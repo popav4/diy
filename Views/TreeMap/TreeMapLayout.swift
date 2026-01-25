@@ -1,6 +1,6 @@
 //
 //  TreeMapLayout.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  TreeMap layout algorithm - ported from original TMVItem.m
 //  Uses row-based layout with minProportion constraint

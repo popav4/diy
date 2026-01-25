@@ -1,6 +1,6 @@
 //
 //  TreeMapView.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Treemap visualization using Canvas for efficient rendering
 //  Cushion shading ported from original TMVCushionRenderer
@@ -14,7 +14,12 @@ struct TreeMapView: View {
     let colorProvider: (String) -> Color
 
     @State private var hoveredNode: FileNode?
-    @State private var layoutCache: [ObjectIdentifier: TreeMapRect] = [:]
+
+    // Use a class to store layout cache without triggering view updates
+    private class LayoutCache {
+        var rects: [ObjectIdentifier: TreeMapRect] = [:]
+    }
+    private let layoutCache = LayoutCache()
 
     var body: some View {
         GeometryReader { geometry in
@@ -26,10 +31,8 @@ struct TreeMapView: View {
                         colorProvider: colorProvider
                     )
 
-                    // Store layout for hit testing
-                    DispatchQueue.main.async {
-                        self.layoutCache = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
-                    }
+                    // Store layout for hit testing (no state update, no re-render)
+                    layoutCache.rects = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
 
                     // Draw all rectangles with cushion shading
                     for rect in rects {
@@ -225,7 +228,7 @@ struct TreeMapView: View {
         // Find the smallest (deepest) rect containing the point
         var bestMatch: TreeMapRect?
 
-        for (_, rect) in layoutCache {
+        for (_, rect) in layoutCache.rects {
             if rect.rect.contains(point) {
                 if bestMatch == nil || rect.depth > bestMatch!.depth {
                     bestMatch = rect

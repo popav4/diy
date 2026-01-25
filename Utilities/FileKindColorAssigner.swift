@@ -1,6 +1,6 @@
 //
 //  FileKindColorAssigner.swift
-//  DiskInventoryX
+//  DiskInventoryY
 //
 //  Assigns consistent colors to file kinds
 //
