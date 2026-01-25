@@ -17,7 +17,9 @@ enum FileNodeType: Equatable {
 }
 
 class FileNode: Identifiable {
-    let id = UUID()
+    // Use ObjectIdentifier instead of UUID - saves 16 bytes per node
+    var id: ObjectIdentifier { ObjectIdentifier(self) }
+
     let path: String
     let isDirectory: Bool
     let isPackage: Bool
@@ -171,11 +173,11 @@ class FileNode: Identifiable {
 
 extension FileNode: Hashable {
     static func == (lhs: FileNode, rhs: FileNode) -> Bool {
-        lhs.id == rhs.id
+        lhs === rhs
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(ObjectIdentifier(self))
     }
 }
 

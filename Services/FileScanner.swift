@@ -190,11 +190,13 @@ actor FileScanner {
             )
 
             // Separate directories from files for smarter processing
+            // Note: resourceValues are already cached from contentsOfDirectory call
             var directories: [URL] = []
 
             for childURL in contents {
-                let values = try? childURL.resourceValues(forKeys: [.isDirectoryKey])
-                if values?.isDirectory == true {
+                // Use cached resource values from contentsOfDirectory prefetch
+                let isDir = (try? childURL.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) ?? false
+                if isDir {
                     directories.append(childURL)
                 } else {
                     // Process files immediately - no task overhead

@@ -18,6 +18,9 @@ struct TreeMapView: View {
     // Use a class to store layout cache without triggering view updates
     private class LayoutCache {
         var rects: [ObjectIdentifier: TreeMapRect] = [:]
+        var cachedSize: CGSize = .zero
+        var cachedRootId: ObjectIdentifier?
+        var cachedRectList: [TreeMapRect] = []
     }
     private let layoutCache = LayoutCache()
 
@@ -25,14 +28,24 @@ struct TreeMapView: View {
         GeometryReader { geometry in
             ZStack {
                 Canvas { context, size in
-                    let rects = TreeMapLayout.layout(
-                        node: root,
-                        rect: CGRect(origin: .zero, size: size),
-                        colorProvider: colorProvider
-                    )
+                    // Use cached layout if size and root haven't changed
+                    let rootId = ObjectIdentifier(root)
+                    let rects: [TreeMapRect]
 
-                    // Store layout for hit testing (no state update, no re-render)
-                    layoutCache.rects = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
+                    if layoutCache.cachedSize == size && layoutCache.cachedRootId == rootId {
+                        rects = layoutCache.cachedRectList
+                    } else {
+                        rects = TreeMapLayout.layout(
+                            node: root,
+                            rect: CGRect(origin: .zero, size: size),
+                            colorProvider: colorProvider
+                        )
+                        // Cache for next draw
+                        layoutCache.cachedSize = size
+                        layoutCache.cachedRootId = rootId
+                        layoutCache.cachedRectList = rects
+                        layoutCache.rects = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
+                    }
 
                     // Draw all rectangles with cushion shading
                     for rect in rects {
@@ -99,10 +112,8 @@ struct TreeMapView: View {
         ))
 
         // Cushion effect: brighter at top-left, darker at bottom-right
-        // Scale brightness based on depth
-        let depthFactor = pow(0.9, Double(treeRect.depth))
-        let brightColor = adjustBrightness(baseColor, factor: 1.1 * depthFactor)
-        let darkColor = adjustBrightness(baseColor, factor: 0.6 * depthFactor)
+        // Use cached color pairs to avoid repeated NSColor allocations
+        let (brightColor, darkColor) = adjustedColors(for: baseColor, depth: treeRect.depth)
 
         let gradient = Gradient(colors: [brightColor, darkColor])
 
@@ -205,8 +216,21 @@ struct TreeMapView: View {
         }
     }
 
-    private func adjustBrightness(_ color: Color, factor: Double) -> Color {
-        // Convert to NSColor to manipulate components
+    // Pre-resolved color cache to avoid NSColor allocations during drawing
+    private static var colorCache: [Int: (bright: Color, dark: Color)] = [:]
+
+    private func adjustedColors(for color: Color, depth: Int) -> (bright: Color, dark: Color) {
+        // Create cache key from color hash and depth
+        var hasher = Hasher()
+        hasher.combine(color.hashValue)
+        hasher.combine(depth)
+        let key = hasher.finalize()
+
+        if let cached = Self.colorCache[key] {
+            return cached
+        }
+
+        // Convert to NSColor once to get HSB components
         let nsColor = NSColor(color)
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
@@ -215,11 +239,16 @@ struct TreeMapView: View {
 
         nsColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
-        let newBrightness = min(1.0, max(0.0, brightness * factor))
-        return Color(hue: Double(hue),
-                     saturation: Double(saturation),
-                     brightness: Double(newBrightness),
-                     opacity: Double(alpha))
+        let depthFactor = pow(0.9, Double(depth))
+        let brightVal = min(1.0, brightness * 1.1 * depthFactor)
+        let darkVal = max(0.0, brightness * 0.6 * depthFactor)
+
+        let bright = Color(hue: Double(hue), saturation: Double(saturation), brightness: brightVal, opacity: Double(alpha))
+        let dark = Color(hue: Double(hue), saturation: Double(saturation), brightness: darkVal, opacity: Double(alpha))
+
+        let result = (bright, dark)
+        Self.colorCache[key] = result
+        return result
     }
 
     // MARK: - Hit Testing

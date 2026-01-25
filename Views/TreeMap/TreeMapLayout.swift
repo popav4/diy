@@ -30,10 +30,11 @@ enum TreeMapLayout {
     ) -> [TreeMapRect] {
         var results: [TreeMapRect] = []
 
-        let children = node.children.filter { $0.size > 0 }
+        // Filter zero-size children; assume already sorted by size (scanner does this)
+        let sorted = node.children.filter { $0.size > 0 }
 
         // If no children or at max depth, this is a leaf
-        guard !children.isEmpty, depth < maxDepth else {
+        guard !sorted.isEmpty, depth < maxDepth else {
             if rect.width >= 1 && rect.height >= 1 {
                 results.append(TreeMapRect(
                     node: node,
@@ -44,9 +45,6 @@ enum TreeMapLayout {
             }
             return results
         }
-
-        // Sort children by size (largest first) - critical for the algorithm
-        let sorted = children.sorted { $0.size > $1.size }
         let totalWeight = Double(node.size)
 
         guard totalWeight > 0 else { return results }
