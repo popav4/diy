@@ -11,8 +11,9 @@ The app scans millions of files. Each byte per node matters.
 - Store `path` (String) instead of `URL` (~300 bytes saved per node)
 - Derive `name` from path instead of storing separately (~50 bytes saved)
 - Use `ObjectIdentifier(self)` instead of UUID for Identifiable (~16 bytes saved per node)
+- Use `kindId: UInt16` instead of `_kindName: String?` + `_utType: UTType?` (~50-70 bytes saved per node)
+- FileKindRegistry maps extensions to compact IDs, UTType lookup happens once per unique extension
 - Icons computed on-demand, not cached in model
-- `kindName` and `utType` lazy-loaded only when accessed
 
 **Check for regressions:**
 - Don't add new stored properties to FileNode without justification
@@ -34,6 +35,16 @@ The app scans millions of files. Each byte per node matters.
 - Don't spawn a Task for every file
 - Don't hold entire directory listings in memory longer than needed
 - Ensure cancellation works promptly
+
+### Post-Scan Processing
+
+**Current optimizations:**
+- Statistics calculation runs on background thread (Task.detached)
+- Avoids blocking main thread during kindName/UTType lazy computation
+
+**Check for regressions:**
+- Don't run tree traversals on @MainActor after scan completes
+- Keep UI responsive during post-scan processing
 
 ## CPU Optimization
 

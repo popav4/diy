@@ -92,9 +92,9 @@ struct FileRow: View {
     private func moveToTrash(_ node: FileNode) {
         do {
             try FileManager.default.trashItem(at: node.url, resultingItemURL: nil)
-            // Could notify appState to refresh
+            appState.removeNode(node)
         } catch {
-            // Handle error
+            // Handle error - file might be in use or protected
         }
     }
 }

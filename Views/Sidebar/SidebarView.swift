@@ -12,15 +12,6 @@ struct SidebarView: View {
 
     var body: some View {
         List(selection: $appState.selectedKind) {
-            if !appState.kindStatistics.isEmpty {
-                Section("File Types") {
-                    ForEach(appState.kindStatistics) { stat in
-                        FileKindRow(statistic: stat)
-                            .tag(stat.kindName)
-                    }
-                }
-            }
-
             if let root = appState.rootNode {
                 Section("Summary") {
                     LabeledContent("Total Size") {
@@ -37,6 +28,15 @@ struct SidebarView: View {
                     LabeledContent("Files") {
                         Text("\(totalFiles)")
                             .monospacedDigit()
+                    }
+                }
+            }
+
+            if !appState.kindStatistics.isEmpty {
+                Section("File Types") {
+                    ForEach(appState.kindStatistics) { stat in
+                        FileKindRow(statistic: stat)
+                            .tag(stat.kindName)
                     }
                 }
             }

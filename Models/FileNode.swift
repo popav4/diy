@@ -8,7 +8,6 @@
 
 import Foundation
 import AppKit
-import UniformTypeIdentifiers
 
 enum FileNodeType: Equatable {
     case regular
@@ -29,9 +28,8 @@ class FileNode: Identifiable {
     weak var parent: FileNode?
     var children: [FileNode] = []
 
-    // Lazily computed properties
-    private var _kindName: String?
-    private var _utType: UTType?
+    // Compact kind identifier - lookup via FileKindRegistry (saves ~50 bytes vs String + UTType)
+    let kindId: UInt16
 
     // MARK: - Initialization
 
@@ -42,6 +40,21 @@ class FileNode: Identifiable {
         self.isPackage = isPackage
         self.size = size
         self.type = type
+
+        // Compute kindId once at creation
+        switch type {
+        case .freeSpace:
+            self.kindId = FileKindRegistry.freeSpaceKindId
+        case .otherSpace:
+            self.kindId = FileKindRegistry.otherSpaceKindId
+        case .regular:
+            if isDirectory && !isPackage {
+                self.kindId = FileKindRegistry.folderKindId
+            } else {
+                let ext = (path as NSString).pathExtension
+                self.kindId = FileKindRegistry.shared.kindId(forExtension: ext)
+            }
+        }
     }
 
     /// Convenience initializer from URL (extracts path)
@@ -68,37 +81,7 @@ class FileNode: Identifiable {
     }
 
     var kindName: String {
-        if let cached = _kindName {
-            return cached
-        }
-
-        switch type {
-        case .otherSpace:
-            _kindName = "Other Space"
-        case .freeSpace:
-            _kindName = "Free Space"
-        case .regular:
-            if isDirectory && !isPackage {
-                _kindName = "Folder"
-            } else if let utType = utType {
-                _kindName = utType.localizedDescription ?? utType.identifier
-            } else {
-                _kindName = "Document"
-            }
-        }
-
-        return _kindName ?? "Unknown"
-    }
-
-    var utType: UTType? {
-        if _utType == nil && type == .regular {
-            if isDirectory && !isPackage {
-                _utType = .folder
-            } else {
-                _utType = UTType(filenameExtension: pathExtension) ?? .data
-            }
-        }
-        return _utType
+        FileKindRegistry.shared.kindName(for: kindId)
     }
 
     /// Icon computed on-demand - not cached in the model

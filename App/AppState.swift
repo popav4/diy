@@ -94,7 +94,6 @@ class AppState: ObservableObject {
             }
 
             rootNode = root
-            calculateStatistics()
 
             // Add free space and other space items if scanning a volume root
             if showFreeSpace || showOtherSpace {
@@ -109,6 +108,24 @@ class AppState: ObservableObject {
 
         isScanning = false
         scanProgress = nil
+
+        // Calculate statistics in background (kindName triggers lazy UTType computation)
+        // Don't await - let sidebar populate asynchronously
+        if let root = rootNode {
+            Task.detached { [weak self] in
+                let stats = Self.collectStatistics(from: root)
+                await MainActor.run {
+                    self?.kindStatistics = stats.map { kind, stat in
+                        FileKindStatistic(
+                            kindName: kind,
+                            count: stat.count,
+                            totalSize: stat.size,
+                            color: self?.colorAssigner.color(for: kind) ?? .gray
+                        )
+                    }.sorted { $0.totalSize > $1.totalSize }
+                }
+            }
+        }
     }
 
     func refresh() async {
@@ -146,14 +163,52 @@ class AppState: ObservableObject {
         colorAssigner.color(for: kindName)
     }
 
-    // MARK: - Private Methods
+    /// Remove a node from the tree (after trashing) and update sizes
+    func removeNode(_ node: FileNode) {
+        let deletedSize = node.size
 
-    private func calculateStatistics() {
-        guard let root = rootNode else {
-            kindStatistics = []
-            return
+        // Clear selection if we're deleting the selected node
+        if selectedNode === node {
+            selectedNode = nil
         }
 
+        // Remove from parent's children
+        if let parent = node.parent {
+            parent.children.removeAll { $0 === node }
+
+            // Update sizes up the tree
+            var current: FileNode? = parent
+            while let ancestor = current {
+                ancestor.size -= deletedSize
+                current = ancestor.parent
+            }
+        }
+
+        // Update statistics in background
+        if let root = rootNode {
+            Task.detached { [weak self] in
+                let stats = Self.collectStatistics(from: root)
+                await MainActor.run {
+                    self?.kindStatistics = stats.map { kind, stat in
+                        FileKindStatistic(
+                            kindName: kind,
+                            count: stat.count,
+                            totalSize: stat.size,
+                            color: self?.colorAssigner.color(for: kind) ?? .gray
+                        )
+                    }.sorted { $0.totalSize > $1.totalSize }
+                }
+            }
+        }
+
+        // Trigger UI refresh
+        objectWillChange.send()
+    }
+
+    // MARK: - Private Methods
+
+    /// Collect statistics off-main-thread (kindName triggers lazy UTType computation)
+    private nonisolated static func collectStatistics(from root: FileNode) -> [String: (count: Int, size: UInt64)] {
         var stats: [String: (count: Int, size: UInt64)] = [:]
 
         func collect(_ node: FileNode) {
@@ -171,15 +226,7 @@ class AppState: ObservableObject {
         }
 
         collect(root)
-
-        kindStatistics = stats.map { kind, stat in
-            FileKindStatistic(
-                kindName: kind,
-                count: stat.count,
-                totalSize: stat.size,
-                color: colorAssigner.color(for: kind)
-            )
-        }.sorted { $0.totalSize > $1.totalSize }
+        return stats
     }
 
     private func addVolumeSpaceItems(for url: URL) async {

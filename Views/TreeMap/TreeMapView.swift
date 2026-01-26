@@ -52,9 +52,14 @@ struct TreeMapView: View {
                         drawCushion(rect, context: context)
                     }
 
-                    // Draw selection/hover highlights on top
+                    // Draw selection group border (bright red around entire folder contents)
+                    if let selected = selectedNode {
+                        drawSelectionGroupBorder(for: selected, rects: rects, context: context)
+                    }
+
+                    // Draw hover highlight on top
                     for rect in rects {
-                        drawHighlight(rect, context: context)
+                        drawHoverHighlight(rect, context: context)
                     }
                 }
 
@@ -139,12 +144,47 @@ struct TreeMapView: View {
         }
     }
 
-    private func drawHighlight(_ treeRect: TreeMapRect, context: GraphicsContext) {
-        let rect = treeRect.rect
-        let isSelected = treeRect.node === selectedNode
-        let isHovered = treeRect.node === hoveredNode
+    private func drawSelectionGroupBorder(for selected: FileNode, rects: [TreeMapRect], context: GraphicsContext) {
+        // Find bounding box of selected node and all its descendants
+        var minX = CGFloat.infinity
+        var minY = CGFloat.infinity
+        var maxX = -CGFloat.infinity
+        var maxY = -CGFloat.infinity
+        var foundAny = false
 
-        guard isSelected || isHovered else { return }
+        for treeRect in rects {
+            if treeRect.node === selected || isDescendant(treeRect.node, of: selected) {
+                minX = min(minX, treeRect.rect.minX)
+                minY = min(minY, treeRect.rect.minY)
+                maxX = max(maxX, treeRect.rect.maxX)
+                maxY = max(maxY, treeRect.rect.maxY)
+                foundAny = true
+            }
+        }
+
+        guard foundAny else { return }
+
+        let boundingRect = CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+        let borderPath = Path(boundingRect.insetBy(dx: 1, dy: 1))
+
+        // Bright red border
+        context.stroke(borderPath, with: .color(Color(red: 1.0, green: 0.0, blue: 0.2)), lineWidth: 3)
+    }
+
+    private func isDescendant(_ node: FileNode, of ancestor: FileNode) -> Bool {
+        var current = node.parent
+        while let parent = current {
+            if parent === ancestor {
+                return true
+            }
+            current = parent.parent
+        }
+        return false
+    }
+
+    private func drawHoverHighlight(_ treeRect: TreeMapRect, context: GraphicsContext) {
+        let rect = treeRect.rect
+        guard treeRect.node === hoveredNode else { return }
 
         let highlightPath = Path(CGRect(
             x: rect.minX + 0.5,
@@ -153,11 +193,7 @@ struct TreeMapView: View {
             height: rect.height - 1
         ))
 
-        if isSelected {
-            context.stroke(highlightPath, with: .color(.yellow), lineWidth: 2.5)
-        } else if isHovered {
-            context.stroke(highlightPath, with: .color(.white.opacity(0.6)), lineWidth: 1.5)
-        }
+        context.stroke(highlightPath, with: .color(.white.opacity(0.6)), lineWidth: 1.5)
     }
 
     private func drawLabel(_ text: String, in rect: CGRect, context: GraphicsContext) {
