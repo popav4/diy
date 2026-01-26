@@ -9,20 +9,87 @@ import SwiftUI
 
 struct FileListView: View {
     @EnvironmentObject private var appState: AppState
+    @State private var expandedNodes: Set<ObjectIdentifier> = []
 
     var body: some View {
         Group {
             if let root = appState.displayRoot {
-                List(selection: $appState.selectedNode) {
-                    OutlineGroup(root.children, children: \.optionalChildren) { node in
-                        FileRow(node: node)
-                            .tag(node)
+                ScrollViewReader { proxy in
+                    List(selection: $appState.selectedNode) {
+                        ForEach(root.children, id: \.id) { node in
+                            NodeRow(
+                                node: node,
+                                expandedNodes: $expandedNodes,
+                                selectedNode: $appState.selectedNode
+                            )
+                        }
+                    }
+                    .listStyle(.inset(alternatesRowBackgrounds: true))
+                    .onChange(of: appState.selectedNode) { _, newValue in
+                        if let node = newValue {
+                            // Expand all ancestors
+                            expandAncestors(of: node)
+                            // Scroll to the node
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                withAnimation {
+                                    proxy.scrollTo(node.id, anchor: .center)
+                                }
+                            }
+                        }
                     }
                 }
-                .listStyle(.inset(alternatesRowBackgrounds: true))
             }
         }
         .navigationTitle("Files")
+    }
+
+    private func expandAncestors(of node: FileNode) {
+        var current = node.parent
+        while let parent = current {
+            expandedNodes.insert(ObjectIdentifier(parent))
+            current = parent.parent
+        }
+    }
+}
+
+struct NodeRow: View {
+    let node: FileNode
+    @Binding var expandedNodes: Set<ObjectIdentifier>
+    @Binding var selectedNode: FileNode?
+
+    private var isExpanded: Binding<Bool> {
+        Binding(
+            get: { expandedNodes.contains(ObjectIdentifier(node)) },
+            set: { isExpanded in
+                if isExpanded {
+                    expandedNodes.insert(ObjectIdentifier(node))
+                } else {
+                    expandedNodes.remove(ObjectIdentifier(node))
+                }
+            }
+        )
+    }
+
+    var body: some View {
+        if node.isDirectory && !node.children.isEmpty {
+            DisclosureGroup(isExpanded: isExpanded) {
+                ForEach(node.children, id: \.id) { child in
+                    NodeRow(
+                        node: child,
+                        expandedNodes: $expandedNodes,
+                        selectedNode: $selectedNode
+                    )
+                }
+            } label: {
+                FileRow(node: node)
+                    .tag(node)
+                    .id(node.id)
+            }
+        } else {
+            FileRow(node: node)
+                .tag(node)
+                .id(node.id)
+        }
     }
 }
 

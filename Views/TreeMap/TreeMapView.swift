@@ -109,16 +109,11 @@ struct TreeMapView: View {
 
         // Create cushion shading using radial gradient
         // Light source is at top-left (-1, -1, 10)
-        let cushionPath = Path(CGRect(
-            x: rect.minX + 0.5,
-            y: rect.minY + 0.5,
-            width: rect.width - 1,
-            height: rect.height - 1
-        ))
+        let cushionPath = Path(rect)
 
         // Cushion effect: brighter at top-left, darker at bottom-right
         // Use cached color pairs to avoid repeated NSColor allocations
-        let (brightColor, darkColor) = adjustedColors(for: baseColor, depth: treeRect.depth)
+        let (brightColor, darkColor) = adjustedColors(for: baseColor)
 
         let gradient = Gradient(colors: [brightColor, darkColor])
 
@@ -129,13 +124,6 @@ struct TreeMapView: View {
                 startPoint: CGPoint(x: rect.minX, y: rect.minY),
                 endPoint: CGPoint(x: rect.maxX, y: rect.maxY)
             )
-        )
-
-        // Subtle border
-        context.stroke(
-            cushionPath,
-            with: .color(Color.black.opacity(0.15)),
-            lineWidth: 0.5
         )
 
         // Label if rect is large enough (diagonal text fits in smaller rects)
@@ -167,8 +155,8 @@ struct TreeMapView: View {
         let boundingRect = CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
         let borderPath = Path(boundingRect.insetBy(dx: 1, dy: 1))
 
-        // Bright red border
-        context.stroke(borderPath, with: .color(Color(red: 1.0, green: 0.0, blue: 0.2)), lineWidth: 3)
+        // White border
+        context.stroke(borderPath, with: .color(.white), lineWidth: 5)
     }
 
     private func isDescendant(_ node: FileNode, of ancestor: FileNode) -> Bool {
@@ -186,12 +174,7 @@ struct TreeMapView: View {
         let rect = treeRect.rect
         guard treeRect.node === hoveredNode else { return }
 
-        let highlightPath = Path(CGRect(
-            x: rect.minX + 0.5,
-            y: rect.minY + 0.5,
-            width: rect.width - 1,
-            height: rect.height - 1
-        ))
+        let highlightPath = Path(rect)
 
         context.stroke(highlightPath, with: .color(.white.opacity(0.6)), lineWidth: 1.5)
     }
@@ -255,32 +238,46 @@ struct TreeMapView: View {
     // Pre-resolved color cache to avoid NSColor allocations during drawing
     private static var colorCache: [Int: (bright: Color, dark: Color)] = [:]
 
-    private func adjustedColors(for color: Color, depth: Int) -> (bright: Color, dark: Color) {
-        // Create cache key from color hash and depth
-        var hasher = Hasher()
-        hasher.combine(color.hashValue)
-        hasher.combine(depth)
-        let key = hasher.finalize()
+    private func adjustedColors(for color: Color) -> (bright: Color, dark: Color) {
+        // Create cache key from color hash
+        let key = color.hashValue
 
         if let cached = Self.colorCache[key] {
             return cached
         }
 
-        // Convert to NSColor once to get HSB components
+        // Convert to NSColor in sRGB color space to avoid conversion issues
         let nsColor = NSColor(color)
+        guard let rgbColor = nsColor.usingColorSpace(.sRGB) else {
+            // Fallback for conversion failure - use a visible gray
+            let fallbackBright = Color(white: 0.75)
+            let fallbackDark = Color(white: 0.6)
+            let result = (fallbackBright, fallbackDark)
+            Self.colorCache[key] = result
+            return result
+        }
+
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
 
-        nsColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        rgbColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
-        let depthFactor = pow(0.9, Double(depth))
-        let brightVal = min(1.0, brightness * 1.1 * depthFactor)
-        let darkVal = max(0.0, brightness * 0.6 * depthFactor)
+        // Safeguard: if brightness is too low, bump it up
+        // This can happen with certain color space conversions
+        let safeBrightness = max(0.5, brightness)
 
-        let bright = Color(hue: Double(hue), saturation: Double(saturation), brightness: brightVal, opacity: Double(alpha))
-        let dark = Color(hue: Double(hue), saturation: Double(saturation), brightness: darkVal, opacity: Double(alpha))
+        // Cushion gradient: bright top-left to slightly darker bottom-right
+        // Keep minimum brightness high to avoid dark/black boxes
+        let brightVal = min(1.0, safeBrightness * 1.2)
+        let darkVal = max(0.55, safeBrightness * 0.95)
+
+        // Boost saturation for more vibrant colors
+        let boostedSat = min(1.0, saturation * 1.2)
+
+        let bright = Color(hue: Double(hue), saturation: boostedSat, brightness: brightVal, opacity: Double(alpha))
+        let dark = Color(hue: Double(hue), saturation: boostedSat, brightness: darkVal, opacity: Double(alpha))
 
         let result = (bright, dark)
         Self.colorCache[key] = result

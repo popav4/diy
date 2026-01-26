@@ -186,7 +186,7 @@ actor FileScanner {
             let contents = try FileManager.default.contentsOfDirectory(
                 at: url,
                 includingPropertiesForKeys: Array(resourceKeys),
-                options: [.skipsHiddenFiles]
+                options: []
             )
 
             // Separate directories from files for smarter processing
@@ -287,7 +287,7 @@ actor FileScanner {
             let contents = try FileManager.default.contentsOfDirectory(
                 at: url,
                 includingPropertiesForKeys: Array(resourceKeys),
-                options: [.skipsHiddenFiles]
+                options: []
             )
 
             // Scan children sequentially

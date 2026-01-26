@@ -26,7 +26,7 @@ enum TreeMapLayout {
         rect: CGRect,
         colorProvider: (String) -> Color,
         depth: Int = 0,
-        maxDepth: Int = 8
+        maxDepth: Int = 30
     ) -> [TreeMapRect] {
         var results: [TreeMapRect] = []
 
@@ -119,12 +119,12 @@ enum TreeMapLayout {
                 }
 
                 // Skip very small rectangles
-                if childRect.width >= 2 && childRect.height >= 2 {
+                if childRect.width >= 1 && childRect.height >= 1 {
                     // Recursively layout children if this is a directory
                     if child.node.isDirectory && !child.node.children.isEmpty {
                         let childRects = layout(
                             node: child.node,
-                            rect: childRect.insetBy(dx: 1, dy: 1),
+                            rect: childRect,
                             colorProvider: colorProvider,
                             depth: depth + 1,
                             maxDepth: maxDepth

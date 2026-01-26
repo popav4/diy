@@ -49,10 +49,14 @@ final class FileKindRegistry: @unchecked Sendable {
 
         // Compute kind name from UTType (only once per unique extension)
         let kindName: String
-        if let utType = UTType(filenameExtension: lowercased) {
-            kindName = utType.localizedDescription ?? utType.identifier
+        if let utType = UTType(filenameExtension: lowercased),
+           let description = utType.localizedDescription,
+           !utType.identifier.hasPrefix("dyn.") {
+            // Use the nice localized description (e.g., "JPEG image")
+            kindName = description
         } else {
-            kindName = lowercased.isEmpty ? "Document" : ".\(lowercased) file"
+            // Unknown type or dynamic UTI - use extension-based name
+            kindName = lowercased.isEmpty ? "Document" : ".\(lowercased.uppercased()) file"
         }
 
         // Check if this kindName already exists (different extensions, same type)
