@@ -1,3 +1,9 @@
+# Internal AI/task data (do not commit)
+.tasks/
+.tmp/
+AGENTS.md
+MEMORY.md
+
 # Xcode build directories
 build/
 DerivedData/
@@ -8,10 +14,22 @@ DerivedData/
 *.xcuserdatad/
 xcuserdata/
 *.xcworkspace/xcuserdata/
+*.xcuserdatad
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.xcscmblueprint
 
 # Xcode project files (keep shared schemes)
 *.xcodeproj/project.xcworkspace/
 !*.xcodeproj/project.xcworkspace/xcshareddata/
+
+# JetBrains IDEs
+.idea/
+*.iml
 
 # macOS system files
 .DS_Store
