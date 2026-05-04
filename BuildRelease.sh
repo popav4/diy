@@ -7,7 +7,14 @@ set -e
 
 cd "$(dirname "$0")"
 
+LOG_DIR="${LOG_DIR:-.tmp/log/build}"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/BuildRelease.log"
+
+exec > >(tee "$LOG_FILE") 2>&1
+
 echo "Building Disk Inventory Y (Swift)..."
+echo "Log file: $LOG_FILE"
 
 xcodebuild -project DiskInventoryY.xcodeproj \
            -scheme DiskInventoryY \
@@ -37,3 +44,4 @@ echo "App location: build/Build/Products/Release/Disk Inventory Y.app"
 echo ""
 echo "Architecture:"
 lipo -info "build/Build/Products/Release/Disk Inventory Y.app/Contents/MacOS/DiskInventoryY"
+echo "Log file: $LOG_FILE"

@@ -112,19 +112,7 @@ class AppState: ObservableObject {
         // Calculate statistics in background (kindName triggers lazy UTType computation)
         // Don't await - let sidebar populate asynchronously
         if let root = rootNode {
-            Task.detached { [weak self] in
-                let stats = Self.collectStatistics(from: root)
-                await MainActor.run {
-                    self?.kindStatistics = stats.map { kind, stat in
-                        FileKindStatistic(
-                            kindName: kind,
-                            count: stat.count,
-                            totalSize: stat.size,
-                            color: self?.colorAssigner.color(for: kind) ?? .gray
-                        )
-                    }.sorted { $0.totalSize > $1.totalSize }
-                }
-            }
+            updateStatistics(from: root)
         }
     }
 
@@ -186,19 +174,7 @@ class AppState: ObservableObject {
 
         // Update statistics in background
         if let root = rootNode {
-            Task.detached { [weak self] in
-                let stats = Self.collectStatistics(from: root)
-                await MainActor.run {
-                    self?.kindStatistics = stats.map { kind, stat in
-                        FileKindStatistic(
-                            kindName: kind,
-                            count: stat.count,
-                            totalSize: stat.size,
-                            color: self?.colorAssigner.color(for: kind) ?? .gray
-                        )
-                    }.sorted { $0.totalSize > $1.totalSize }
-                }
-            }
+            updateStatistics(from: root)
         }
 
         // Trigger UI refresh
@@ -206,6 +182,23 @@ class AppState: ObservableObject {
     }
 
     // MARK: - Private Methods
+
+    private func updateStatistics(from root: FileNode) {
+        Task { [root] in
+            let stats = await Task.detached {
+                Self.collectStatistics(from: root)
+            }.value
+
+            kindStatistics = stats.map { kind, stat in
+                FileKindStatistic(
+                    kindName: kind,
+                    count: stat.count,
+                    totalSize: stat.size,
+                    color: colorAssigner.color(for: kind)
+                )
+            }.sorted { $0.totalSize > $1.totalSize }
+        }
+    }
 
     /// Collect statistics off-main-thread (kindName triggers lazy UTType computation)
     private nonisolated static func collectStatistics(from root: FileNode) -> [String: (count: Int, size: UInt64)] {
