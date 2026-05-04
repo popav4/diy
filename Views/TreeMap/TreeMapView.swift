@@ -12,6 +12,7 @@ struct TreeMapView: View {
     let root: FileNode
     @Binding var selectedNode: FileNode?
     let colorProvider: (String) -> Color
+    let onZoomIntoNode: (FileNode) -> Void
 
     @State private var hoveredNode: FileNode?
 
@@ -77,7 +78,7 @@ struct TreeMapView: View {
                             .onEnded { value in
                                 if let node = nodeAt(point: value.location), node.isDirectory {
                                     selectedNode = node
-                                    NotificationCenter.default.post(name: .zoomIn, object: nil)
+                                    onZoomIntoNode(node)
                                 }
                             }
                     )
@@ -268,13 +269,12 @@ struct TreeMapView: View {
         // This can happen with certain color space conversions
         let safeBrightness = max(0.5, brightness)
 
-        // Cushion gradient: bright top-left to slightly darker bottom-right
-        // Keep minimum brightness high to avoid dark/black boxes
-        let brightVal = min(1.0, safeBrightness * 1.2)
-        let darkVal = max(0.55, safeBrightness * 0.95)
+        // Cushion gradient: subtle top-left highlight to slightly darker bottom-right
+        let brightVal = min(0.94, safeBrightness * 1.08)
+        let darkVal = max(0.50, safeBrightness * 0.88)
 
-        // Boost saturation for more vibrant colors
-        let boostedSat = min(1.0, saturation * 1.2)
+        // Keep colors muted instead of neon.
+        let boostedSat = min(0.72, saturation * 0.75)
 
         let bright = Color(hue: Double(hue), saturation: boostedSat, brightness: brightVal, opacity: Double(alpha))
         let dark = Color(hue: Double(hue), saturation: boostedSat, brightness: darkVal, opacity: Double(alpha))
@@ -333,12 +333,6 @@ struct InfoBar: View {
     }
 }
 
-// MARK: - Notifications
-
-extension Notification.Name {
-    static let zoomIn = Notification.Name("zoomIn")
-}
-
 #Preview {
     let root = FileNode(url: URL(fileURLWithPath: "/"), name: "Root", isDirectory: true, size: 1000)
     let child1 = FileNode(url: URL(fileURLWithPath: "/a"), name: "Large Folder", isDirectory: true, size: 600)
@@ -349,7 +343,8 @@ extension Notification.Name {
     return TreeMapView(
         root: root,
         selectedNode: .constant(nil),
-        colorProvider: { _ in .blue }
+        colorProvider: { _ in .blue },
+        onZoomIntoNode: { _ in }
     )
     .frame(width: 600, height: 400)
 }

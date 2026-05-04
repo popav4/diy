@@ -8,6 +8,29 @@
 import SwiftUI
 import Combine
 
+private final class ScanProgressThrottle: @unchecked Sendable {
+    private let lock = NSLock()
+    private let interval: Duration
+    private var lastUpdate = ContinuousClock.now
+
+    init(interval: Duration) {
+        self.interval = interval
+    }
+
+    func shouldPublish() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+
+        let now = ContinuousClock.now
+        guard now - lastUpdate >= interval else {
+            return false
+        }
+
+        lastUpdate = now
+        return true
+    }
+}
+
 @MainActor
 class AppState: ObservableObject {
     // MARK: - Published Properties
@@ -37,6 +60,8 @@ class AppState: ObservableObject {
 
     private var scanner: FileScanner?
     private var colorAssigner = FileKindColorAssigner()
+    private var scanID = UUID()
+    private let progressUpdateInterval: Duration = .milliseconds(200)
 
     // MARK: - Computed Properties
 
@@ -64,6 +89,9 @@ class AppState: ObservableObject {
     func scan(url: URL) async {
         // Cancel any existing scan
         await scanner?.cancel()
+        let currentScanID = UUID()
+        let progressThrottle = ScanProgressThrottle(interval: progressUpdateInterval)
+        scanID = currentScanID
 
         isScanning = true
         scanProgress = ScanProgress(currentFolder: url.lastPathComponent, filesScanned: 0, foldersScanned: 0)
@@ -84,11 +112,14 @@ class AppState: ObservableObject {
                 usePhysicalSize: showPhysicalSize,
                 useParallelScanning: useParallelScanning
             ) { [weak self] folder, files, folders in
+                guard progressThrottle.shouldPublish() else { return }
+
                 Task { @MainActor in
-                    self?.scanProgress = ScanProgress(
-                        currentFolder: folder,
-                        filesScanned: files,
-                        foldersScanned: folders
+                    self?.updateScanProgress(
+                        scanID: currentScanID,
+                        folder: folder,
+                        files: files,
+                        folders: folders
                     )
                 }
             }
@@ -198,6 +229,16 @@ class AppState: ObservableObject {
                 )
             }.sorted { $0.totalSize > $1.totalSize }
         }
+    }
+
+    private func updateScanProgress(scanID: UUID, folder: String, files: Int, folders: Int) {
+        guard self.scanID == scanID, isScanning else { return }
+
+        scanProgress = ScanProgress(
+            currentFolder: folder,
+            filesScanned: files,
+            foldersScanned: folders
+        )
     }
 
     /// Collect statistics off-main-thread (kindName triggers lazy UTType computation)

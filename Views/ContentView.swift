@@ -156,7 +156,11 @@ struct TreeMapContainerView: View {
                 TreeMapView(
                     root: root,
                     selectedNode: $appState.selectedNode,
-                    colorProvider: { appState.color(for: $0) }
+                    colorProvider: { appState.color(for: $0) },
+                    onZoomIntoNode: { node in
+                        appState.selectedNode = node
+                        appState.zoomIn()
+                    }
                 )
             } else {
                 Color.clear

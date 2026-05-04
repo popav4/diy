@@ -3,7 +3,7 @@
 //  DiskInventoryY
 //
 //  Assigns consistent colors to file kinds
-//  Colors are normalized to consistent brightness (like Disk Inventory X)
+//  Colors are normalized to consistent, muted brightness
 //
 
 import SwiftUI
@@ -13,9 +13,9 @@ class FileKindColorAssigner {
     private var assignedColors: [String: Color] = [:]
     private var nextColorIndex = 0
 
-    // Target brightness: sum of RGB components (from Disk Inventory X)
-    // Higher = brighter colors, 1.8 is a good balance
-    private static let baseBrightness: CGFloat = 1.8
+    // Target brightness: sum of RGB components.
+    // Lower values keep the treemap readable without neon intensity.
+    private static let baseBrightness: CGFloat = 1.55
 
     // Color palette - will be normalized on init
     private let palette: [Color]
@@ -26,22 +26,22 @@ class FileKindColorAssigner {
     init() {
         // Raw palette colors (before normalization)
         let rawPalette: [(CGFloat, CGFloat, CGFloat)] = [
-            (0.00, 0.80, 1.00),  // Electric Cyan
-            (1.00, 0.20, 0.60),  // Hot Pink
-            (0.20, 1.00, 0.40),  // Neon Green
-            (1.00, 0.60, 0.00),  // Electric Orange
-            (0.60, 0.20, 1.00),  // Vivid Purple
-            (1.00, 1.00, 0.00),  // Neon Yellow
-            (1.00, 0.00, 0.40),  // Neon Red
-            (0.00, 1.00, 0.80),  // Aqua
-            (1.00, 0.40, 0.80),  // Bright Magenta
-            (0.40, 1.00, 0.00),  // Lime
-            (0.00, 0.60, 1.00),  // Bright Blue
-            (1.00, 0.80, 0.00),  // Gold
-            (0.80, 0.00, 1.00),  // Electric Violet
-            (0.00, 1.00, 0.60),  // Spring Green
-            (1.00, 0.40, 0.20),  // Coral Red
-            (0.40, 0.80, 1.00),  // Sky Blue
+            (0.32, 0.58, 0.74),  // Soft blue
+            (0.71, 0.44, 0.56),  // Dusty rose
+            (0.45, 0.66, 0.45),  // Sage green
+            (0.78, 0.58, 0.34),  // Muted amber
+            (0.55, 0.48, 0.72),  // Lavender
+            (0.74, 0.68, 0.38),  // Olive gold
+            (0.72, 0.42, 0.38),  // Soft red
+            (0.36, 0.67, 0.64),  // Teal
+            (0.68, 0.48, 0.64),  // Mauve
+            (0.55, 0.70, 0.38),  // Moss
+            (0.38, 0.52, 0.78),  // Cornflower
+            (0.76, 0.63, 0.32),  // Ochre
+            (0.58, 0.43, 0.70),  // Plum
+            (0.42, 0.68, 0.50),  // Eucalyptus
+            (0.78, 0.50, 0.40),  // Terracotta
+            (0.48, 0.66, 0.78),  // Pale sky
         ]
 
         // Normalize palette
@@ -49,22 +49,22 @@ class FileKindColorAssigner {
 
         // Raw predefined colors
         let rawPredefined: [String: (CGFloat, CGFloat, CGFloat)] = [
-            "Folder": (0.60, 0.60, 0.65),
-            "Document": (0.70, 0.55, 0.35),
-            "Free Space": (0.75, 0.75, 0.80),
-            "Other Space": (0.65, 0.65, 0.70),
-            "Application": (0.00, 0.60, 1.00),
-            "JPEG image": (0.20, 1.00, 0.40),
-            "PNG image": (0.00, 1.00, 0.60),
-            "HEIC image": (0.40, 1.00, 0.20),
-            "GIF image": (0.60, 1.00, 0.00),
-            "PDF document": (1.00, 0.20, 0.30),
-            "MP3 audio": (0.80, 0.20, 1.00),
-            "MPEG-4 audio": (0.60, 0.20, 1.00),
-            "MPEG-4 movie": (1.00, 0.50, 0.00),
-            "QuickTime movie": (1.00, 0.60, 0.00),
-            "Zip archive": (1.00, 0.80, 0.00),
-            "Disk image": (1.00, 0.70, 0.20),
+            "Folder": (0.58, 0.58, 0.62),
+            "Document": (0.66, 0.55, 0.40),
+            "Free Space": (0.72, 0.72, 0.76),
+            "Other Space": (0.62, 0.62, 0.66),
+            "Application": (0.34, 0.55, 0.74),
+            "JPEG image": (0.45, 0.66, 0.45),
+            "PNG image": (0.38, 0.67, 0.56),
+            "HEIC image": (0.52, 0.68, 0.42),
+            "GIF image": (0.62, 0.68, 0.38),
+            "PDF document": (0.74, 0.38, 0.38),
+            "MP3 audio": (0.60, 0.44, 0.72),
+            "MPEG-4 audio": (0.55, 0.44, 0.70),
+            "MPEG-4 movie": (0.76, 0.54, 0.34),
+            "QuickTime movie": (0.76, 0.58, 0.36),
+            "Zip archive": (0.74, 0.64, 0.34),
+            "Disk image": (0.72, 0.58, 0.38),
         ]
 
         // Normalize predefined colors
