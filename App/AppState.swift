@@ -243,14 +243,17 @@ class AppState: ObservableObject {
             }
 
             guard let totalCapacity = resourceValues.volumeTotalCapacity,
-                  let availableCapacity = resourceValues.volumeAvailableCapacity else {
+                  let availableCapacity = resourceValues.volumeAvailableCapacity,
+                  totalCapacity >= 0,
+                  availableCapacity >= 0 else {
                 return
             }
 
             let scannedSize = root.size
             let totalSize = UInt64(totalCapacity)
             let freeSize = UInt64(availableCapacity)
-            let otherSize = totalSize - freeSize - scannedSize
+            let usedSize = totalSize >= freeSize ? totalSize - freeSize : 0
+            let otherSize = usedSize > scannedSize ? usedSize - scannedSize : 0
 
             if showOtherSpace && otherSize > 0 {
                 let otherItem = FileNode(
@@ -274,6 +277,11 @@ class AppState: ObservableObject {
                     type: .freeSpace
                 )
                 root.children.append(freeItem)
+            }
+
+            root.size = root.children.reduce(UInt64(0)) { partialSize, child in
+                let (sum, overflow) = partialSize.addingReportingOverflow(child.size)
+                return overflow ? UInt64.max : sum
             }
 
         } catch {
