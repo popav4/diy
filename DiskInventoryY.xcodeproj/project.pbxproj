@@ -42,7 +42,7 @@
 		A1000002234567890000015 /* DiskInventoryY.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiskInventoryY.entitlements; sourceTree = "<group>"; };
 		A1000002234567890000016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1000002234567890000017 /* FileKindRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKindRegistry.swift; sourceTree = "<group>"; };
-		A1000003234567890000001 /* DiskInventoryY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiskInventoryY.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000003234567890000001 /* Disk Inventory Y.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Disk Inventory Y.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 		A1000005234567890000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1000003234567890000001 /* DiskInventoryY.app */,
+				A1000003234567890000001 /* Disk Inventory Y.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			);
 			name = DiskInventoryY;
 			productName = DiskInventoryY;
-			productReference = A1000003234567890000001 /* DiskInventoryY.app */;
+			productReference = A1000003234567890000001 /* Disk Inventory Y.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -397,7 +397,7 @@
 				);
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.derlien.DiskInventoryY;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Disk Inventory Y";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -425,7 +425,7 @@
 				);
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.derlien.DiskInventoryY;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Disk Inventory Y";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

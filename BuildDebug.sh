@@ -24,5 +24,5 @@ xcodebuild -project DiskInventoryY.xcodeproj \
 
 echo ""
 echo "Build complete!"
-echo "App location: build/Build/Products/Debug/DiskInventoryY.app"
+echo "App location: build/Build/Products/Debug/Disk Inventory Y.app"
 echo "Log file: $LOG_FILE"

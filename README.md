@@ -37,7 +37,7 @@ Debug build:
 Debug app output:
 
 ```text
-build/Build/Products/Debug/DiskInventoryY.app
+build/Build/Products/Debug/Disk Inventory Y.app
 ```
 
 Release build:
