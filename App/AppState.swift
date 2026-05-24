@@ -49,7 +49,7 @@ class AppState: ObservableObject {
 
     // MARK: - Settings
 
-    @AppStorage("showPhysicalSize") var showPhysicalSize = false
+    @AppStorage("showPhysicalSize") var showPhysicalSize = true
     @AppStorage("showPackageContents") var showPackageContents = false
     @AppStorage("ignoreCreatorCodes") var ignoreCreatorCodes = true
     @AppStorage("showFreeSpace") var showFreeSpace = true
@@ -62,6 +62,7 @@ class AppState: ObservableObject {
     private var colorAssigner = FileKindColorAssigner()
     private var scanID = UUID()
     private let progressUpdateInterval: Duration = .milliseconds(200)
+    private let bookmarkKey = "securityScopedBookmark.selectedFolder"
 
     // MARK: - Computed Properties
 
@@ -79,9 +80,13 @@ class AppState: ObservableObject {
         panel.allowsMultipleSelection = false
         panel.message = "Select a folder to analyze disk usage"
         panel.prompt = "Analyze"
+        if let lastURL = resolveBookmarkedURL() {
+            panel.directoryURL = lastURL
+        }
 
         if panel.runModal() == .OK, let url = panel.url {
             AppLogger.shared.log("Folder selected for scan: \(url.path)")
+            storeBookmark(for: url)
             Task {
                 await scan(url: url)
             }
@@ -91,7 +96,21 @@ class AppState: ObservableObject {
     }
 
     func scan(url: URL) async {
-        AppLogger.shared.log("Scan started: \(url.path). physical-size=\(showPhysicalSize), show-packages=\(showPackageContents), parallel=\(useParallelScanning)")
+        let scopedURL = resolveScopedURL(for: url)
+        let scanIsVolumeLike = shouldForcePhysicalSize(for: scopedURL)
+        let usePhysicalSizeForScan = scanIsVolumeLike || showPhysicalSize
+        let hasScopedAccess = scopedURL.startAccessingSecurityScopedResource()
+        if hasScopedAccess {
+            AppLogger.shared.log("Security-scoped access started: \(scopedURL.path)")
+        }
+        defer {
+            if hasScopedAccess {
+                scopedURL.stopAccessingSecurityScopedResource()
+                AppLogger.shared.log("Security-scoped access stopped: \(scopedURL.path)")
+            }
+        }
+
+        AppLogger.shared.log("Scan started: \(scopedURL.path). physical-size=\(usePhysicalSizeForScan), show-packages=\(showPackageContents), parallel=\(useParallelScanning)")
         // Cancel any existing scan
         await scanner?.cancel()
         let currentScanID = UUID()
@@ -99,7 +118,7 @@ class AppState: ObservableObject {
         scanID = currentScanID
 
         isScanning = true
-        scanProgress = ScanProgress(currentFolder: url.lastPathComponent, filesScanned: 0, foldersScanned: 0)
+        scanProgress = ScanProgress(currentFolder: scopedURL.lastPathComponent, filesScanned: 0, foldersScanned: 0)
         errorMessage = nil
         rootNode = nil
         zoomedNode = nil
@@ -112,9 +131,10 @@ class AppState: ObservableObject {
 
         do {
             let root = try await newScanner.scan(
-                url: url,
+                url: scopedURL,
                 showPackageContents: showPackageContents,
-                usePhysicalSize: showPhysicalSize,
+                usePhysicalSize: usePhysicalSizeForScan,
+                avoidAPFSDataDuplication: scanIsVolumeLike,
                 useParallelScanning: useParallelScanning
             ) { [weak self] folder, files, folders in
                 guard progressThrottle.shouldPublish() else { return }
@@ -130,19 +150,19 @@ class AppState: ObservableObject {
             }
 
             rootNode = root
-            AppLogger.shared.log("Scan completed: \(url.path). root-size=\(root.size), root-children=\(root.children.count)")
+            AppLogger.shared.log("Scan completed: \(scopedURL.path). root-size=\(root.size), root-children=\(root.children.count)")
 
             // Add free space and other space items if scanning a volume root
             if showFreeSpace || showOtherSpace {
-                await addVolumeSpaceItems(for: url)
+                await addVolumeSpaceItems(for: scopedURL)
             }
 
         } catch is CancellationError {
             // Scan was cancelled, ignore
-            AppLogger.shared.log("Scan canceled: \(url.path)")
+            AppLogger.shared.log("Scan canceled: \(scopedURL.path)")
         } catch {
             errorMessage = error.localizedDescription
-            AppLogger.shared.log("Scan failed: \(url.path). error=\(error.localizedDescription)")
+            AppLogger.shared.log("Scan failed: \(scopedURL.path). error=\(error.localizedDescription)")
         }
 
         isScanning = false
@@ -340,6 +360,72 @@ class AppState: ObservableObject {
 
         } catch {
             // Ignore volume info errors
+        }
+    }
+
+    private func storeBookmark(for url: URL) {
+        do {
+            let data = try url.bookmarkData(
+                options: [.withSecurityScope],
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil
+            )
+            UserDefaults.standard.set(data, forKey: bookmarkKey)
+            AppLogger.shared.log("Security-scoped bookmark saved: \(url.path)")
+        } catch {
+            AppLogger.shared.log("Failed to save security-scoped bookmark: \(error.localizedDescription)")
+        }
+    }
+
+    private func resolveBookmarkedURL() -> URL? {
+        guard let data = UserDefaults.standard.data(forKey: bookmarkKey) else {
+            return nil
+        }
+
+        do {
+            var isStale = false
+            let url = try URL(
+                resolvingBookmarkData: data,
+                options: [.withSecurityScope],
+                relativeTo: nil,
+                bookmarkDataIsStale: &isStale
+            )
+
+            if isStale {
+                storeBookmark(for: url)
+                AppLogger.shared.log("Security-scoped bookmark was stale and refreshed: \(url.path)")
+            }
+            return url
+        } catch {
+            AppLogger.shared.log("Failed to resolve security-scoped bookmark: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    private func resolveScopedURL(for requestedURL: URL) -> URL {
+        guard let bookmarkedURL = resolveBookmarkedURL() else {
+            return requestedURL
+        }
+
+        let requestedPath = requestedURL.standardizedFileURL.path
+        let bookmarkedPath = bookmarkedURL.standardizedFileURL.path
+
+        if requestedPath == bookmarkedPath || requestedPath.hasPrefix(bookmarkedPath + "/") {
+            return bookmarkedURL
+        }
+
+        return requestedURL
+    }
+
+    private func shouldForcePhysicalSize(for url: URL) -> Bool {
+        do {
+            let values = try url.resourceValues(forKeys: [.isVolumeKey])
+            let isVolumeRoot = values.isVolume ?? false
+            let parentPath = url.deletingLastPathComponent().path
+            let isVolumeMountPoint = parentPath == "/Volumes" || url.path == "/"
+            return isVolumeRoot || isVolumeMountPoint
+        } catch {
+            return url.path == "/"
         }
     }
 }

@@ -36,7 +36,7 @@ struct SettingsView: View {
 }
 
 struct GeneralSettingsTab: View {
-    @AppStorage("showPhysicalSize") private var showPhysicalSize = false
+    @AppStorage("showPhysicalSize") private var showPhysicalSize = true
     @AppStorage("showPackageContents") private var showPackageContents = false
     @AppStorage("ignoreCreatorCodes") private var ignoreCreatorCodes = true
     @AppStorage("showFreeSpace") private var showFreeSpace = true
@@ -47,7 +47,13 @@ struct GeneralSettingsTab: View {
         Form {
             Section("File Sizes") {
                 Toggle("Show physical file size (disk space used)", isOn: $showPhysicalSize)
-                    .help("Show the actual disk space used instead of logical file size")
+                    .help("Recommended: ON. Matches real disk usage in macOS Disk Utility. If OFF, values switch to logical file sizes and may not match actual space used on APFS volumes.")
+
+                Text(showPhysicalSize
+                     ? "Recommended mode: values match actual disk usage."
+                     : "Logical-size mode is enabled: totals can diverge from actual used space in Disk Utility, especially on APFS.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
             Section("Packages & Bundles") {

@@ -64,6 +64,7 @@ actor FileScanner {
         url: URL,
         showPackageContents: Bool,
         usePhysicalSize: Bool,
+        avoidAPFSDataDuplication: Bool = false,
         useParallelScanning: Bool = true,
         progress: @escaping @Sendable (String, Int, Int) -> Void
     ) async throws -> FileNode {
@@ -76,6 +77,7 @@ actor FileScanner {
                     parent: nil,
                     showPackageContents: showPackageContents,
                     usePhysicalSize: usePhysicalSize,
+                    avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
                     progress: progress
                 )
@@ -85,6 +87,7 @@ actor FileScanner {
                     parent: nil,
                     showPackageContents: showPackageContents,
                     usePhysicalSize: usePhysicalSize,
+                    avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
                     progress: progress
                 )
@@ -109,6 +112,38 @@ actor FileScanner {
         .isSymbolicLinkKey,
         .isAliasFileKey
     ]
+
+    /// APFS synthetic/overlay paths under "/" that can cause duplicated accounting.
+    private static let skippedRootEntries: Set<String> = [
+        ".nofollow",
+        ".vol",
+        ".file",
+        ".resolve"
+    ]
+
+    private static func shouldSkipChild(
+        _ childURL: URL,
+        under parentURL: URL,
+        avoidAPFSDataDuplication: Bool
+    ) -> Bool {
+        let parentPath = parentURL.standardizedFileURL.path
+        let childPath = childURL.standardizedFileURL.path
+
+        if avoidAPFSDataDuplication &&
+            (childPath == "/System/Volumes/Data" || childPath.hasPrefix("/System/Volumes/Data/")) {
+            return true
+        }
+
+        guard parentPath == "/" else {
+            return false
+        }
+
+        if skippedRootEntries.contains(childURL.lastPathComponent) {
+            return true
+        }
+
+        return false
+    }
 
     /// Creates a FileNode from a URL, reporting progress
     private static func makeNode(
@@ -165,6 +200,7 @@ actor FileScanner {
         parent: FileNode?,
         showPackageContents: Bool,
         usePhysicalSize: Bool,
+        avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
         progress: @escaping @Sendable (String, Int, Int) -> Void
     ) async throws -> FileNode {
@@ -194,6 +230,10 @@ actor FileScanner {
             var directories: [URL] = []
 
             for childURL in contents {
+                if shouldSkipChild(childURL, under: url, avoidAPFSDataDuplication: avoidAPFSDataDuplication) {
+                    continue
+                }
+
                 // Use cached resource values from contentsOfDirectory prefetch
                 let isDir = (try? childURL.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) ?? false
                 if isDir {
@@ -231,6 +271,7 @@ actor FileScanner {
                                     parent: node,
                                     showPackageContents: showPackageContents,
                                     usePhysicalSize: usePhysicalSize,
+                                    avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                                     counter: counter,
                                     progress: progress
                                 )
@@ -266,6 +307,7 @@ actor FileScanner {
         parent: FileNode?,
         showPackageContents: Bool,
         usePhysicalSize: Bool,
+        avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
         progress: @escaping @Sendable (String, Int, Int) -> Void
     ) async throws -> FileNode {
@@ -292,6 +334,10 @@ actor FileScanner {
 
             // Scan children sequentially
             for childURL in contents {
+                if shouldSkipChild(childURL, under: url, avoidAPFSDataDuplication: avoidAPFSDataDuplication) {
+                    continue
+                }
+
                 try Task.checkCancellation()
                 do {
                     let child = try await scanDirectorySequential(
@@ -299,6 +345,7 @@ actor FileScanner {
                         parent: node,
                         showPackageContents: showPackageContents,
                         usePhysicalSize: usePhysicalSize,
+                        avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                         counter: counter,
                         progress: progress
                     )
