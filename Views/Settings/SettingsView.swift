@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppKit
 
 struct SettingsView: View {
     var body: some View {
@@ -18,6 +19,11 @@ struct SettingsView: View {
             TreeMapSettingsTab()
                 .tabItem {
                     Label("TreeMap", systemImage: "square.grid.2x2")
+                }
+
+            LogsSettingsTab()
+                .tabItem {
+                    Label("Logs", systemImage: "doc.text.magnifyingglass")
                 }
 
             AboutTab()
@@ -138,6 +144,45 @@ struct AboutTab: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct LogsSettingsTab: View {
+    @AppStorage(AppLogger.loggingEnabledKey)
+    private var isLoggingEnabled = true
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Toggle("Enable logging", isOn: $isLoggingEnabled)
+
+            Text("Current log file")
+                .font(.headline)
+
+            Text(AppLogger.shared.logFileURL.path)
+                .font(.system(size: 12, weight: .regular, design: .monospaced))
+                .lineLimit(3)
+                .textSelection(.enabled)
+
+            HStack(spacing: 12) {
+                Button("Open Log") {
+                    NSWorkspace.shared.open(AppLogger.shared.logFileURL)
+                }
+                .disabled(!isLoggingEnabled)
+
+                Button("Open Log Folder") {
+                    NSWorkspace.shared.open(AppLogger.shared.logFileURL.deletingLastPathComponent())
+                }
+                .disabled(!isLoggingEnabled)
+
+                Button("Clear Log") {
+                    AppLogger.shared.clearLog()
+                }
+                .disabled(!isLoggingEnabled)
+            }
+
+            Spacer()
+        }
+        .padding()
     }
 }
 

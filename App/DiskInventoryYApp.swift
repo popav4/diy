@@ -12,6 +12,10 @@ import SwiftUI
 struct DiskInventoryYApp: App {
     @StateObject private var appState = AppState()
 
+    init() {
+        AppLogger.shared.log("App started")
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

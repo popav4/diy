@@ -72,6 +72,7 @@ class AppState: ObservableObject {
     // MARK: - Actions
 
     func showOpenPanel() {
+        AppLogger.shared.log("Open folder dialog requested")
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
@@ -80,13 +81,17 @@ class AppState: ObservableObject {
         panel.prompt = "Analyze"
 
         if panel.runModal() == .OK, let url = panel.url {
+            AppLogger.shared.log("Folder selected for scan: \(url.path)")
             Task {
                 await scan(url: url)
             }
+        } else {
+            AppLogger.shared.log("Open folder dialog canceled")
         }
     }
 
     func scan(url: URL) async {
+        AppLogger.shared.log("Scan started: \(url.path). physical-size=\(showPhysicalSize), show-packages=\(showPackageContents), parallel=\(useParallelScanning)")
         // Cancel any existing scan
         await scanner?.cancel()
         let currentScanID = UUID()
@@ -125,6 +130,7 @@ class AppState: ObservableObject {
             }
 
             rootNode = root
+            AppLogger.shared.log("Scan completed: \(url.path). root-size=\(root.size), root-children=\(root.children.count)")
 
             // Add free space and other space items if scanning a volume root
             if showFreeSpace || showOtherSpace {
@@ -133,8 +139,10 @@ class AppState: ObservableObject {
 
         } catch is CancellationError {
             // Scan was cancelled, ignore
+            AppLogger.shared.log("Scan canceled: \(url.path)")
         } catch {
             errorMessage = error.localizedDescription
+            AppLogger.shared.log("Scan failed: \(url.path). error=\(error.localizedDescription)")
         }
 
         isScanning = false
@@ -149,11 +157,13 @@ class AppState: ObservableObject {
 
     func refresh() async {
         guard let root = rootNode else { return }
+        AppLogger.shared.log("Refresh requested for: \(root.url.path)")
         await scan(url: root.url)
     }
 
     func zoomIn() {
         guard let selected = selectedNode, selected.isDirectory else { return }
+        AppLogger.shared.log("Zoom in: \(selected.url.path)")
 
         if let current = zoomedNode {
             zoomStack.append(current)
@@ -167,6 +177,7 @@ class AppState: ObservableObject {
     func zoomOut() {
         guard !zoomStack.isEmpty else { return }
         zoomedNode = zoomStack.removeLast()
+        AppLogger.shared.log("Zoom out")
 
         if zoomedNode === rootNode {
             zoomedNode = nil
@@ -176,6 +187,7 @@ class AppState: ObservableObject {
     func zoomToRoot() {
         zoomedNode = nil
         zoomStack = []
+        AppLogger.shared.log("Zoom to root")
     }
 
     func color(for kindName: String) -> Color {
@@ -184,6 +196,7 @@ class AppState: ObservableObject {
 
     /// Remove a node from the tree (after trashing) and update sizes
     func removeNode(_ node: FileNode) {
+        AppLogger.shared.log("Remove node from model: \(node.url.path), size=\(node.size)")
         let deletedSize = node.size
 
         // Clear selection if we're deleting the selected node
