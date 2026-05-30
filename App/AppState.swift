@@ -52,6 +52,7 @@ class AppState: ObservableObject {
     @AppStorage("showPhysicalSize") var showPhysicalSize = true
     @AppStorage("showPackageContents") var showPackageContents = false
     @AppStorage("ignoreCreatorCodes") var ignoreCreatorCodes = true
+    @AppStorage("useExternalFileKinds") var useExternalFileKinds = true
     @AppStorage("collapseUnknownFileTypes") var collapseUnknownFileTypes = true
     @AppStorage("showFreeSpace") var showFreeSpace = true
     @AppStorage("showOtherSpace") var showOtherSpace = true
@@ -65,8 +66,9 @@ class AppState: ObservableObject {
     private let progressUpdateInterval: Duration = .milliseconds(200)
     private let bookmarkKey = "securityScopedBookmark.selectedFolder"
     private var userDefaultsObserver: NSObjectProtocol?
-    private static let collapsedUnknownKindKey = "Collapsed Unknown"
-    private static let collapsedUnknownDisplayName = "Document"
+    private nonisolated static let collapsedUnknownKindKey = "Collapsed Unknown"
+    private nonisolated static let collapsedUnknownDisplayName = "Document"
+    private nonisolated static let mixedExtensionKey = "*"
 
     init() {
         userDefaultsObserver = NotificationCenter.default.addObserver(
@@ -132,7 +134,7 @@ class AppState: ObservableObject {
             }
         }
 
-        AppLogger.shared.log("Scan started: \(scopedURL.path). physical-size=\(usePhysicalSizeForScan), show-packages=\(showPackageContents), ignore-creator-codes=\(ignoreCreatorCodes), parallel=\(useParallelScanning)")
+        AppLogger.shared.log("Scan started: \(scopedURL.path). physical-size=\(usePhysicalSizeForScan), show-packages=\(showPackageContents), ignore-creator-codes=\(ignoreCreatorCodes), external-file-kinds=\(useExternalFileKinds), parallel=\(useParallelScanning)")
         // Cancel any existing scan
         await scanner?.cancel()
         let currentScanID = UUID()
@@ -156,6 +158,7 @@ class AppState: ObservableObject {
                 url: scopedURL,
                 showPackageContents: showPackageContents,
                 ignoreCreatorCodes: ignoreCreatorCodes,
+                useExternalFileKinds: useExternalFileKinds,
                 usePhysicalSize: usePhysicalSizeForScan,
                 avoidAPFSDataDuplication: scanIsVolumeLike,
                 useParallelScanning: useParallelScanning
@@ -234,7 +237,7 @@ class AppState: ObservableObject {
     }
 
     func color(for kindName: String) -> Color {
-        colorAssigner.color(for: kindStorageName(for: kindName))
+        colorAssigner.color(for: colorKey(forRawKindName: kindName))
     }
 
     /// Remove a node from the tree (after trashing) and update sizes
@@ -278,11 +281,14 @@ class AppState: ObservableObject {
             }.value
 
             kindStatistics = stats.map { kind, stat in
-                FileKindStatistic(
-                    kindName: kind,
+                let key = Self.parseStorageKindKey(kind)
+                return FileKindStatistic(
+                    kindName: key.kindName,
+                    extensionDisplay: key.extensionKey == Self.mixedExtensionKey ? "various" : key.extensionKey,
+                    kindSource: stat.source,
                     count: stat.count,
                     totalSize: stat.size,
-                    color: colorAssigner.color(for: kind)
+                    color: colorAssigner.color(for: colorKey(forStoredKindKey: kind))
                 )
             }.sorted { $0.totalSize > $1.totalSize }
         }
@@ -299,18 +305,32 @@ class AppState: ObservableObject {
     }
 
     /// Collect statistics off-main-thread (kindName triggers lazy UTType computation)
-    private nonisolated static func collectStatistics(from root: FileNode, collapseUnknownFileTypes: Bool) -> [String: (count: Int, size: UInt64)] {
-        var stats: [String: (count: Int, size: UInt64)] = [:]
+    private nonisolated static func collectStatistics(
+        from root: FileNode,
+        collapseUnknownFileTypes: Bool
+    ) -> [String: (count: Int, size: UInt64, source: FileKindSource)] {
+        var stats: [String: (count: Int, size: UInt64, source: FileKindSource)] = [:]
 
         func collect(_ node: FileNode) {
             if !node.isDirectory {
                 let kind: String
+                let source: FileKindSource
                 if collapseUnknownFileTypes && Self.isUnknownKindName(node.kindName) {
-                    kind = Self.collapsedUnknownKindKey
+                    kind = Self.storageKindKey(
+                        kindName: Self.collapsedUnknownKindKey,
+                        source: .special,
+                        extensionKey: Self.mixedExtensionKey
+                    )
+                    source = .special
                 } else {
-                    kind = node.kindName
+                    source = node.kindSource
+                    kind = Self.storageKindKey(
+                        kindName: node.kindName,
+                        source: source,
+                        extensionKey: node.pathExtension.lowercased()
+                    )
                 }
-                var stat = stats[kind] ?? (count: 0, size: 0)
+                var stat = stats[kind] ?? (count: 0, size: 0, source: source)
                 stat.count += 1
                 stat.size += node.size
                 stats[kind] = stat
@@ -325,22 +345,44 @@ class AppState: ObservableObject {
         return stats
     }
 
-    private func kindStorageName(for rawKindName: String) -> String {
+    private func colorKey(forRawKindName rawKindName: String) -> String {
         if collapseUnknownFileTypes && Self.isUnknownKindName(rawKindName) {
             return Self.collapsedUnknownKindKey
         }
         return rawKindName
     }
 
+    private func colorKey(forStoredKindKey storedKindKey: String) -> String {
+        let parsed = Self.parseStorageKindKey(storedKindKey)
+        if parsed.kindName == Self.collapsedUnknownKindKey {
+            return Self.collapsedUnknownKindKey
+        }
+        return parsed.kindName
+    }
+
     func displayKindName(for storedKindName: String) -> String {
-        if storedKindName == Self.collapsedUnknownKindKey {
+        let key = Self.parseStorageKindKey(storedKindName)
+        if key.kindName == Self.collapsedUnknownKindKey {
             return Self.collapsedUnknownDisplayName
         }
-        return storedKindName
+        return key.kindName
     }
 
     private nonisolated static func isUnknownKindName(_ kindName: String) -> Bool {
         kindName.hasPrefix(".") && kindName.hasSuffix(" file")
+    }
+
+    private nonisolated static func storageKindKey(kindName: String, source: FileKindSource, extensionKey: String) -> String {
+        "\(source.rawValue)|\(kindName)|\(extensionKey)"
+    }
+
+    private nonisolated static func parseStorageKindKey(_ key: String) -> (source: FileKindSource, kindName: String, extensionKey: String) {
+        let parts = key.split(separator: "|", maxSplits: 2).map(String.init)
+        guard parts.count == 3 else {
+            return (.macOS, key, "")
+        }
+        let source = FileKindSource(rawValue: parts[0]) ?? .macOS
+        return (source, parts[1], parts[2])
     }
 
     private func refreshKindPresentation() {

@@ -10,6 +10,8 @@ import SwiftUI
 struct FileKindStatistic: Identifiable, Hashable {
     let id = UUID()
     let kindName: String
+    let extensionDisplay: String?
+    let kindSource: FileKindSource
     let count: Int
     let totalSize: UInt64
     let color: Color

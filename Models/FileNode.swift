@@ -9,6 +9,12 @@
 import Foundation
 import AppKit
 
+enum FileKindSource: String {
+    case macOS
+    case external
+    case special
+}
+
 enum FileNodeType: Equatable {
     case regular
     case otherSpace
@@ -30,11 +36,12 @@ class FileNode: Identifiable {
 
     // Compact kind identifier - lookup via FileKindRegistry (saves ~50 bytes vs String + UTType)
     let kindId: UInt16
+    let kindSource: FileKindSource
 
     // MARK: - Initialization
 
     init(path: String, isDirectory: Bool = false, isPackage: Bool = false,
-         size: UInt64 = 0, type: FileNodeType = .regular, kindIdOverride: UInt16? = nil) {
+         size: UInt64 = 0, type: FileNodeType = .regular, kindIdOverride: UInt16? = nil, kindSourceOverride: FileKindSource? = nil) {
         self.path = path
         self.isDirectory = isDirectory
         self.isPackage = isPackage
@@ -45,16 +52,21 @@ class FileNode: Identifiable {
         switch type {
         case .freeSpace:
             self.kindId = FileKindRegistry.freeSpaceKindId
+            self.kindSource = .special
         case .otherSpace:
             self.kindId = FileKindRegistry.otherSpaceKindId
+            self.kindSource = .special
         case .regular:
             if let kindIdOverride {
                 self.kindId = kindIdOverride
+                self.kindSource = kindSourceOverride ?? .macOS
             } else if isDirectory && !isPackage {
                 self.kindId = FileKindRegistry.folderKindId
+                self.kindSource = .special
             } else {
                 let ext = (path as NSString).pathExtension
                 self.kindId = FileKindRegistry.shared.kindId(forExtension: ext)
+                self.kindSource = .macOS
             }
         }
     }

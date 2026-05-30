@@ -1,6 +1,7 @@
 # Internal AI/task data (do not commit)
 .tasks/
 .tmp/
+.scripts/
 AGENTS.md
 MEMORY.md
 

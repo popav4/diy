@@ -79,38 +79,57 @@ final class FileKindRegistry: @unchecked Sendable {
     /// Get kind ID for a specific file with optional metadata-aware resolution.
     /// - When ignoreCreatorCodes is true, uses extension-only logic.
     /// - When ignoreCreatorCodes is false, first prefers resource contentType description.
-    func kindId(forFileAtPath path: String, contentType: UTType?, ignoreCreatorCodes: Bool) -> UInt16 {
+    func kindInfo(
+        forFileAtPath path: String,
+        contentType: UTType?,
+        ignoreCreatorCodes: Bool,
+        useExternalFileKinds: Bool
+    ) -> (kindId: UInt16, source: FileKindSource) {
         if ignoreCreatorCodes {
-            return kindId(forExtension: (path as NSString).pathExtension)
+            let ext = (path as NSString).pathExtension.lowercased()
+            if let utType = UTType(filenameExtension: ext),
+               let description = utType.localizedDescription,
+               !utType.identifier.hasPrefix("dyn.") {
+                return (kindId(forName: description), .macOS)
+            }
+            if useExternalFileKinds,
+               let externalName = ExternalFileKindCatalog.shared.kindName(forExtension: ext) {
+                return (kindId(forName: externalName), .external)
+            }
+            return (kindId(forExtension: ext), .macOS)
         }
 
         let ext = (path as NSString).pathExtension.lowercased()
-        let kindName: String
 
         // Metadata/content-based type from the OS has priority in this mode.
         if let contentType,
            let description = contentType.localizedDescription,
            !description.isEmpty {
-            kindName = description
-        } else if let utType = UTType(filenameExtension: ext),
-                  let description = utType.localizedDescription,
-                  !utType.identifier.hasPrefix("dyn.") {
-            kindName = description
-        } else {
-            kindName = ext.isEmpty ? "Document" : ".\(ext.uppercased()) file"
+            return (kindId(forName: description), .macOS)
         }
+        if let utType = UTType(filenameExtension: ext),
+           let description = utType.localizedDescription,
+           !utType.identifier.hasPrefix("dyn.") {
+            return (kindId(forName: description), .macOS)
+        }
+        if useExternalFileKinds,
+           let externalName = ExternalFileKindCatalog.shared.kindName(forExtension: ext) {
+            return (kindId(forName: externalName), .external)
+        }
+        let fallback = ext.isEmpty ? "Document" : ".\(ext.uppercased()) file"
+        return (kindId(forName: fallback), .macOS)
+    }
 
+    private func kindId(forName kindName: String) -> UInt16 {
         lock.lock()
+        defer { lock.unlock() }
+
         if let existingIndex = idToKindName.firstIndex(of: kindName) {
-            let id = UInt16(existingIndex)
-            lock.unlock()
-            return id
+            return UInt16(existingIndex)
         }
 
         let newId = UInt16(idToKindName.count)
         idToKindName.append(kindName)
-        lock.unlock()
-
         return newId
     }
 

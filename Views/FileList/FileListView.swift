@@ -96,6 +96,7 @@ struct NodeRow: View {
 struct FileRow: View {
     let node: FileNode
     @EnvironmentObject private var appState: AppState
+    @AppStorage("collapseUnknownFileTypes") private var collapseUnknownFileTypes = true
 
     var body: some View {
         HStack(spacing: 8) {
@@ -113,7 +114,7 @@ struct FileRow: View {
 
             // Kind (for non-folders)
             if !node.isDirectory {
-                Text(node.kindName)
+                Text(kindCaption)
                     .font(.caption)
                     .foregroundStyle(.tertiary)
                     .lineLimit(1)
@@ -163,6 +164,17 @@ struct FileRow: View {
         } catch {
             // Handle error - file might be in use or protected
         }
+    }
+
+    private var kindCaption: String {
+        normalizedKindName(node.kindName)
+    }
+
+    private func normalizedKindName(_ kindName: String) -> String {
+        if collapseUnknownFileTypes && kindName.hasPrefix(".") && kindName.hasSuffix(" file") {
+            return "Document"
+        }
+        return kindName
     }
 }
 

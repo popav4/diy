@@ -64,6 +64,7 @@ actor FileScanner {
         url: URL,
         showPackageContents: Bool,
         ignoreCreatorCodes: Bool,
+        useExternalFileKinds: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool = false,
         useParallelScanning: Bool = true,
@@ -78,6 +79,7 @@ actor FileScanner {
                     parent: nil,
                     showPackageContents: showPackageContents,
                     ignoreCreatorCodes: ignoreCreatorCodes,
+                    useExternalFileKinds: useExternalFileKinds,
                     usePhysicalSize: usePhysicalSize,
                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
@@ -89,6 +91,7 @@ actor FileScanner {
                     parent: nil,
                     showPackageContents: showPackageContents,
                     ignoreCreatorCodes: ignoreCreatorCodes,
+                    useExternalFileKinds: useExternalFileKinds,
                     usePhysicalSize: usePhysicalSize,
                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
@@ -153,6 +156,7 @@ actor FileScanner {
         url: URL,
         parent: FileNode?,
         ignoreCreatorCodes: Bool,
+        useExternalFileKinds: Bool,
         usePhysicalSize: Bool,
         counter: ProgressCounter,
         progress: @escaping @Sendable (String, Int, Int) -> Void
@@ -172,14 +176,15 @@ actor FileScanner {
         }
 
         // Use path directly - more memory efficient than storing URL
-        let kindIdOverride: UInt16?
+        let kindInfo: (kindId: UInt16, source: FileKindSource)?
         if isDirectory && !isPackage {
-            kindIdOverride = FileKindRegistry.folderKindId
+            kindInfo = (FileKindRegistry.folderKindId, .special)
         } else {
-            kindIdOverride = FileKindRegistry.shared.kindId(
+            kindInfo = FileKindRegistry.shared.kindInfo(
                 forFileAtPath: url.path,
                 contentType: values.contentType,
-                ignoreCreatorCodes: ignoreCreatorCodes
+                ignoreCreatorCodes: ignoreCreatorCodes,
+                useExternalFileKinds: useExternalFileKinds
             )
         }
 
@@ -188,7 +193,8 @@ actor FileScanner {
             isDirectory: isDirectory,
             isPackage: isPackage,
             size: isDirectory ? 0 : size,
-            kindIdOverride: kindIdOverride
+            kindIdOverride: kindInfo?.kindId,
+            kindSourceOverride: kindInfo?.source
         )
         node.parent = parent
 
@@ -216,6 +222,7 @@ actor FileScanner {
         parent: FileNode?,
         showPackageContents: Bool,
         ignoreCreatorCodes: Bool,
+        useExternalFileKinds: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
@@ -227,6 +234,7 @@ actor FileScanner {
             url: url,
             parent: parent,
             ignoreCreatorCodes: ignoreCreatorCodes,
+            useExternalFileKinds: useExternalFileKinds,
             usePhysicalSize: usePhysicalSize,
             counter: counter,
             progress: progress
@@ -264,6 +272,7 @@ actor FileScanner {
                             url: childURL,
                             parent: node,
                             ignoreCreatorCodes: ignoreCreatorCodes,
+                            useExternalFileKinds: useExternalFileKinds,
                             usePhysicalSize: usePhysicalSize,
                             counter: counter,
                             progress: progress
@@ -290,6 +299,7 @@ actor FileScanner {
                                     parent: node,
                                     showPackageContents: showPackageContents,
                                     ignoreCreatorCodes: ignoreCreatorCodes,
+                                    useExternalFileKinds: useExternalFileKinds,
                                     usePhysicalSize: usePhysicalSize,
                                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                                     counter: counter,
@@ -327,6 +337,7 @@ actor FileScanner {
         parent: FileNode?,
         showPackageContents: Bool,
         ignoreCreatorCodes: Bool,
+        useExternalFileKinds: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
@@ -338,6 +349,7 @@ actor FileScanner {
             url: url,
             parent: parent,
             ignoreCreatorCodes: ignoreCreatorCodes,
+            useExternalFileKinds: useExternalFileKinds,
             usePhysicalSize: usePhysicalSize,
             counter: counter,
             progress: progress
@@ -367,6 +379,7 @@ actor FileScanner {
                         parent: node,
                         showPackageContents: showPackageContents,
                         ignoreCreatorCodes: ignoreCreatorCodes,
+                        useExternalFileKinds: useExternalFileKinds,
                         usePhysicalSize: usePhysicalSize,
                         avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                         counter: counter,

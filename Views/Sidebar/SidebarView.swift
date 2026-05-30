@@ -60,12 +60,17 @@ struct FileKindRow: View {
                 .frame(width: 12, height: 12)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(displayName)
+                Text(titleLine)
                     .lineLimit(1)
 
-                Text("\(statistic.formattedCount) files")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 6) {
+                    Text("\(statistic.formattedCount) files")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(sourceLabel)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             Spacer()
@@ -76,6 +81,27 @@ struct FileKindRow: View {
                 .foregroundStyle(.secondary)
         }
         .padding(.vertical, 2)
+    }
+
+    private var sourceLabel: String {
+        switch statistic.kindSource {
+        case .macOS:
+            return "macOS"
+        case .external:
+            return "External"
+        case .special:
+            return "Merged"
+        }
+    }
+
+    private var titleLine: String {
+        guard let ext = statistic.extensionDisplay, !ext.isEmpty else {
+            return displayName
+        }
+        if ext == "various" {
+            return displayName
+        }
+        return "\(displayName) (.\(ext))"
     }
 }
 

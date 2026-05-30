@@ -1,0 +1,4954 @@
+{
+  "source": "shared-mime-info",
+  "generatedFrom": "freedesktop.org.xml.in",
+  "extensions": {
+    "123": {
+      "name": "Lotus 1-2-3 spreadsheet",
+      "mime": "application/vnd.lotus-1-2-3"
+    },
+    "32x": {
+      "name": "Genesis 32X ROM",
+      "mime": "application/x-genesis-32x-rom"
+    },
+    "386": {
+      "name": "32-bit DOS executable",
+      "mime": "application/x-lx-executable"
+    },
+    "3ds": {
+      "name": "3D Studio image",
+      "mime": "image/x-3ds"
+    },
+    "3dsx": {
+      "name": "Nintendo 3DS Executable",
+      "mime": "application/x-nintendo-3ds-executable"
+    },
+    "3fr": {
+      "name": "Hasselblad 3FR raw image",
+      "mime": "image/x-hasselblad-3fr"
+    },
+    "3g2": {
+      "name": "3GPP2 multimedia file",
+      "mime": "video/3gpp2"
+    },
+    "3ga": {
+      "name": "3GPP multimedia file",
+      "mime": "video/3gpp"
+    },
+    "3gp": {
+      "name": "3GPP multimedia file",
+      "mime": "video/3gpp"
+    },
+    "3gp2": {
+      "name": "3GPP2 multimedia file",
+      "mime": "video/3gpp2"
+    },
+    "3gpp": {
+      "name": "3GPP multimedia file",
+      "mime": "video/3gpp"
+    },
+    "3gpp2": {
+      "name": "3GPP2 multimedia file",
+      "mime": "video/3gpp2"
+    },
+    "3mf": {
+      "name": "3MF document",
+      "mime": "model/3mf"
+    },
+    "602": {
+      "name": "T602 document",
+      "mime": "application/x-t602"
+    },
+    "669": {
+      "name": "Composer 669 audio",
+      "mime": "audio/x-669"
+    },
+    "68k": {
+      "name": "Genesis ROM",
+      "mime": "application/x-genesis-rom"
+    },
+    "7z": {
+      "name": "7-zip archive",
+      "mime": "application/x-7z-compressed"
+    },
+    "7z.001": {
+      "name": "7-zip archive",
+      "mime": "application/x-7z-compressed"
+    },
+    "8o": {
+      "name": "CHIP-8 Octo source",
+      "mime": "application/x-chip8-octo-source"
+    },
+    "a": {
+      "name": "AR archive",
+      "mime": "application/x-archive"
+    },
+    "a26": {
+      "name": "Atari 2600 ROM",
+      "mime": "application/x-atari-2600-rom"
+    },
+    "a78": {
+      "name": "Atari 7800 ROM",
+      "mime": "application/x-atari-7800-rom"
+    },
+    "aa": {
+      "name": "Audible.Com audio",
+      "mime": "audio/x-pn-audibleaudio"
+    },
+    "aac": {
+      "name": "AAC audio",
+      "mime": "audio/aac"
+    },
+    "aax": {
+      "name": "Audible Enhanced audio",
+      "mime": "audio/vnd.audible.aax"
+    },
+    "aaxc": {
+      "name": "Audible Enhanced audio",
+      "mime": "audio/vnd.audible.aaxc"
+    },
+    "abw": {
+      "name": "AbiWord document",
+      "mime": "application/x-abiword"
+    },
+    "abw.crashed": {
+      "name": "AbiWord document",
+      "mime": "application/x-abiword"
+    },
+    "abw.gz": {
+      "name": "AbiWord document",
+      "mime": "application/x-abiword"
+    },
+    "ac3": {
+      "name": "Dolby Digital audio",
+      "mime": "audio/ac3"
+    },
+    "ace": {
+      "name": "ACE archive",
+      "mime": "application/x-ace"
+    },
+    "adb": {
+      "name": "Ada source code",
+      "mime": "text/x-adasrc"
+    },
+    "adf": {
+      "name": "Amiga disk image",
+      "mime": "application/x-amiga-disk-format"
+    },
+    "ads": {
+      "name": "Ada source code",
+      "mime": "text/x-adasrc"
+    },
+    "adts": {
+      "name": "AAC audio",
+      "mime": "audio/aac"
+    },
+    "afm": {
+      "name": "Adobe font metrics",
+      "mime": "application/x-font-afm"
+    },
+    "ag": {
+      "name": "Applix Graphics image",
+      "mime": "image/x-applix-graphics"
+    },
+    "agb": {
+      "name": "Game Boy Advance ROM",
+      "mime": "application/x-gba-rom"
+    },
+    "ai": {
+      "name": "Adobe Illustrator document",
+      "mime": "application/illustrator"
+    },
+    "aif": {
+      "name": "AIFF/Amiga/Mac audio",
+      "mime": "audio/x-aiff"
+    },
+    "aifc": {
+      "name": "AIFC audio",
+      "mime": "audio/x-aifc"
+    },
+    "aiff": {
+      "name": "AIFF/Amiga/Mac audio",
+      "mime": "audio/x-aiff"
+    },
+    "aiffc": {
+      "name": "AIFC audio",
+      "mime": "audio/x-aifc"
+    },
+    "al": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "alz": {
+      "name": "Alzip archive",
+      "mime": "application/x-alz"
+    },
+    "amf": {
+      "name": "AMF 3D model",
+      "mime": "application/x-amf"
+    },
+    "amr": {
+      "name": "AMR audio",
+      "mime": "audio/AMR"
+    },
+    "amz": {
+      "name": "AmazonMP3 download file",
+      "mime": "audio/x-amzxml"
+    },
+    "ani": {
+      "name": "Windows animated cursor",
+      "mime": "application/x-navi-animation"
+    },
+    "anx": {
+      "name": "Annodex exchange format",
+      "mime": "application/annodex"
+    },
+    "ape": {
+      "name": "Monkey's audio",
+      "mime": "audio/x-ape"
+    },
+    "apk": {
+      "name": "Android package",
+      "mime": "application/vnd.android.package-archive"
+    },
+    "apng": {
+      "name": "Animated PNG image",
+      "mime": "image/apng"
+    },
+    "appdata.xml": {
+      "name": "AppStream software component",
+      "mime": "application/x-freedesktop-appstream-component"
+    },
+    "appimage": {
+      "name": "AppImage application bundle",
+      "mime": "application/vnd.appimage"
+    },
+    "appinstaller": {
+      "name": "Windows app store installer",
+      "mime": "application/appinstaller"
+    },
+    "appx": {
+      "name": "Windows app store package",
+      "mime": "application/appx"
+    },
+    "appxbundle": {
+      "name": "Windows app store bundle",
+      "mime": "application/appxbundle"
+    },
+    "ar": {
+      "name": "AR archive",
+      "mime": "application/x-archive"
+    },
+    "ar.sf3": {
+      "name": "SF3 Archive",
+      "mime": "application/x.sf3-archive"
+    },
+    "arj": {
+      "name": "ARJ archive",
+      "mime": "application/x-arj"
+    },
+    "arw": {
+      "name": "Sony ARW raw image",
+      "mime": "image/x-sony-arw"
+    },
+    "as": {
+      "name": "Applix Spreadsheets spreadsheet",
+      "mime": "application/x-applix-spreadsheet"
+    },
+    "asar": {
+      "name": "Electron Archive (ASAR)",
+      "mime": "application/x-asar"
+    },
+    "asc": {
+      "name": "Plain text document",
+      "mime": "text/plain"
+    },
+    "asd": {
+      "name": "Common Lisp source code",
+      "mime": "text/x-common-lisp"
+    },
+    "ase": {
+      "name": "Aseprite image",
+      "mime": "image/x-aseprite"
+    },
+    "aseprite": {
+      "name": "Aseprite image",
+      "mime": "image/x-aseprite"
+    },
+    "asf": {
+      "name": "ASF video",
+      "mime": "application/vnd.ms-asf"
+    },
+    "asm": {
+      "name": "Assembly code",
+      "mime": "text/x-asm"
+    },
+    "asp": {
+      "name": "ASP page",
+      "mime": "application/x-asp"
+    },
+    "ass": {
+      "name": "SSA subtitles",
+      "mime": "text/x-ssa"
+    },
+    "astc": {
+      "name": "ASTC texture",
+      "mime": "image/astc"
+    },
+    "asx": {
+      "name": "Microsoft ASX playlist",
+      "mime": "audio/x-ms-asx"
+    },
+    "atom": {
+      "name": "Atom syndication feed",
+      "mime": "application/atom+xml"
+    },
+    "au": {
+      "name": "ULAW (Sun) audio",
+      "mime": "audio/basic"
+    },
+    "au.sf3": {
+      "name": "SF3 Audio",
+      "mime": "audio/x.sf3"
+    },
+    "automount": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "avci": {
+      "name": "AVC-encoded image encapsulated in HEIF",
+      "mime": "image/avci"
+    },
+    "avf": {
+      "name": "AVI video",
+      "mime": "video/vnd.avi"
+    },
+    "avi": {
+      "name": "AVI video",
+      "mime": "video/vnd.avi"
+    },
+    "avif": {
+      "name": "AVIF image",
+      "mime": "image/avif"
+    },
+    "avifs": {
+      "name": "AVIF image",
+      "mime": "image/avif"
+    },
+    "aw": {
+      "name": "Applix Words document",
+      "mime": "application/x-applix-word"
+    },
+    "awb": {
+      "name": "AMR-WB audio",
+      "mime": "audio/AMR-WB"
+    },
+    "awk": {
+      "name": "AWK script",
+      "mime": "text/x-awk"
+    },
+    "axa": {
+      "name": "Annodex audio",
+      "mime": "audio/annodex"
+    },
+    "axv": {
+      "name": "Annodex video",
+      "mime": "video/annodex"
+    },
+    "azw3": {
+      "name": "Kindle book document",
+      "mime": "application/vnd.amazon.mobi8-ebook"
+    },
+    "bak": {
+      "name": "Backup file",
+      "mime": "application/x-trash"
+    },
+    "bas": {
+      "name": "BASIC program",
+      "mime": "text/x-basic"
+    },
+    "bat": {
+      "name": "DOS/Windows batch file",
+      "mime": "application/x-bat"
+    },
+    "bcpio": {
+      "name": "BCPIO archive",
+      "mime": "application/x-bcpio"
+    },
+    "bdf": {
+      "name": "BDF font",
+      "mime": "application/x-font-bdf"
+    },
+    "bdm": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "bdmv": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "bib": {
+      "name": "BibTeX document",
+      "mime": "text/x-bibtex"
+    },
+    "bik": {
+      "name": "Bink Video",
+      "mime": "video/vnd.radgamettools.bink"
+    },
+    "bk2": {
+      "name": "Bink Video",
+      "mime": "video/vnd.radgamettools.bink"
+    },
+    "blend": {
+      "name": "Blender scene",
+      "mime": "application/x-blender"
+    },
+    "blender": {
+      "name": "Blender scene",
+      "mime": "application/x-blender"
+    },
+    "blp": {
+      "name": "Blueprint source code",
+      "mime": "text/x-blueprint"
+    },
+    "bmp": {
+      "name": "Windows BMP image",
+      "mime": "image/bmp"
+    },
+    "bps": {
+      "name": "BPS patch",
+      "mime": "application/x-bps-patch"
+    },
+    "br": {
+      "name": "Brotli archive",
+      "mime": "application/x-brotli"
+    },
+    "brk": {
+      "name": "Protein Data Bank file",
+      "mime": "chemical/x-pdb"
+    },
+    "bsdiff": {
+      "name": "Binary differences between files",
+      "mime": "application/x-bsdiff"
+    },
+    "bst": {
+      "name": "BuildStream element",
+      "mime": "application/buildstream+yaml"
+    },
+    "bz": {
+      "name": "Bzip1 archive",
+      "mime": "application/x-bzip1"
+    },
+    "bz2": {
+      "name": "Bzip2 archive",
+      "mime": "application/x-bzip2"
+    },
+    "bz3": {
+      "name": "Bzip3 archive",
+      "mime": "application/vnd.bzip3"
+    },
+    "c": {
+      "name": "C source code",
+      "mime": "text/x-csrc"
+    },
+    "c++": {
+      "name": "C++ source code",
+      "mime": "text/x-c++src"
+    },
+    "cab": {
+      "name": "Microsoft Cabinet archive",
+      "mime": "application/vnd.ms-cab-compressed"
+    },
+    "cap": {
+      "name": "Network packet capture",
+      "mime": "application/vnd.tcpdump.pcap"
+    },
+    "car": {
+      "name": "Archive used for storing and transporting IPLD (InterPlanetary Linked Data)",
+      "mime": "application/vnd.ipld.car"
+    },
+    "cb7": {
+      "name": "Comic book archive (7z container)",
+      "mime": "application/x-cb7"
+    },
+    "cbl": {
+      "name": "COBOL source code",
+      "mime": "text/x-cobol"
+    },
+    "cbor": {
+      "name": "CBOR Data",
+      "mime": "application/cbor"
+    },
+    "cbr": {
+      "name": "Comic book archive (rar container)",
+      "mime": "application/vnd.comicbook-rar"
+    },
+    "cbt": {
+      "name": "Comic book archive (tar container)",
+      "mime": "application/x-cbt"
+    },
+    "cbz": {
+      "name": "Comic book archive (zip container)",
+      "mime": "application/vnd.comicbook+zip"
+    },
+    "cc": {
+      "name": "C++ source code",
+      "mime": "text/x-c++src"
+    },
+    "cci": {
+      "name": "Nintendo 3DS ROM",
+      "mime": "application/x-nintendo-3ds-rom"
+    },
+    "ccmx": {
+      "name": "CCMX color correction file",
+      "mime": "application/x-ccmx"
+    },
+    "cdf": {
+      "name": "Unidata NetCDF document",
+      "mime": "application/x-netcdf"
+    },
+    "cdi": {
+      "name": "Padus DiscJuggler CD image",
+      "mime": "application/x-discjuggler-cd-image"
+    },
+    "cdr": {
+      "name": "Corel Draw drawing",
+      "mime": "application/vnd.corel-draw"
+    },
+    "cdx.json": {
+      "name": "CycloneDX BOM document",
+      "mime": "application/vnd.cyclonedx+json"
+    },
+    "cdx.xml": {
+      "name": "CycloneDX BOM document",
+      "mime": "application/vnd.cyclonedx+xml"
+    },
+    "cel": {
+      "name": "KiSS cel",
+      "mime": "image/x-kiss-cel"
+    },
+    "cer": {
+      "name": "X.509 certificate",
+      "mime": "application/pkix-cert"
+    },
+    "cert": {
+      "name": "DER/PEM/Netscape-encoded X.509 certificate",
+      "mime": "application/x-x509-ca-cert"
+    },
+    "cgb": {
+      "name": "Game Boy Color ROM",
+      "mime": "application/x-gameboy-color-rom"
+    },
+    "cgm": {
+      "name": "CGM image",
+      "mime": "image/cgm"
+    },
+    "ch8": {
+      "name": "CHIP-8 program",
+      "mime": "application/x-chip8-program"
+    },
+    "chd": {
+      "name": "MAME compressed hard disk image",
+      "mime": "application/x-mame-chd"
+    },
+    "chm": {
+      "name": "CHM document",
+      "mime": "application/vnd.ms-htmlhelp"
+    },
+    "chrt": {
+      "name": "KChart chart",
+      "mime": "application/x-kchart"
+    },
+    "cjs": {
+      "name": "JavaScript program",
+      "mime": "text/javascript"
+    },
+    "cl": {
+      "name": "OpenCL C source code",
+      "mime": "text/x-opencl-csrc"
+    },
+    "class": {
+      "name": "Java class",
+      "mime": "application/x-java"
+    },
+    "clcpp": {
+      "name": "C++ for OpenCL source code",
+      "mime": "text/x-opencl-c++src"
+    },
+    "clpi": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "cls": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "cmake": {
+      "name": "CMake source code",
+      "mime": "text/x-cmake"
+    },
+    "cob": {
+      "name": "COBOL source code",
+      "mime": "text/x-cobol"
+    },
+    "coffee": {
+      "name": "CoffeeScript document",
+      "mime": "application/vnd.coffeescript"
+    },
+    "cpi": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "cpio": {
+      "name": "CPIO archive",
+      "mime": "application/x-cpio"
+    },
+    "cpio.gz": {
+      "name": "CPIO archive (gzip-compressed)",
+      "mime": "application/x-cpio-compressed"
+    },
+    "cpl": {
+      "name": "Windows or DOS program",
+      "mime": "application/x-msdownload"
+    },
+    "cpp": {
+      "name": "C++ source code",
+      "mime": "text/x-c++src"
+    },
+    "cr": {
+      "name": "Crystal source code",
+      "mime": "text/x-crystal"
+    },
+    "cr2": {
+      "name": "Canon CR2 raw image",
+      "mime": "image/x-canon-cr2"
+    },
+    "cr3": {
+      "name": "Canon CR3 raw image",
+      "mime": "image/x-canon-cr3"
+    },
+    "crdownload": {
+      "name": "Partially downloaded file",
+      "mime": "application/x-partial-download"
+    },
+    "crl": {
+      "name": "Certificate revocation list",
+      "mime": "application/pkix-crl"
+    },
+    "crt": {
+      "name": "DER/PEM/Netscape-encoded X.509 certificate",
+      "mime": "application/x-x509-ca-cert"
+    },
+    "crw": {
+      "name": "Canon CRW raw image",
+      "mime": "image/x-canon-crw"
+    },
+    "cs": {
+      "name": "C# source code",
+      "mime": "text/x-csharp"
+    },
+    "csh": {
+      "name": "C shell script",
+      "mime": "text/x-csh"
+    },
+    "cso": {
+      "name": "Compressed CD image",
+      "mime": "application/x-compressed-iso"
+    },
+    "css": {
+      "name": "CSS stylesheet",
+      "mime": "text/css"
+    },
+    "csv": {
+      "name": "CSV document",
+      "mime": "text/csv"
+    },
+    "csvs": {
+      "name": "CSV Schema document",
+      "mime": "text/csv-schema"
+    },
+    "cts": {
+      "name": "TypeScript program",
+      "mime": "application/typescript"
+    },
+    "cue": {
+      "name": "CD image cuesheet",
+      "mime": "application/x-cue"
+    },
+    "cur": {
+      "name": "Windows cursor",
+      "mime": "image/x-win-bitmap"
+    },
+    "cwk": {
+      "name": "AppleWorks document",
+      "mime": "application/x-appleworks-document"
+    },
+    "cxx": {
+      "name": "C++ source code",
+      "mime": "text/x-c++src"
+    },
+    "d": {
+      "name": "D source code",
+      "mime": "text/x-dsrc"
+    },
+    "d40": {
+      "name": "Didaktik D40/D80 floppy disk image",
+      "mime": "application/x-spectrum-d80"
+    },
+    "d64": {
+      "name": "Commodore 1571 floppy disk image",
+      "mime": "application/x-commodore-d64-disk"
+    },
+    "d71": {
+      "name": "Commodore 1571 floppy disk image",
+      "mime": "application/x-commodore-d71-disk"
+    },
+    "d80": {
+      "name": "Commodore 8050 floppy disk image",
+      "mime": "application/x-commodore-d80-disk"
+    },
+    "d81": {
+      "name": "Commodore 1581 floppy disk image",
+      "mime": "application/x-commodore-d81-disk"
+    },
+    "d82": {
+      "name": "Commodore 8250 floppy disk image",
+      "mime": "application/x-commodore-d82-disk"
+    },
+    "d90": {
+      "name": "Commodore D9090/D9060 hard disk image",
+      "mime": "application/x-commodore-d90-disk"
+    },
+    "dar": {
+      "name": "DAR archive",
+      "mime": "application/x-dar"
+    },
+    "dart": {
+      "name": "Dart source code",
+      "mime": "application/vnd.dart"
+    },
+    "dbf": {
+      "name": "Xbase document",
+      "mime": "application/vnd.dbf"
+    },
+    "dbk": {
+      "name": "DocBook document",
+      "mime": "application/docbook+xml"
+    },
+    "dcl": {
+      "name": "DCL script",
+      "mime": "text/x-dcl"
+    },
+    "dcm": {
+      "name": "DICOM image",
+      "mime": "application/dicom"
+    },
+    "dcr": {
+      "name": "Kodak DCR raw image",
+      "mime": "image/x-kodak-dcr"
+    },
+    "dds": {
+      "name": "DirectDraw Surface",
+      "mime": "image/vnd.ms-dds"
+    },
+    "deb": {
+      "name": "Debian package",
+      "mime": "application/vnd.debian.binary-package"
+    },
+    "der": {
+      "name": "DER/PEM/Netscape-encoded X.509 certificate",
+      "mime": "application/x-x509-ca-cert"
+    },
+    "desktop": {
+      "name": "Desktop entry",
+      "mime": "application/x-desktop"
+    },
+    "device": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "dff": {
+      "name": "DSDIFF audio",
+      "mime": "audio/x-dff"
+    },
+    "di": {
+      "name": "D source code",
+      "mime": "text/x-dsrc"
+    },
+    "dia": {
+      "name": "Dia diagram",
+      "mime": "application/x-dia-diagram"
+    },
+    "dib": {
+      "name": "Windows BMP image",
+      "mime": "image/bmp"
+    },
+    "diff": {
+      "name": "Differences between files",
+      "mime": "text/x-patch"
+    },
+    "divx": {
+      "name": "AVI video",
+      "mime": "video/vnd.avi"
+    },
+    "djv": {
+      "name": "DjVu image",
+      "mime": "image/vnd.djvu"
+    },
+    "djvu": {
+      "name": "DjVu image",
+      "mime": "image/vnd.djvu"
+    },
+    "dll": {
+      "name": "Windows or DOS program",
+      "mime": "application/x-msdownload"
+    },
+    "dmg": {
+      "name": "Apple disk image",
+      "mime": "application/x-apple-diskimage"
+    },
+    "dmp": {
+      "name": "Network packet capture",
+      "mime": "application/vnd.tcpdump.pcap"
+    },
+    "dng": {
+      "name": "Adobe DNG negative",
+      "mime": "image/x-adobe-dng"
+    },
+    "doc": {
+      "name": "Word document",
+      "mime": "application/msword"
+    },
+    "docbook": {
+      "name": "DocBook document",
+      "mime": "application/docbook+xml"
+    },
+    "dockerfile": {
+      "name": "Docker container build file",
+      "mime": "text/x-dockerfile"
+    },
+    "docm": {
+      "name": "Word document",
+      "mime": "application/vnd.ms-word.document.macroEnabled.12"
+    },
+    "docx": {
+      "name": "Word 2007 document",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    },
+    "dot": {
+      "name": "Word template",
+      "mime": "application/msword-template"
+    },
+    "dotm": {
+      "name": "Word document template",
+      "mime": "application/vnd.ms-word.template.macroEnabled.12"
+    },
+    "dotx": {
+      "name": "Word 2007 document template",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
+    },
+    "drl": {
+      "name": "Excellon drill file",
+      "mime": "application/x-excellon"
+    },
+    "drv": {
+      "name": "Windows or DOS program",
+      "mime": "application/x-msdownload"
+    },
+    "dsf": {
+      "name": "DSF audio",
+      "mime": "audio/x-dsf"
+    },
+    "dsk": {
+      "name": "Amstrad CPC/ZX Spectrum DSK floppy disk image",
+      "mime": "application/x-spectrum-dsk"
+    },
+    "dsl": {
+      "name": "DSSSL document",
+      "mime": "text/x-dsl"
+    },
+    "dsm": {
+      "name": "Dynamic Studio module audio",
+      "mime": "audio/x-dsp"
+    },
+    "dsp": {
+      "name": "Visual Studio Project",
+      "mime": "text/x-ms-visualstudio.project"
+    },
+    "dsw": {
+      "name": "Visual Studio Workspace",
+      "mime": "text/x-ms-visualstudio.workspace"
+    },
+    "dtb": {
+      "name": "Flattened Devicetree",
+      "mime": "text/x-devicetree-binary"
+    },
+    "dtd": {
+      "name": "DTD file",
+      "mime": "application/xml-dtd"
+    },
+    "dts": {
+      "name": "DTS audio",
+      "mime": "audio/vnd.dts"
+    },
+    "dtshd": {
+      "name": "DTS-HD audio",
+      "mime": "audio/vnd.dts.hd"
+    },
+    "dtsi": {
+      "name": "Devicetree source code",
+      "mime": "text/x-devicetree-source"
+    },
+    "dtx": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "dv": {
+      "name": "DV video",
+      "mime": "video/dv"
+    },
+    "dvi": {
+      "name": "TeX DVI document",
+      "mime": "application/x-dvi"
+    },
+    "dvi.bz2": {
+      "name": "TeX DVI document (bzip2-compressed)",
+      "mime": "application/x-bzdvi"
+    },
+    "dvi.gz": {
+      "name": "TeX DVI document (gzip-compressed)",
+      "mime": "application/x-gzdvi"
+    },
+    "dwg": {
+      "name": "AutoCAD image",
+      "mime": "image/vnd.dwg"
+    },
+    "dxf": {
+      "name": "DXF vector image",
+      "mime": "image/vnd.dxf"
+    },
+    "e": {
+      "name": "Eiffel source code",
+      "mime": "text/x-eiffel"
+    },
+    "efi": {
+      "name": "Windows or EFI program",
+      "mime": "application/vnd.microsoft.portable-executable"
+    },
+    "egon": {
+      "name": "Egon Animator animation",
+      "mime": "application/x-egon"
+    },
+    "eif": {
+      "name": "Eiffel source code",
+      "mime": "text/x-eiffel"
+    },
+    "el": {
+      "name": "Emacs Lisp source code",
+      "mime": "text/x-emacs-lisp"
+    },
+    "emf": {
+      "name": "EMF image",
+      "mime": "image/emf"
+    },
+    "eml": {
+      "name": "Email message",
+      "mime": "message/rfc822"
+    },
+    "emp": {
+      "name": "eMusic download package",
+      "mime": "application/vnd.emusic-emusic_package"
+    },
+    "ent": {
+      "name": "XML entities document",
+      "mime": "application/xml-external-parsed-entity"
+    },
+    "eps": {
+      "name": "EPS image",
+      "mime": "image/x-eps"
+    },
+    "eps.bz2": {
+      "name": "EPS image (bzip2-compressed)",
+      "mime": "image/x-bzeps"
+    },
+    "eps.gz": {
+      "name": "EPS image (gzip-compressed)",
+      "mime": "image/x-gzeps"
+    },
+    "epsf": {
+      "name": "EPS image",
+      "mime": "image/x-eps"
+    },
+    "epsf.bz2": {
+      "name": "EPS image (bzip2-compressed)",
+      "mime": "image/x-bzeps"
+    },
+    "epsf.gz": {
+      "name": "EPS image (gzip-compressed)",
+      "mime": "image/x-gzeps"
+    },
+    "epsi": {
+      "name": "EPS image",
+      "mime": "image/x-eps"
+    },
+    "epsi.bz2": {
+      "name": "EPS image (bzip2-compressed)",
+      "mime": "image/x-bzeps"
+    },
+    "epsi.gz": {
+      "name": "EPS image (gzip-compressed)",
+      "mime": "image/x-gzeps"
+    },
+    "epub": {
+      "name": "Electronic book document",
+      "mime": "application/epub+zip"
+    },
+    "erf": {
+      "name": "Epson ERF raw image",
+      "mime": "image/x-epson-erf"
+    },
+    "eris": {
+      "name": "ERIS Link",
+      "mime": "application/x-eris-link+cbor"
+    },
+    "erl": {
+      "name": "Erlang source code",
+      "mime": "text/x-erlang"
+    },
+    "es": {
+      "name": "ECMAScript program",
+      "mime": "application/ecmascript"
+    },
+    "escn": {
+      "name": "Godot Engine scene",
+      "mime": "application/x-godot-scene"
+    },
+    "etheme": {
+      "name": "Enlightenment theme",
+      "mime": "application/x-e-theme"
+    },
+    "etx": {
+      "name": "Setext document",
+      "mime": "text/x-setext"
+    },
+    "ex": {
+      "name": "Elixir source code",
+      "mime": "text/x-elixir"
+    },
+    "exe": {
+      "name": "Windows or DOS program",
+      "mime": "application/x-msdownload"
+    },
+    "exr": {
+      "name": "EXR image",
+      "mime": "image/x-exr"
+    },
+    "exs": {
+      "name": "Elixir source code",
+      "mime": "text/x-elixir"
+    },
+    "ez": {
+      "name": "ATK inset",
+      "mime": "application/andrew-inset"
+    },
+    "f": {
+      "name": "Fortran source code",
+      "mime": "text/x-fortran"
+    },
+    "f4a": {
+      "name": "MPEG-4 audio",
+      "mime": "audio/mp4"
+    },
+    "f4b": {
+      "name": "MPEG-4 audio book",
+      "mime": "audio/x-m4b"
+    },
+    "f4v": {
+      "name": "MPEG-4 video",
+      "mime": "video/mp4"
+    },
+    "f90": {
+      "name": "Fortran source code",
+      "mime": "text/x-fortran"
+    },
+    "f95": {
+      "name": "Fortran source code",
+      "mime": "text/x-fortran"
+    },
+    "fasl": {
+      "name": "Common Lisp source code",
+      "mime": "text/x-common-lisp"
+    },
+    "fb2": {
+      "name": "FictionBook document",
+      "mime": "application/x-fictionbook+xml"
+    },
+    "fb2.zip": {
+      "name": "Compressed FictionBook document",
+      "mime": "application/x-zip-compressed-fb2"
+    },
+    "fd": {
+      "name": "Floppy disk image",
+      "mime": "application/x-raw-floppy-disk-image"
+    },
+    "fds": {
+      "name": "Nintendo FDS disk image",
+      "mime": "application/x-fds-disk"
+    },
+    "feature": {
+      "name": "Gherkin document",
+      "mime": "text/x-gherkin"
+    },
+    "ff": {
+      "name": "Farbfeld",
+      "mime": "image/x-farbfeld"
+    },
+    "fff": {
+      "name": "Hasselblad FFF raw image",
+      "mime": "image/x-hasselblad-fff"
+    },
+    "fig": {
+      "name": "XFig image",
+      "mime": "image/x-xfig"
+    },
+    "fish": {
+      "name": "Fish shell script",
+      "mime": "application/x-fishscript"
+    },
+    "fit": {
+      "name": "FITS document",
+      "mime": "application/fits"
+    },
+    "fits": {
+      "name": "FITS document",
+      "mime": "application/fits"
+    },
+    "fl": {
+      "name": "FLTK Fluid file",
+      "mime": "application/x-fluid"
+    },
+    "flac": {
+      "name": "FLAC audio",
+      "mime": "audio/flac"
+    },
+    "flatpak": {
+      "name": "Flatpak application bundle",
+      "mime": "application/vnd.flatpak"
+    },
+    "flatpakref": {
+      "name": "Flatpak repository reference",
+      "mime": "application/vnd.flatpak.ref"
+    },
+    "flatpakrepo": {
+      "name": "Flatpak repository description",
+      "mime": "application/vnd.flatpak.repo"
+    },
+    "flc": {
+      "name": "FLIC animation",
+      "mime": "video/x-flic"
+    },
+    "fli": {
+      "name": "FLIC animation",
+      "mime": "video/x-flic"
+    },
+    "flv": {
+      "name": "Flash video",
+      "mime": "video/x-flv"
+    },
+    "flw": {
+      "name": "Kivio flowchart",
+      "mime": "application/x-kivio"
+    },
+    "fm": {
+      "name": "Adobe FrameMaker document",
+      "mime": "application/vnd.framemaker"
+    },
+    "fo": {
+      "name": "XSL FO file",
+      "mime": "text/x-xslfo"
+    },
+    "fodg": {
+      "name": "ODG drawing (Flat XML)",
+      "mime": "application/vnd.oasis.opendocument.graphics-flat-xml"
+    },
+    "fodp": {
+      "name": "ODP presentation (Flat XML)",
+      "mime": "application/vnd.oasis.opendocument.presentation-flat-xml"
+    },
+    "fods": {
+      "name": "ODS spreadsheet (Flat XML)",
+      "mime": "application/vnd.oasis.opendocument.spreadsheet-flat-xml"
+    },
+    "fodt": {
+      "name": "ODT document (Flat XML)",
+      "mime": "application/vnd.oasis.opendocument.text-flat-xml"
+    },
+    "for": {
+      "name": "Fortran source code",
+      "mime": "text/x-fortran"
+    },
+    "fpx": {
+      "name": "FlashPix image",
+      "mime": "image/vnd.fpx"
+    },
+    "fst": {
+      "name": "Amiga SoundTracker audio",
+      "mime": "audio/x-mod"
+    },
+    "fts": {
+      "name": "FITS document",
+      "mime": "application/fits"
+    },
+    "fxm": {
+      "name": "JavaFX video",
+      "mime": "video/x-javafx"
+    },
+    "g3": {
+      "name": "CCITT G3 fax image",
+      "mime": "image/g3fax"
+    },
+    "g64": {
+      "name": "Commodore 1541 floppy disk image",
+      "mime": "application/x-commodore-g64-disk"
+    },
+    "g71": {
+      "name": "Commodore 1571 floppy disk image",
+      "mime": "application/x-commodore-g71-disk"
+    },
+    "gb": {
+      "name": "Game Boy ROM",
+      "mime": "application/x-gameboy-rom"
+    },
+    "gba": {
+      "name": "Game Boy Advance ROM",
+      "mime": "application/x-gba-rom"
+    },
+    "gbc": {
+      "name": "Game Boy Color ROM",
+      "mime": "application/x-gameboy-color-rom"
+    },
+    "gbr": {
+      "name": "GIMP brush",
+      "mime": "image/x-gimp-gbr"
+    },
+    "gbrjob": {
+      "name": "Gerber job file",
+      "mime": "application/x-gerber-job"
+    },
+    "gcode": {
+      "name": "G-code file",
+      "mime": "text/x.gcode"
+    },
+    "gcrd": {
+      "name": "Electronic business card",
+      "mime": "text/vcard"
+    },
+    "gd": {
+      "name": "GDScript script",
+      "mime": "application/x-gdscript"
+    },
+    "gdi": {
+      "name": "GD-ROM image cuesheet",
+      "mime": "application/x-gd-rom-cue"
+    },
+    "gdshader": {
+      "name": "Godot Engine shader",
+      "mime": "application/x-godot-shader"
+    },
+    "ged": {
+      "name": "GEDCOM family history",
+      "mime": "text/vnd.familysearch.gedcom"
+    },
+    "gedcom": {
+      "name": "GEDCOM family history",
+      "mime": "text/vnd.familysearch.gedcom"
+    },
+    "gem": {
+      "name": "Tar archive",
+      "mime": "application/x-tar"
+    },
+    "gen": {
+      "name": "Genesis ROM",
+      "mime": "application/x-genesis-rom"
+    },
+    "geo.json": {
+      "name": "GeoJSON geospatial data",
+      "mime": "application/geo+json"
+    },
+    "geojson": {
+      "name": "GeoJSON geospatial data",
+      "mime": "application/geo+json"
+    },
+    "gf": {
+      "name": "Generic font file",
+      "mime": "application/x-tex-gf"
+    },
+    "gg": {
+      "name": "Game Gear ROM",
+      "mime": "application/x-gamegear-rom"
+    },
+    "gif": {
+      "name": "GIF image",
+      "mime": "image/gif"
+    },
+    "gih": {
+      "name": "GIMP brush pipe",
+      "mime": "image/x-gimp-gih"
+    },
+    "glade": {
+      "name": "Glade project",
+      "mime": "application/x-glade"
+    },
+    "glb": {
+      "name": "glTF model",
+      "mime": "model/gltf-binary"
+    },
+    "gltf": {
+      "name": "glTF model",
+      "mime": "model/gltf+json"
+    },
+    "gml": {
+      "name": "GML document",
+      "mime": "application/gml+xml"
+    },
+    "gmo": {
+      "name": "Translated messages (machine-readable)",
+      "mime": "application/x-gettext-translation"
+    },
+    "gnc": {
+      "name": "GnuCash financial data",
+      "mime": "application/x-gnucash"
+    },
+    "gnd": {
+      "name": "GNUnet search file",
+      "mime": "application/gnunet-directory"
+    },
+    "gnucash": {
+      "name": "GnuCash financial data",
+      "mime": "application/x-gnucash"
+    },
+    "gnumeric": {
+      "name": "Gnumeric spreadsheet",
+      "mime": "application/x-gnumeric"
+    },
+    "gnuplot": {
+      "name": "Gnuplot document",
+      "mime": "application/x-gnuplot"
+    },
+    "go": {
+      "name": "Go source code",
+      "mime": "text/x-go"
+    },
+    "gp": {
+      "name": "Gnuplot document",
+      "mime": "application/x-gnuplot"
+    },
+    "gpg": {
+      "name": "PGP keys",
+      "mime": "application/pgp-keys"
+    },
+    "gplt": {
+      "name": "Gnuplot document",
+      "mime": "application/x-gnuplot"
+    },
+    "gpx": {
+      "name": "GPX geographic data",
+      "mime": "application/gpx+xml"
+    },
+    "gra": {
+      "name": "Graphite scientific graph",
+      "mime": "application/x-graphite"
+    },
+    "gradle": {
+      "name": "Gradle script",
+      "mime": "text/x-gradle"
+    },
+    "gradle.kts": {
+      "name": "Kotlin Gradle script",
+      "mime": "text/x-gradle-kts"
+    },
+    "groovy": {
+      "name": "Groovy source code",
+      "mime": "text/x-groovy"
+    },
+    "gs": {
+      "name": "Genie source code",
+      "mime": "text/x-genie"
+    },
+    "gsf": {
+      "name": "PostScript type-1 font",
+      "mime": "application/x-font-type1"
+    },
+    "gsh": {
+      "name": "Groovy source code",
+      "mime": "text/x-groovy"
+    },
+    "gsm": {
+      "name": "GSM 06.10 audio",
+      "mime": "audio/x-gsm"
+    },
+    "gtar": {
+      "name": "Tar archive",
+      "mime": "application/x-tar"
+    },
+    "gv": {
+      "name": "Graphviz DOT graph",
+      "mime": "text/vnd.graphviz"
+    },
+    "gvp": {
+      "name": "Google Video Pointer shortcut",
+      "mime": "text/x-google-video-pointer"
+    },
+    "gvy": {
+      "name": "Groovy source code",
+      "mime": "text/x-groovy"
+    },
+    "gx": {
+      "name": "G-code Extended file",
+      "mime": "text/x-gcode-gx"
+    },
+    "gy": {
+      "name": "Groovy source code",
+      "mime": "text/x-groovy"
+    },
+    "gz": {
+      "name": "Gzip archive",
+      "mime": "application/gzip"
+    },
+    "h": {
+      "name": "C header",
+      "mime": "text/x-chdr"
+    },
+    "h++": {
+      "name": "C++ header",
+      "mime": "text/x-c++hdr"
+    },
+    "h4": {
+      "name": "HDF document",
+      "mime": "application/x-hdf"
+    },
+    "h5": {
+      "name": "HDF document",
+      "mime": "application/x-hdf"
+    },
+    "har": {
+      "name": "HTTP archive",
+      "mime": "application/har+json"
+    },
+    "hdf": {
+      "name": "HDF document",
+      "mime": "application/x-hdf"
+    },
+    "hdf4": {
+      "name": "HDF document",
+      "mime": "application/x-hdf"
+    },
+    "hdf5": {
+      "name": "HDF document",
+      "mime": "application/x-hdf"
+    },
+    "hdp": {
+      "name": "JPEG XR image",
+      "mime": "image/jxr"
+    },
+    "hdr": {
+      "name": "Radiance HDR image",
+      "mime": "image/vnd.radiance"
+    },
+    "heic": {
+      "name": "HEIF image",
+      "mime": "image/heif"
+    },
+    "heif": {
+      "name": "HEIF image",
+      "mime": "image/heif"
+    },
+    "hej2": {
+      "name": "JPEG 2000 image encapsulated in HEIF",
+      "mime": "image/hej2k"
+    },
+    "hfe": {
+      "name": "HFE floppy disk image",
+      "mime": "application/x-hfe-floppy-image"
+    },
+    "hh": {
+      "name": "C++ header",
+      "mime": "text/x-c++hdr"
+    },
+    "hif": {
+      "name": "HEIF image",
+      "mime": "image/heif"
+    },
+    "hlp": {
+      "name": "WinHelp help file",
+      "mime": "application/winhlp"
+    },
+    "hp": {
+      "name": "C++ header",
+      "mime": "text/x-c++hdr"
+    },
+    "hpgl": {
+      "name": "HPGL file",
+      "mime": "application/vnd.hp-hpgl"
+    },
+    "hpp": {
+      "name": "C++ header",
+      "mime": "text/x-c++hdr"
+    },
+    "hqx": {
+      "name": "Macintosh BinHex-encoded file",
+      "mime": "application/mac-binhex40"
+    },
+    "hs": {
+      "name": "Haskell source code",
+      "mime": "text/x-haskell"
+    },
+    "hta": {
+      "name": "Windows HTML desktop application",
+      "mime": "application/hta"
+    },
+    "htc": {
+      "name": "HTML component",
+      "mime": "text/x-component"
+    },
+    "htm": {
+      "name": "HTML document",
+      "mime": "text/html"
+    },
+    "html": {
+      "name": "HTML document",
+      "mime": "text/html"
+    },
+    "hwp": {
+      "name": "Haansoft Hangul document",
+      "mime": "application/x-hwp"
+    },
+    "hwt": {
+      "name": "Haansoft Hangul document template",
+      "mime": "application/x-hwt"
+    },
+    "hxx": {
+      "name": "C++ header",
+      "mime": "text/x-c++hdr"
+    },
+    "ica": {
+      "name": "Citrix ICA settings file",
+      "mime": "application/x-ica"
+    },
+    "icalendar": {
+      "name": "VCS/ICS calendar",
+      "mime": "text/calendar"
+    },
+    "icb": {
+      "name": "TGA image",
+      "mime": "image/x-tga"
+    },
+    "icc": {
+      "name": "ICC profile",
+      "mime": "application/vnd.iccprofile"
+    },
+    "icm": {
+      "name": "ICC profile",
+      "mime": "application/vnd.iccprofile"
+    },
+    "icns": {
+      "name": "MacOS X icon",
+      "mime": "image/x-icns"
+    },
+    "ico": {
+      "name": "Windows icon",
+      "mime": "image/vnd.microsoft.icon"
+    },
+    "ics": {
+      "name": "VCS/ICS calendar",
+      "mime": "text/calendar"
+    },
+    "idl": {
+      "name": "IDL document",
+      "mime": "text/x-idl"
+    },
+    "ief": {
+      "name": "IEF image",
+      "mime": "image/ief"
+    },
+    "ifb": {
+      "name": "VCS/ICS calendar",
+      "mime": "text/calendar"
+    },
+    "iff": {
+      "name": "ILBM image",
+      "mime": "image/x-ilbm"
+    },
+    "iges": {
+      "name": "IGES document",
+      "mime": "model/iges"
+    },
+    "igs": {
+      "name": "IGES document",
+      "mime": "model/iges"
+    },
+    "iiq": {
+      "name": "Phaseone IIQ raw image",
+      "mime": "image/x-phaseone-iiq"
+    },
+    "ilbm": {
+      "name": "ILBM image",
+      "mime": "image/x-ilbm"
+    },
+    "ime": {
+      "name": "iMelody ringtone",
+      "mime": "text/x-iMelody"
+    },
+    "img": {
+      "name": "Raw disk image",
+      "mime": "application/vnd.efi.img"
+    },
+    "img.sf3": {
+      "name": "SF3 Image",
+      "mime": "image/x.sf3"
+    },
+    "img.xz": {
+      "name": "Raw disk image (XZ-compressed)",
+      "mime": "application/x-raw-disk-image-xz-compressed"
+    },
+    "imy": {
+      "name": "iMelody ringtone",
+      "mime": "text/x-iMelody"
+    },
+    "ins": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "ips": {
+      "name": "IPS patch",
+      "mime": "application/x-ips-patch"
+    },
+    "iptables": {
+      "name": "iptables configuration file",
+      "mime": "text/x-iptables"
+    },
+    "ipynb": {
+      "name": "Jupyter notebook document",
+      "mime": "application/x-ipynb+json"
+    },
+    "iso": {
+      "name": "Raw CD image",
+      "mime": "application/vnd.efi.iso"
+    },
+    "iso9660": {
+      "name": "Raw CD image",
+      "mime": "application/vnd.efi.iso"
+    },
+    "it": {
+      "name": "Impulse Tracker audio",
+      "mime": "audio/x-it"
+    },
+    "it87": {
+      "name": "IT 8.7 color calibration file",
+      "mime": "application/x-it87"
+    },
+    "its": {
+      "name": "ITS translation file",
+      "mime": "application/its+xml"
+    },
+    "j2c": {
+      "name": "JPEG-2000 codestream",
+      "mime": "image/x-jp2-codestream"
+    },
+    "j2k": {
+      "name": "JPEG-2000 codestream",
+      "mime": "image/x-jp2-codestream"
+    },
+    "jad": {
+      "name": "JAD document",
+      "mime": "text/vnd.sun.j2me.app-descriptor"
+    },
+    "jar": {
+      "name": "Java archive",
+      "mime": "application/java-archive"
+    },
+    "java": {
+      "name": "Java source code",
+      "mime": "text/x-java"
+    },
+    "jceks": {
+      "name": "Java JCE keystore",
+      "mime": "application/x-java-jce-keystore"
+    },
+    "jfif": {
+      "name": "JPEG image",
+      "mime": "image/jpeg"
+    },
+    "jks": {
+      "name": "Java keystore",
+      "mime": "application/x-java-keystore"
+    },
+    "jl": {
+      "name": "Julia source code",
+      "mime": "text/julia"
+    },
+    "jng": {
+      "name": "JNG image",
+      "mime": "image/x-jng"
+    },
+    "jnlp": {
+      "name": "JNLP file",
+      "mime": "application/x-java-jnlp-file"
+    },
+    "jp2": {
+      "name": "JPEG-2000 JP2 image",
+      "mime": "image/jp2"
+    },
+    "jpc": {
+      "name": "JPEG-2000 codestream",
+      "mime": "image/x-jp2-codestream"
+    },
+    "jpe": {
+      "name": "JPEG image",
+      "mime": "image/jpeg"
+    },
+    "jpeg": {
+      "name": "JPEG image",
+      "mime": "image/jpeg"
+    },
+    "jpf": {
+      "name": "JPEG-2000 JPX image",
+      "mime": "image/jpx"
+    },
+    "jpg": {
+      "name": "JPEG image",
+      "mime": "image/jpeg"
+    },
+    "jpg2": {
+      "name": "JPEG-2000 JP2 image",
+      "mime": "image/jp2"
+    },
+    "jpgm": {
+      "name": "JPEG-2000 JPM image",
+      "mime": "image/jpm"
+    },
+    "jpm": {
+      "name": "JPEG-2000 JPM image",
+      "mime": "image/jpm"
+    },
+    "jpr": {
+      "name": "JBuilder project",
+      "mime": "application/x-jbuilder-project"
+    },
+    "jpx": {
+      "name": "JBuilder project",
+      "mime": "application/x-jbuilder-project"
+    },
+    "jrd": {
+      "name": "JRD document",
+      "mime": "application/jrd+json"
+    },
+    "js": {
+      "name": "JavaScript program",
+      "mime": "text/javascript"
+    },
+    "jse": {
+      "name": "Encoded JScript program",
+      "mime": "text/jscript.encode"
+    },
+    "jsm": {
+      "name": "JavaScript program",
+      "mime": "text/javascript"
+    },
+    "json": {
+      "name": "JSON schema",
+      "mime": "application/schema+json"
+    },
+    "json-patch": {
+      "name": "JSON patch",
+      "mime": "application/json-patch+json"
+    },
+    "json5": {
+      "name": "JSON5 document",
+      "mime": "application/json5"
+    },
+    "jsonld": {
+      "name": "JSON-LD document",
+      "mime": "application/ld+json"
+    },
+    "jxl": {
+      "name": "JPEG XL image",
+      "mime": "image/jxl"
+    },
+    "jxr": {
+      "name": "JPEG XR image",
+      "mime": "image/jxr"
+    },
+    "k25": {
+      "name": "Kodak K25 raw image",
+      "mime": "image/x-kodak-k25"
+    },
+    "k7": {
+      "name": "Thomson cassette",
+      "mime": "application/x-thomson-cassette"
+    },
+    "kar": {
+      "name": "MIDI audio",
+      "mime": "audio/midi"
+    },
+    "karbon": {
+      "name": "Karbon14 drawing",
+      "mime": "application/x-karbon"
+    },
+    "kcf": {
+      "name": "KiSS cel",
+      "mime": "image/x-kiss-cel"
+    },
+    "kdc": {
+      "name": "Kodak KDC raw image",
+      "mime": "image/x-kodak-kdc"
+    },
+    "kdelnk": {
+      "name": "Desktop entry",
+      "mime": "application/x-desktop"
+    },
+    "kexi": {
+      "name": "Kexi database file",
+      "mime": "application/x-kexiproject-sqlite2"
+    },
+    "kexic": {
+      "name": "Kexi settings",
+      "mime": "application/x-kexi-connectiondata"
+    },
+    "kexis": {
+      "name": "Kexi shortcut",
+      "mime": "application/x-kexiproject-shortcut"
+    },
+    "key": {
+      "name": "Apple Keynote 5 presentation",
+      "mime": "application/vnd.apple.keynote"
+    },
+    "kfo": {
+      "name": "KFormula formula",
+      "mime": "application/x-kformula"
+    },
+    "kfx": {
+      "name": "Kindle book document",
+      "mime": "application/vnd.amazon.mobi8-ebook"
+    },
+    "kil": {
+      "name": "KIllustrator drawing",
+      "mime": "application/x-killustrator"
+    },
+    "kino": {
+      "name": "SMIL document",
+      "mime": "application/smil+xml"
+    },
+    "kml": {
+      "name": "KML geographic data",
+      "mime": "application/vnd.google-earth.kml+xml"
+    },
+    "kmz": {
+      "name": "KML geographic compressed data",
+      "mime": "application/vnd.google-earth.kmz"
+    },
+    "kon": {
+      "name": "Kontour drawing",
+      "mime": "application/x-kontour"
+    },
+    "kpm": {
+      "name": "KPovModeler scene",
+      "mime": "application/x-kpovmodeler"
+    },
+    "kpr": {
+      "name": "KPresenter presentation",
+      "mime": "application/x-kpresenter"
+    },
+    "kpt": {
+      "name": "KPresenter presentation",
+      "mime": "application/x-kpresenter"
+    },
+    "kra": {
+      "name": "Krita document",
+      "mime": "application/x-krita"
+    },
+    "krz": {
+      "name": "Krita document",
+      "mime": "application/x-krita"
+    },
+    "ks": {
+      "name": "Java keystore",
+      "mime": "application/x-java-keystore"
+    },
+    "ksp": {
+      "name": "KSpread spreadsheet",
+      "mime": "application/x-kspread"
+    },
+    "ksy": {
+      "name": "Kaitai Struct definition file",
+      "mime": "text/x-kaitai-struct"
+    },
+    "kt": {
+      "name": "Kotlin source code",
+      "mime": "text/x-kotlin"
+    },
+    "ktx": {
+      "name": "Khronos texture image",
+      "mime": "image/ktx"
+    },
+    "ktx2": {
+      "name": "Khronos texture image",
+      "mime": "image/ktx2"
+    },
+    "kud": {
+      "name": "Kugar document",
+      "mime": "application/x-kugar"
+    },
+    "kwd": {
+      "name": "KWord document",
+      "mime": "application/x-kword"
+    },
+    "kwt": {
+      "name": "KWord document",
+      "mime": "application/x-kword"
+    },
+    "la": {
+      "name": "Libtool shared library",
+      "mime": "application/x-shared-library-la"
+    },
+    "latex": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "lbm": {
+      "name": "ILBM image",
+      "mime": "image/x-ilbm"
+    },
+    "ldif": {
+      "name": "LDIF address book",
+      "mime": "text/x-ldif"
+    },
+    "lha": {
+      "name": "LHA archive",
+      "mime": "application/x-lha"
+    },
+    "lhs": {
+      "name": "LHS source code",
+      "mime": "text/x-literate-haskell"
+    },
+    "lhz": {
+      "name": "LHZ archive",
+      "mime": "application/x-lhz"
+    },
+    "lib": {
+      "name": "AR archive",
+      "mime": "application/x-archive"
+    },
+    "lisp": {
+      "name": "Common Lisp source code",
+      "mime": "text/x-common-lisp"
+    },
+    "lmdb": {
+      "name": "LMDB database",
+      "mime": "application/x-lmdb"
+    },
+    "lnk": {
+      "name": "Windows shortcut",
+      "mime": "application/x-ms-shortcut"
+    },
+    "lnx": {
+      "name": "Atari Lynx ROM",
+      "mime": "application/x-atari-lynx-rom"
+    },
+    "loas": {
+      "name": "USAC audio",
+      "mime": "audio/usac"
+    },
+    "log": {
+      "name": "Application log",
+      "mime": "text/x-log"
+    },
+    "log.sf3": {
+      "name": "SF3 Log File",
+      "mime": "application/x.sf3-log"
+    },
+    "lrc": {
+      "name": "Song lyrics",
+      "mime": "text/x-lrc"
+    },
+    "lrf": {
+      "name": "MPEG-4 video",
+      "mime": "video/mp4"
+    },
+    "lrv": {
+      "name": "MPEG-4 video",
+      "mime": "video/mp4"
+    },
+    "lrz": {
+      "name": "Lrzip archive",
+      "mime": "application/x-lrzip"
+    },
+    "ltx": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "lua": {
+      "name": "Lua script",
+      "mime": "text/x-lua"
+    },
+    "lwo": {
+      "name": "LightWave object",
+      "mime": "image/x-lwo"
+    },
+    "lwob": {
+      "name": "LightWave object",
+      "mime": "image/x-lwo"
+    },
+    "lwp": {
+      "name": "Lotus Word Pro document",
+      "mime": "application/vnd.lotus-wordpro"
+    },
+    "lws": {
+      "name": "LightWave scene",
+      "mime": "image/x-lws"
+    },
+    "ly": {
+      "name": "Lilypond music sheet",
+      "mime": "text/x-lilypond"
+    },
+    "lyx": {
+      "name": "LyX document",
+      "mime": "application/x-lyx"
+    },
+    "lz": {
+      "name": "Lzip archive",
+      "mime": "application/x-lzip"
+    },
+    "lz4": {
+      "name": "LZ4 archive",
+      "mime": "application/x-lz4"
+    },
+    "lzh": {
+      "name": "LHA archive",
+      "mime": "application/x-lha"
+    },
+    "lzma": {
+      "name": "LZMA archive",
+      "mime": "application/x-lzma"
+    },
+    "lzo": {
+      "name": "LZO archive",
+      "mime": "application/x-lzop"
+    },
+    "m": {
+      "name": "MATLAB file",
+      "mime": "text/x-matlab"
+    },
+    "m15": {
+      "name": "Amiga SoundTracker audio",
+      "mime": "audio/x-mod"
+    },
+    "m1u": {
+      "name": "Video playlist",
+      "mime": "video/vnd.mpegurl"
+    },
+    "m2t": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "m2ts": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "m3u": {
+      "name": "Media playlist",
+      "mime": "audio/x-mpegurl"
+    },
+    "m3u8": {
+      "name": "Media playlist",
+      "mime": "audio/x-mpegurl"
+    },
+    "m4": {
+      "name": "M4 macro",
+      "mime": "application/x-m4"
+    },
+    "m4a": {
+      "name": "MPEG-4 audio",
+      "mime": "audio/mp4"
+    },
+    "m4b": {
+      "name": "MPEG-4 audio book",
+      "mime": "audio/x-m4b"
+    },
+    "m4r": {
+      "name": "MPEG-4 ringtone",
+      "mime": "audio/x-m4r"
+    },
+    "m4u": {
+      "name": "Video playlist",
+      "mime": "video/vnd.mpegurl"
+    },
+    "m4v": {
+      "name": "MPEG-4 video",
+      "mime": "video/mp4"
+    },
+    "m7": {
+      "name": "Thomson Mémo7 cartridge",
+      "mime": "application/x-thomson-cartridge-memo7"
+    },
+    "mab": {
+      "name": "Markaby script",
+      "mime": "application/x-markaby"
+    },
+    "mak": {
+      "name": "Makefile build file",
+      "mime": "text/x-makefile"
+    },
+    "man": {
+      "name": "Manual page",
+      "mime": "application/x-troff-man"
+    },
+    "manifest": {
+      "name": "Web application cache file",
+      "mime": "text/cache-manifest"
+    },
+    "markdown": {
+      "name": "Markdown document",
+      "mime": "text/markdown"
+    },
+    "mbox": {
+      "name": "Mailbox file",
+      "mime": "application/mbox"
+    },
+    "mc2": {
+      "name": "WarpScript source code",
+      "mime": "text/vnd.senx.warpscript"
+    },
+    "md": {
+      "name": "Markdown document",
+      "mime": "text/markdown"
+    },
+    "mdb": {
+      "name": "JET database",
+      "mime": "application/vnd.ms-access"
+    },
+    "mdc": {
+      "name": "Minolta MDC raw image",
+      "mime": "image/x-minolta-mdc"
+    },
+    "mdi": {
+      "name": "MDI image",
+      "mime": "image/vnd.ms-modi"
+    },
+    "mdr": {
+      "name": "Sinclair Microdrive tape cartridge image",
+      "mime": "application/x-spectrum-mdr"
+    },
+    "mdx": {
+      "name": "Genesis 32X ROM",
+      "mime": "application/x-genesis-32x-rom"
+    },
+    "me": {
+      "name": "Troff ME input document",
+      "mime": "text/x-troff-me"
+    },
+    "med": {
+      "name": "OctaMED audio",
+      "mime": "audio/x-med"
+    },
+    "mef": {
+      "name": "Mamiya MEF raw image",
+      "mime": "image/x-mamiya-mef"
+    },
+    "meta4": {
+      "name": "Metalink file",
+      "mime": "application/metalink4+xml"
+    },
+    "metainfo.xml": {
+      "name": "AppStream software component",
+      "mime": "application/x-freedesktop-appstream-component"
+    },
+    "metalink": {
+      "name": "Metalink file",
+      "mime": "application/metalink+xml"
+    },
+    "mgp": {
+      "name": "MagicPoint presentation",
+      "mime": "application/x-magicpoint"
+    },
+    "mgt": {
+      "name": "ZX Spectrum/SAM Coupé MGT floppy disk image",
+      "mime": "application/x-spectrum-mgt"
+    },
+    "mht": {
+      "name": "MHTML web archive",
+      "mime": "application/x-mimearchive"
+    },
+    "mhtml": {
+      "name": "MHTML web archive",
+      "mime": "application/x-mimearchive"
+    },
+    "mid": {
+      "name": "MIDI audio",
+      "mime": "audio/midi"
+    },
+    "midi": {
+      "name": "MIDI audio",
+      "mime": "audio/midi"
+    },
+    "mif": {
+      "name": "Adobe FrameMaker MIF document",
+      "mime": "application/x-mif"
+    },
+    "minipsf": {
+      "name": "MiniPSF audio",
+      "mime": "audio/x-minipsf"
+    },
+    "mj2": {
+      "name": "JPEG-2000 MJ2 video",
+      "mime": "video/mj2"
+    },
+    "mjp2": {
+      "name": "JPEG-2000 MJ2 video",
+      "mime": "video/mj2"
+    },
+    "mjpeg": {
+      "name": "MJPEG video stream",
+      "mime": "video/x-mjpeg"
+    },
+    "mjpg": {
+      "name": "MJPEG video stream",
+      "mime": "video/x-mjpeg"
+    },
+    "mjs": {
+      "name": "JavaScript program",
+      "mime": "text/javascript"
+    },
+    "mk": {
+      "name": "Makefile build file",
+      "mime": "text/x-makefile"
+    },
+    "mk3d": {
+      "name": "Matroska 3D video",
+      "mime": "video/matroska-3d"
+    },
+    "mka": {
+      "name": "Matroska audio",
+      "mime": "audio/matroska"
+    },
+    "mkd": {
+      "name": "Markdown document",
+      "mime": "text/markdown"
+    },
+    "mkv": {
+      "name": "Matroska video",
+      "mime": "video/matroska"
+    },
+    "ml": {
+      "name": "OCaml source code",
+      "mime": "text/x-ocaml"
+    },
+    "mli": {
+      "name": "OCaml source code",
+      "mime": "text/x-ocaml"
+    },
+    "mm": {
+      "name": "Troff MM input document",
+      "mime": "text/x-troff-mm"
+    },
+    "mmf": {
+      "name": "SMAF audio",
+      "mime": "application/vnd.smaf"
+    },
+    "mml": {
+      "name": "MathML document",
+      "mime": "application/mathml+xml"
+    },
+    "mng": {
+      "name": "MNG animation",
+      "mime": "video/x-mng"
+    },
+    "mo": {
+      "name": "Modelica model",
+      "mime": "text/x-modelica"
+    },
+    "mo3": {
+      "name": "Compressed Tracker audio",
+      "mime": "audio/x-mo3"
+    },
+    "mobi": {
+      "name": "Mobipocket e-book",
+      "mime": "application/x-mobipocket-ebook"
+    },
+    "moc": {
+      "name": "Qt MOC file",
+      "mime": "text/x-moc"
+    },
+    "mod": {
+      "name": "Amiga SoundTracker audio",
+      "mime": "audio/x-mod"
+    },
+    "mod.sf3": {
+      "name": "SF3 3D Model",
+      "mime": "model/x.sf3"
+    },
+    "mof": {
+      "name": "MOF file",
+      "mime": "text/x-mof"
+    },
+    "moov": {
+      "name": "QuickTime video",
+      "mime": "video/quicktime"
+    },
+    "mos": {
+      "name": "Leaf MOS raw image",
+      "mime": "image/x-leaf-mos"
+    },
+    "mount": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "mov": {
+      "name": "QuickTime video",
+      "mime": "video/quicktime"
+    },
+    "movie": {
+      "name": "SGI video",
+      "mime": "video/x-sgi-movie"
+    },
+    "mp+": {
+      "name": "Musepack audio",
+      "mime": "audio/x-musepack"
+    },
+    "mp2": {
+      "name": "MP2 audio",
+      "mime": "audio/mp2"
+    },
+    "mp3": {
+      "name": "MP3 audio",
+      "mime": "audio/mpeg"
+    },
+    "mp4": {
+      "name": "MPEG-4 video",
+      "mime": "video/mp4"
+    },
+    "mpc": {
+      "name": "Musepack audio",
+      "mime": "audio/x-musepack"
+    },
+    "mpe": {
+      "name": "MPEG video",
+      "mime": "video/mpeg"
+    },
+    "mpeg": {
+      "name": "MPEG video",
+      "mime": "video/mpeg"
+    },
+    "mpg": {
+      "name": "MPEG video",
+      "mime": "video/mpeg"
+    },
+    "mpga": {
+      "name": "MP3 audio",
+      "mime": "audio/mpeg"
+    },
+    "mpl": {
+      "name": "MPL2 subtitles",
+      "mime": "text/x-mpl2"
+    },
+    "mpls": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "mpp": {
+      "name": "Musepack audio",
+      "mime": "audio/x-musepack"
+    },
+    "mrl": {
+      "name": "MRML playlist",
+      "mime": "text/x-mrml"
+    },
+    "mrml": {
+      "name": "MRML playlist",
+      "mime": "text/x-mrml"
+    },
+    "mrpack": {
+      "name": "Modrinth Modpack",
+      "mime": "application/x-modrinth-modpack+zip"
+    },
+    "mrw": {
+      "name": "Minolta MRW raw image",
+      "mime": "image/x-minolta-mrw"
+    },
+    "ms": {
+      "name": "Troff MS input document",
+      "mime": "text/x-troff-ms"
+    },
+    "msi": {
+      "name": "Windows Installer package",
+      "mime": "application/x-msi"
+    },
+    "msix": {
+      "name": "Windows app store package",
+      "mime": "application/msix"
+    },
+    "msixbundle": {
+      "name": "Windows app store bundle",
+      "mime": "application/msixbundle"
+    },
+    "msod": {
+      "name": "Office drawing",
+      "mime": "image/x-msod"
+    },
+    "msp": {
+      "name": "Windows Installer patch",
+      "mime": "application/microsoftpatch"
+    },
+    "msu": {
+      "name": "Windows Update package",
+      "mime": "application/microsoftupdate"
+    },
+    "msx": {
+      "name": "MSX ROM",
+      "mime": "application/x-msx-rom"
+    },
+    "mtl": {
+      "name": "OBJ 3D model material library",
+      "mime": "model/mtl"
+    },
+    "mtm": {
+      "name": "MultiTracker audio",
+      "mime": "audio/x-mtm"
+    },
+    "mts": {
+      "name": "MPEG-2 transport stream",
+      "mime": "video/mp2t"
+    },
+    "mup": {
+      "name": "Mup musical composition document",
+      "mime": "text/x-mup"
+    },
+    "mxf": {
+      "name": "MXF video",
+      "mime": "application/mxf"
+    },
+    "mxmf": {
+      "name": "Mobile XMF audio",
+      "mime": "audio/mobile-xmf"
+    },
+    "mxu": {
+      "name": "Video playlist",
+      "mime": "video/vnd.mpegurl"
+    },
+    "n3": {
+      "name": "Notation3 document",
+      "mime": "text/n3"
+    },
+    "n64": {
+      "name": "Nintendo64 ROM",
+      "mime": "application/x-n64-rom"
+    },
+    "nb": {
+      "name": "Mathematica Notebook file",
+      "mime": "application/mathematica"
+    },
+    "nc": {
+      "name": "Unidata NetCDF document",
+      "mime": "application/x-netcdf"
+    },
+    "nds": {
+      "name": "Nintendo DS ROM",
+      "mime": "application/vnd.nintendo.nitro.rom"
+    },
+    "nef": {
+      "name": "Nikon NEF raw image",
+      "mime": "image/x-nikon-nef"
+    },
+    "nes": {
+      "name": "NES ROM",
+      "mime": "application/x-nes-rom"
+    },
+    "nez": {
+      "name": "NES ROM",
+      "mime": "application/x-nes-rom"
+    },
+    "nfo": {
+      "name": "NFO document",
+      "mime": "text/x-nfo"
+    },
+    "ngc": {
+      "name": "Neo-Geo Pocket Color ROM",
+      "mime": "application/x-neo-geo-pocket-color-rom"
+    },
+    "ngp": {
+      "name": "Neo-Geo Pocket ROM",
+      "mime": "application/x-neo-geo-pocket-rom"
+    },
+    "nim": {
+      "name": "Nim source code",
+      "mime": "text/x-nim"
+    },
+    "nimble": {
+      "name": "Nimscript source code",
+      "mime": "text/x-nimscript"
+    },
+    "nims": {
+      "name": "Nimscript source code",
+      "mime": "text/x-nimscript"
+    },
+    "nix": {
+      "name": "Nix source code",
+      "mime": "text/x-nix"
+    },
+    "not": {
+      "name": "Mup musical composition document",
+      "mime": "text/x-mup"
+    },
+    "nrg": {
+      "name": "Nero Burning ROM disc image",
+      "mime": "application/x-nrg"
+    },
+    "nrw": {
+      "name": "Nikon NRW raw image",
+      "mime": "image/x-nikon-nrw"
+    },
+    "nsc": {
+      "name": "Windows Media Station file",
+      "mime": "application/x-netshow-channel"
+    },
+    "nsh": {
+      "name": "NSIS Script",
+      "mime": "text/x-nsis"
+    },
+    "nsi": {
+      "name": "NSIS Script",
+      "mime": "text/x-nsis"
+    },
+    "nst": {
+      "name": "Amiga SoundTracker audio",
+      "mime": "audio/x-mod"
+    },
+    "nsv": {
+      "name": "NullSoft video",
+      "mime": "video/x-nsv"
+    },
+    "ntar": {
+      "name": "PCAPNG packet capture",
+      "mime": "application/x-pcapng"
+    },
+    "nu": {
+      "name": "Nushell script",
+      "mime": "application/x-nuscript"
+    },
+    "numbers": {
+      "name": "Apple Numbers spreadsheet",
+      "mime": "application/vnd.apple.numbers"
+    },
+    "nx": {
+      "name": "LowRes NX program",
+      "mime": "application/x-lowresnx-program"
+    },
+    "nzb": {
+      "name": "NewzBin usenet index",
+      "mime": "application/x-nzb"
+    },
+    "o": {
+      "name": "Object code",
+      "mime": "application/x-object"
+    },
+    "obj": {
+      "name": "OBJ 3D model",
+      "mime": "model/obj"
+    },
+    "ocl": {
+      "name": "OCL file",
+      "mime": "text/x-ocl"
+    },
+    "ocx": {
+      "name": "Windows or EFI program",
+      "mime": "application/vnd.microsoft.portable-executable"
+    },
+    "oda": {
+      "name": "ODA document",
+      "mime": "application/oda"
+    },
+    "odb": {
+      "name": "ODB database",
+      "mime": "application/vnd.oasis.opendocument.base"
+    },
+    "odc": {
+      "name": "ODC chart",
+      "mime": "application/vnd.oasis.opendocument.chart"
+    },
+    "odf": {
+      "name": "ODF formula",
+      "mime": "application/vnd.oasis.opendocument.formula"
+    },
+    "odg": {
+      "name": "ODG drawing",
+      "mime": "application/vnd.oasis.opendocument.graphics"
+    },
+    "odi": {
+      "name": "ODI image",
+      "mime": "application/vnd.oasis.opendocument.image"
+    },
+    "odm": {
+      "name": "ODM document",
+      "mime": "application/vnd.oasis.opendocument.text-master"
+    },
+    "odp": {
+      "name": "ODP presentation",
+      "mime": "application/vnd.oasis.opendocument.presentation"
+    },
+    "ods": {
+      "name": "ODS spreadsheet",
+      "mime": "application/vnd.oasis.opendocument.spreadsheet"
+    },
+    "odt": {
+      "name": "ODT document",
+      "mime": "application/vnd.oasis.opendocument.text"
+    },
+    "oga": {
+      "name": "Ogg audio",
+      "mime": "audio/ogg"
+    },
+    "ogg": {
+      "name": "Ogg audio",
+      "mime": "audio/ogg"
+    },
+    "ogm": {
+      "name": "OGM video",
+      "mime": "video/x-ogm+ogg"
+    },
+    "ogv": {
+      "name": "Ogg video",
+      "mime": "video/ogg"
+    },
+    "ogx": {
+      "name": "Ogg multimedia file",
+      "mime": "application/ogg"
+    },
+    "old": {
+      "name": "Backup file",
+      "mime": "application/x-trash"
+    },
+    "oleo": {
+      "name": "GNU Oleo spreadsheet",
+      "mime": "application/x-oleo"
+    },
+    "ooc": {
+      "name": "OOC source code",
+      "mime": "text/x-ooc"
+    },
+    "openvpn": {
+      "name": "OpenVPN profile",
+      "mime": "application/x-openvpn-profile"
+    },
+    "opml": {
+      "name": "OPML syndication feed",
+      "mime": "text/x-opml+xml"
+    },
+    "oprc": {
+      "name": "Palm OS database",
+      "mime": "application/vnd.palm"
+    },
+    "opus": {
+      "name": "Ogg audio",
+      "mime": "audio/ogg"
+    },
+    "ora": {
+      "name": "OpenRaster image",
+      "mime": "image/openraster"
+    },
+    "orf": {
+      "name": "Olympus ORF raw image",
+      "mime": "image/x-olympus-orf"
+    },
+    "org": {
+      "name": "Org-mode file",
+      "mime": "text/org"
+    },
+    "otc": {
+      "name": "ODC template",
+      "mime": "application/vnd.oasis.opendocument.chart-template"
+    },
+    "otf": {
+      "name": "ODF template",
+      "mime": "application/vnd.oasis.opendocument.formula-template"
+    },
+    "otg": {
+      "name": "ODG template",
+      "mime": "application/vnd.oasis.opendocument.graphics-template"
+    },
+    "oth": {
+      "name": "OTH template",
+      "mime": "application/vnd.oasis.opendocument.text-web"
+    },
+    "otm": {
+      "name": "ODM template",
+      "mime": "application/vnd.oasis.opendocument.text-master-template"
+    },
+    "otp": {
+      "name": "ODP template",
+      "mime": "application/vnd.oasis.opendocument.presentation-template"
+    },
+    "ots": {
+      "name": "ODS template",
+      "mime": "application/vnd.oasis.opendocument.spreadsheet-template"
+    },
+    "ott": {
+      "name": "ODT template",
+      "mime": "application/vnd.oasis.opendocument.text-template"
+    },
+    "ova": {
+      "name": "OVF disk image",
+      "mime": "application/ovf"
+    },
+    "ovpn": {
+      "name": "OpenVPN profile",
+      "mime": "application/x-openvpn-profile"
+    },
+    "owl": {
+      "name": "RDF file",
+      "mime": "application/rdf+xml"
+    },
+    "owx": {
+      "name": "OWL XML file",
+      "mime": "application/owl+xml"
+    },
+    "oxps": {
+      "name": "OpenXPS document",
+      "mime": "application/oxps"
+    },
+    "oxt": {
+      "name": "LibreOffice extension",
+      "mime": "application/vnd.openofficeorg.extension"
+    },
+    "p": {
+      "name": "Pascal source code",
+      "mime": "text/x-pascal"
+    },
+    "p10": {
+      "name": "PKCS#10 certification request",
+      "mime": "application/pkcs10"
+    },
+    "p12": {
+      "name": "PKCS#12 certificate bundle",
+      "mime": "application/pkcs12"
+    },
+    "p65": {
+      "name": "Adobe PageMaker document",
+      "mime": "application/x-pagemaker"
+    },
+    "p7b": {
+      "name": "PKCS#7 certificate bundle",
+      "mime": "application/x-pkcs7-certificates"
+    },
+    "p7c": {
+      "name": "PKCS#7 file",
+      "mime": "application/pkcs7-mime"
+    },
+    "p7m": {
+      "name": "PKCS#7 file",
+      "mime": "application/pkcs7-mime"
+    },
+    "p7s": {
+      "name": "Detached S/MIME signature",
+      "mime": "application/pkcs7-signature"
+    },
+    "p8": {
+      "name": "PKCS#8 private key",
+      "mime": "application/pkcs8"
+    },
+    "p8.rom": {
+      "name": "PICO-8 binary code",
+      "mime": "application/x-pico8-rom"
+    },
+    "p8e": {
+      "name": "PKCS#8 private key (encrypted)",
+      "mime": "application/pkcs8-encrypted"
+    },
+    "pac": {
+      "name": "Proxy Auto-Configuration file",
+      "mime": "application/x-ns-proxy-autoconfig"
+    },
+    "pack": {
+      "name": "Pack200 Java archive",
+      "mime": "application/x-java-pack200"
+    },
+    "pages": {
+      "name": "Apple Pages document",
+      "mime": "application/vnd.apple.pages"
+    },
+    "pak": {
+      "name": "PAK archive",
+      "mime": "application/x-pak"
+    },
+    "par2": {
+      "name": "Parchive archive",
+      "mime": "application/x-par2"
+    },
+    "parquet": {
+      "name": "Apache Parquet file",
+      "mime": "application/vnd.apache.parquet"
+    },
+    "part": {
+      "name": "Partially downloaded file",
+      "mime": "application/x-partial-download"
+    },
+    "pas": {
+      "name": "Pascal source code",
+      "mime": "text/x-pascal"
+    },
+    "pat": {
+      "name": "GIMP pattern",
+      "mime": "image/x-gimp-pat"
+    },
+    "patch": {
+      "name": "Differences between files",
+      "mime": "text/x-patch"
+    },
+    "path": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "pbm": {
+      "name": "PBM image",
+      "mime": "image/x-portable-bitmap"
+    },
+    "pcap": {
+      "name": "Network packet capture",
+      "mime": "application/vnd.tcpdump.pcap"
+    },
+    "pcapng": {
+      "name": "PCAPNG packet capture",
+      "mime": "application/x-pcapng"
+    },
+    "pcd": {
+      "name": "PCD image",
+      "mime": "image/x-photo-cd"
+    },
+    "pce": {
+      "name": "PC Engine ROM",
+      "mime": "application/x-pc-engine-rom"
+    },
+    "pcf": {
+      "name": "PCF font",
+      "mime": "application/x-font-pcf"
+    },
+    "pcf.gz": {
+      "name": "PCF font",
+      "mime": "application/x-font-pcf"
+    },
+    "pcf.z": {
+      "name": "PCF font",
+      "mime": "application/x-font-pcf"
+    },
+    "pcl": {
+      "name": "PCL file",
+      "mime": "application/vnd.hp-pcl"
+    },
+    "pct": {
+      "name": "Macintosh Quickdraw/PICT drawing",
+      "mime": "image/x-pict"
+    },
+    "pcx": {
+      "name": "PCX image",
+      "mime": "image/vnd.zbrush.pcx"
+    },
+    "pdb": {
+      "name": "Protein Data Bank file",
+      "mime": "chemical/x-pdb"
+    },
+    "pdc": {
+      "name": "AportisDoc document",
+      "mime": "application/x-aportisdoc"
+    },
+    "pdf": {
+      "name": "PDF document",
+      "mime": "application/pdf"
+    },
+    "pdf.bz2": {
+      "name": "PDF document (bzip2-compressed)",
+      "mime": "application/x-bzpdf"
+    },
+    "pdf.gz": {
+      "name": "PDF document (gzip-compressed)",
+      "mime": "application/x-gzpdf"
+    },
+    "pdf.lz": {
+      "name": "PDF document (lzip-compressed)",
+      "mime": "application/x-lzpdf"
+    },
+    "pdf.xz": {
+      "name": "PDF document (XZ-compressed)",
+      "mime": "application/x-xzpdf"
+    },
+    "pef": {
+      "name": "Pentax PEF raw image",
+      "mime": "image/x-pentax-pef"
+    },
+    "pem": {
+      "name": "DER/PEM/Netscape-encoded X.509 certificate",
+      "mime": "application/x-x509-ca-cert"
+    },
+    "perl": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "pfa": {
+      "name": "PostScript type-1 font",
+      "mime": "application/x-font-type1"
+    },
+    "pfb": {
+      "name": "PostScript type-1 font",
+      "mime": "application/x-font-type1"
+    },
+    "pfm": {
+      "name": "Portable FloatMap",
+      "mime": "image/x-pfm"
+    },
+    "pfr": {
+      "name": "TDPFR font",
+      "mime": "application/font-tdpfr"
+    },
+    "pfx": {
+      "name": "PKCS#12 certificate bundle",
+      "mime": "application/pkcs12"
+    },
+    "pgm": {
+      "name": "PGM image",
+      "mime": "image/x-portable-graymap"
+    },
+    "pgn": {
+      "name": "PGN chess game notation",
+      "mime": "application/vnd.chess-pgn"
+    },
+    "pgp": {
+      "name": "PGP keys",
+      "mime": "application/pgp-keys"
+    },
+    "phm": {
+      "name": "Portable HalfMap",
+      "mime": "image/x-phm"
+    },
+    "php": {
+      "name": "PHP script",
+      "mime": "application/x-php"
+    },
+    "php3": {
+      "name": "PHP script",
+      "mime": "application/x-php"
+    },
+    "php4": {
+      "name": "PHP script",
+      "mime": "application/x-php"
+    },
+    "php5": {
+      "name": "PHP script",
+      "mime": "application/x-php"
+    },
+    "phps": {
+      "name": "PHP script",
+      "mime": "application/x-php"
+    },
+    "phys.sf3": {
+      "name": "SF3 Physics Model",
+      "mime": "model/x.sf3-physics"
+    },
+    "pic": {
+      "name": "Radiance HDR image",
+      "mime": "image/vnd.radiance"
+    },
+    "pict": {
+      "name": "Macintosh Quickdraw/PICT drawing",
+      "mime": "image/x-pict"
+    },
+    "pict1": {
+      "name": "Macintosh Quickdraw/PICT drawing",
+      "mime": "image/x-pict"
+    },
+    "pict2": {
+      "name": "Macintosh Quickdraw/PICT drawing",
+      "mime": "image/x-pict"
+    },
+    "pk": {
+      "name": "Packed font file",
+      "mime": "application/x-tex-pk"
+    },
+    "pkg": {
+      "name": "XAR archive",
+      "mime": "application/x-xar"
+    },
+    "pkipath": {
+      "name": "PkiPath certification path",
+      "mime": "application/pkix-pkipath"
+    },
+    "pkpass": {
+      "name": "Apple Wallet pass",
+      "mime": "application/vnd.apple.pkpass"
+    },
+    "pkpasses": {
+      "name": "Apple Wallet passes bundle",
+      "mime": "application/vnd.apple.pkpasses"
+    },
+    "pkr": {
+      "name": "PGP keys",
+      "mime": "application/pgp-keys"
+    },
+    "pl": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "pla": {
+      "name": "iRiver playlist",
+      "mime": "audio/x-iriver-pla"
+    },
+    "pln": {
+      "name": "PlanPerfect spreadsheet",
+      "mime": "application/x-planperfect"
+    },
+    "pls": {
+      "name": "MP3 ShoutCast playlist",
+      "mime": "audio/x-scpls"
+    },
+    "pm": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "pm6": {
+      "name": "Adobe PageMaker document",
+      "mime": "application/x-pagemaker"
+    },
+    "pmd": {
+      "name": "Adobe PageMaker document",
+      "mime": "application/x-pagemaker"
+    },
+    "png": {
+      "name": "PNG image",
+      "mime": "image/png"
+    },
+    "pnm": {
+      "name": "PNM image",
+      "mime": "image/x-portable-anymap"
+    },
+    "pntg": {
+      "name": "MacPaint Bitmap image",
+      "mime": "image/x-macpaint"
+    },
+    "po": {
+      "name": "Translation file",
+      "mime": "text/x-gettext-translation"
+    },
+    "pod": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "por": {
+      "name": "SPSS portable data file",
+      "mime": "application/x-spss-por"
+    },
+    "pot": {
+      "name": "Translation template",
+      "mime": "text/x-gettext-translation-template"
+    },
+    "potm": {
+      "name": "PowerPoint presentation template",
+      "mime": "application/vnd.ms-powerpoint.template.macroEnabled.12"
+    },
+    "potx": {
+      "name": "PowerPoint 2007 presentation template",
+      "mime": "application/vnd.openxmlformats-officedocument.presentationml.template"
+    },
+    "ppam": {
+      "name": "PowerPoint add-in",
+      "mime": "application/vnd.ms-powerpoint.addin.macroEnabled.12"
+    },
+    "ppd": {
+      "name": "PostScript printer description",
+      "mime": "application/vnd.cups-ppd"
+    },
+    "ppm": {
+      "name": "PPM image",
+      "mime": "image/x-portable-pixmap"
+    },
+    "pps": {
+      "name": "PowerPoint presentation",
+      "mime": "application/vnd.ms-powerpoint"
+    },
+    "ppsm": {
+      "name": "PowerPoint presentation",
+      "mime": "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
+    },
+    "ppsx": {
+      "name": "PowerPoint 2007 show",
+      "mime": "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+    },
+    "ppt": {
+      "name": "PowerPoint presentation",
+      "mime": "application/vnd.ms-powerpoint"
+    },
+    "pptm": {
+      "name": "PowerPoint presentation",
+      "mime": "application/vnd.ms-powerpoint.presentation.macroEnabled.12"
+    },
+    "pptx": {
+      "name": "PowerPoint 2007 presentation",
+      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    },
+    "ppz": {
+      "name": "PowerPoint presentation",
+      "mime": "application/vnd.ms-powerpoint"
+    },
+    "pqa": {
+      "name": "Palm OS database",
+      "mime": "application/vnd.palm"
+    },
+    "prc": {
+      "name": "Palm OS database",
+      "mime": "application/vnd.palm"
+    },
+    "ps": {
+      "name": "PostScript document",
+      "mime": "application/postscript"
+    },
+    "ps.bz2": {
+      "name": "PostScript document (bzip2-compressed)",
+      "mime": "application/x-bzpostscript"
+    },
+    "ps.gz": {
+      "name": "PostScript document (gzip-compressed)",
+      "mime": "application/x-gzpostscript"
+    },
+    "ps1": {
+      "name": "PowerShell script",
+      "mime": "application/x-powershell"
+    },
+    "psd": {
+      "name": "Photoshop image",
+      "mime": "image/vnd.adobe.photoshop"
+    },
+    "psf": {
+      "name": "PSF audio",
+      "mime": "audio/x-psf"
+    },
+    "psf.gz": {
+      "name": "Linux PSF console font (gzip-compressed)",
+      "mime": "application/x-gz-font-linux-psf"
+    },
+    "psflib": {
+      "name": "PSFlib audio library",
+      "mime": "audio/x-psflib"
+    },
+    "psid": {
+      "name": "Commodore 64 audio",
+      "mime": "audio/prs.sid"
+    },
+    "psw": {
+      "name": "Pocket Word document",
+      "mime": "application/x-pocket-word"
+    },
+    "pub": {
+      "name": "OpenSSH public key",
+      "mime": "text/x-ssh-public-key"
+    },
+    "puml": {
+      "name": "PlantUML Diagram",
+      "mime": "text/vnd.plantuml"
+    },
+    "pw": {
+      "name": "Pathetic Writer document",
+      "mime": "application/x-pw"
+    },
+    "pxd": {
+      "name": "Cython source code",
+      "mime": "text/x-cython"
+    },
+    "pxi": {
+      "name": "Cython source code",
+      "mime": "text/x-cython"
+    },
+    "pxr": {
+      "name": "Pixar raster",
+      "mime": "image/x-pxr"
+    },
+    "py": {
+      "name": "Python script",
+      "mime": "text/x-python"
+    },
+    "py2": {
+      "name": "Python 2 script",
+      "mime": "text/x-python2"
+    },
+    "py3": {
+      "name": "Python 3 script",
+      "mime": "text/x-python3"
+    },
+    "pyc": {
+      "name": "Python bytecode",
+      "mime": "application/x-python-bytecode"
+    },
+    "pyi": {
+      "name": "Python 3 script",
+      "mime": "text/x-python3"
+    },
+    "pyo": {
+      "name": "Python bytecode",
+      "mime": "application/x-python-bytecode"
+    },
+    "pys": {
+      "name": "Pyspread spreadsheet (bzip2-compressed)",
+      "mime": "application/x-pyspread-bz-spreadsheet"
+    },
+    "pysu": {
+      "name": "Pyspread spreadsheet",
+      "mime": "application/x-pyspread-spreadsheet"
+    },
+    "pyx": {
+      "name": "Cython source code",
+      "mime": "text/x-cython"
+    },
+    "pzx": {
+      "name": "ZX Spectrum PZX tape archival image",
+      "mime": "application/x-spectrum-pzx"
+    },
+    "qbrew": {
+      "name": "QBrew beer recipes",
+      "mime": "application/x-qbrew"
+    },
+    "qcow": {
+      "name": "QEMU QCOW disk image",
+      "mime": "application/x-qemu-disk"
+    },
+    "qcow2": {
+      "name": "QEMU QCOW disk image",
+      "mime": "application/x-qemu-disk"
+    },
+    "qd": {
+      "name": "Floppy disk image",
+      "mime": "application/x-raw-floppy-disk-image"
+    },
+    "qed": {
+      "name": "QEMU QED disk image",
+      "mime": "application/x-qed-disk"
+    },
+    "qif": {
+      "name": "QuickTime image",
+      "mime": "image/x-quicktime"
+    },
+    "qml": {
+      "name": "Qt Markup Language file",
+      "mime": "text/x-qml"
+    },
+    "qmlproject": {
+      "name": "Qt Markup Language file",
+      "mime": "text/x-qml"
+    },
+    "qmltypes": {
+      "name": "Qt Markup Language file",
+      "mime": "text/x-qml"
+    },
+    "qoi": {
+      "name": "Quite OK Image Format",
+      "mime": "image/qoi"
+    },
+    "qp": {
+      "name": "Qpress archive",
+      "mime": "application/x-qpress"
+    },
+    "qpw": {
+      "name": "Quattro Pro spreadsheet",
+      "mime": "application/x-quattropro"
+    },
+    "qs": {
+      "name": "SPARQL query",
+      "mime": "application/sparql-query"
+    },
+    "qt": {
+      "name": "QuickTime video",
+      "mime": "video/quicktime"
+    },
+    "qti": {
+      "name": "QtiPlot document",
+      "mime": "application/x-qtiplot"
+    },
+    "qti.gz": {
+      "name": "QtiPlot document",
+      "mime": "application/x-qtiplot"
+    },
+    "qtif": {
+      "name": "QuickTime image",
+      "mime": "image/x-quicktime"
+    },
+    "qtl": {
+      "name": "QuickTime playlist",
+      "mime": "application/x-quicktime-media-link"
+    },
+    "qtvr": {
+      "name": "QuickTime video",
+      "mime": "video/quicktime"
+    },
+    "qwd": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qwt": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qxb": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qxd": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qxl": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qxp": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "qxt": {
+      "name": "QuarkXPress document",
+      "mime": "application/vnd.quark.quarkxpress"
+    },
+    "ra": {
+      "name": "RealAudio document",
+      "mime": "audio/vnd.rn-realaudio"
+    },
+    "raf": {
+      "name": "Fuji RAF raw image",
+      "mime": "image/x-fuji-raf"
+    },
+    "ram": {
+      "name": "RealMedia playlist",
+      "mime": "application/ram"
+    },
+    "raml": {
+      "name": "RAML document",
+      "mime": "application/raml+yaml"
+    },
+    "rar": {
+      "name": "RAR archive",
+      "mime": "application/vnd.rar"
+    },
+    "ras": {
+      "name": "CMU raster image",
+      "mime": "image/x-cmu-raster"
+    },
+    "raw": {
+      "name": "Panasonic raw image",
+      "mime": "image/x-panasonic-rw"
+    },
+    "raw-disk-image": {
+      "name": "Raw disk image",
+      "mime": "application/vnd.efi.img"
+    },
+    "raw-disk-image.xz": {
+      "name": "Raw disk image (XZ-compressed)",
+      "mime": "application/x-raw-disk-image-xz-compressed"
+    },
+    "rax": {
+      "name": "RealAudio document",
+      "mime": "audio/vnd.rn-realaudio"
+    },
+    "rb": {
+      "name": "Ruby script",
+      "mime": "application/x-ruby"
+    },
+    "rdf": {
+      "name": "RDF file",
+      "mime": "application/rdf+xml"
+    },
+    "rdfs": {
+      "name": "RDF file",
+      "mime": "application/rdf+xml"
+    },
+    "reg": {
+      "name": "Windows Registry extract",
+      "mime": "text/x-ms-regedit"
+    },
+    "rej": {
+      "name": "Rejected patch",
+      "mime": "text/x-reject"
+    },
+    "releases.xml": {
+      "name": "AppStream releases information",
+      "mime": "application/x-freedesktop-appstream-releases"
+    },
+    "res": {
+      "name": "Godot Engine resource",
+      "mime": "application/x-godot-resource"
+    },
+    "rgb": {
+      "name": "RGB image",
+      "mime": "image/x-rgb"
+    },
+    "rgbe": {
+      "name": "Radiance HDR image",
+      "mime": "image/vnd.radiance"
+    },
+    "rle": {
+      "name": "RLE bitmap image",
+      "mime": "image/rle"
+    },
+    "rm": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rmj": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rmm": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rms": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rmvb": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rmx": {
+      "name": "RealMedia document",
+      "mime": "application/vnd.rn-realmedia"
+    },
+    "rnc": {
+      "name": "RELAX NG XML schema",
+      "mime": "application/relax-ng-compact-syntax"
+    },
+    "rng": {
+      "name": "XML document",
+      "mime": "application/xml"
+    },
+    "roff": {
+      "name": "Troff document",
+      "mime": "text/troff"
+    },
+    "ros": {
+      "name": "Common Lisp source code",
+      "mime": "text/x-common-lisp"
+    },
+    "rp": {
+      "name": "RealPix document",
+      "mime": "image/vnd.rn-realpix"
+    },
+    "rpm": {
+      "name": "RPM package",
+      "mime": "application/x-rpm"
+    },
+    "rs": {
+      "name": "Rust source code",
+      "mime": "text/rust"
+    },
+    "rss": {
+      "name": "RSS summary",
+      "mime": "application/rss+xml"
+    },
+    "rst": {
+      "name": "ReStructuredText document",
+      "mime": "text/x-rst"
+    },
+    "rt": {
+      "name": "RealText document",
+      "mime": "text/vnd.rn-realtext"
+    },
+    "rtf": {
+      "name": "RTF document",
+      "mime": "application/rtf"
+    },
+    "rtx": {
+      "name": "Rich text document",
+      "mime": "text/richtext"
+    },
+    "rv": {
+      "name": "RealVideo document",
+      "mime": "video/vnd.rn-realvideo"
+    },
+    "rvx": {
+      "name": "RealVideo document",
+      "mime": "video/vnd.rn-realvideo"
+    },
+    "rvz": {
+      "name": "Wii disc image",
+      "mime": "application/x-wii-rom"
+    },
+    "rw2": {
+      "name": "Panasonic raw image",
+      "mime": "image/x-panasonic-rw2"
+    },
+    "rwl": {
+      "name": "Panasonic raw image",
+      "mime": "image/x-panasonic-rw2"
+    },
+    "rz": {
+      "name": "Rzip archive",
+      "mime": "application/x-rzip"
+    },
+    "rzx": {
+      "name": "ZX Spectrum RZX replay snapshot",
+      "mime": "application/x-spectrum-rzx"
+    },
+    "s": {
+      "name": "Assembly code",
+      "mime": "text/x-asm"
+    },
+    "s3m": {
+      "name": "Scream Tracker 3 audio",
+      "mime": "audio/x-s3m"
+    },
+    "sage": {
+      "name": "SageMath script",
+      "mime": "text/x-sagemath"
+    },
+    "sam": {
+      "name": "Lotus AmiPro document",
+      "mime": "application/x-amipro"
+    },
+    "sami": {
+      "name": "SAMI subtitles",
+      "mime": "application/x-sami"
+    },
+    "sap": {
+      "name": "SAP Thomson floppy disk image",
+      "mime": "application/x-thomson-sap-image"
+    },
+    "sass": {
+      "name": "Sass CSS pre-processor file",
+      "mime": "text/x-sass"
+    },
+    "sav": {
+      "name": "SPSS data file",
+      "mime": "application/x-spss-sav"
+    },
+    "sc": {
+      "name": "Scala source code",
+      "mime": "text/x-scala"
+    },
+    "sc8": {
+      "name": "CHIP-8 program",
+      "mime": "application/x-chip8-program"
+    },
+    "scala": {
+      "name": "Scala source code",
+      "mime": "text/x-scala"
+    },
+    "scap": {
+      "name": "PCAPNG packet capture",
+      "mime": "application/x-pcapng"
+    },
+    "scm": {
+      "name": "Scheme source code",
+      "mime": "text/x-scheme"
+    },
+    "scn": {
+      "name": "Godot Engine scene",
+      "mime": "application/x-godot-scene"
+    },
+    "scope": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "scr": {
+      "name": "Windows or DOS program",
+      "mime": "application/x-msdownload"
+    },
+    "scss": {
+      "name": "SCSS pre-processor file",
+      "mime": "text/x-scss"
+    },
+    "sct": {
+      "name": "Scitex CT",
+      "mime": "image/x-sct"
+    },
+    "sda": {
+      "name": "StarDraw 5 drawing",
+      "mime": "application/vnd.stardivision.draw"
+    },
+    "sdc": {
+      "name": "StarCalc 5 spreadsheet",
+      "mime": "application/vnd.stardivision.calc"
+    },
+    "sdd": {
+      "name": "StarImpress 5 presentation",
+      "mime": "application/vnd.stardivision.impress"
+    },
+    "sdm": {
+      "name": "StarMail 5 email",
+      "mime": "application/vnd.stardivision.mail"
+    },
+    "sdp": {
+      "name": "SDP multicast stream file",
+      "mime": "application/sdp"
+    },
+    "sds": {
+      "name": "StarChart 5 chart",
+      "mime": "application/vnd.stardivision.chart"
+    },
+    "sdw": {
+      "name": "StarWriter 5 document",
+      "mime": "application/vnd.stardivision.writer"
+    },
+    "sed": {
+      "name": "sed script",
+      "mime": "text/x-sed"
+    },
+    "service": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "sf3": {
+      "name": "SF3 Audio",
+      "mime": "audio/x.sf3"
+    },
+    "sfc": {
+      "name": "Super NES ROM",
+      "mime": "application/vnd.nintendo.snes.rom"
+    },
+    "sfs": {
+      "name": "Squashfs filesystem image",
+      "mime": "application/vnd.squashfs"
+    },
+    "sg": {
+      "name": "SG-1000 ROM",
+      "mime": "application/x-sg1000-rom"
+    },
+    "sgb": {
+      "name": "Game Boy ROM",
+      "mime": "application/x-gameboy-rom"
+    },
+    "sgd": {
+      "name": "Genesis ROM",
+      "mime": "application/x-genesis-rom"
+    },
+    "sgf": {
+      "name": "SGF record",
+      "mime": "application/x-go-sgf"
+    },
+    "sgi": {
+      "name": "SGI image",
+      "mime": "image/x-sgi"
+    },
+    "sgl": {
+      "name": "StarWriter 5 master document",
+      "mime": "application/vnd.stardivision.writer-global"
+    },
+    "sgm": {
+      "name": "SGML document",
+      "mime": "text/sgml"
+    },
+    "sgml": {
+      "name": "SGML document",
+      "mime": "text/sgml"
+    },
+    "sh": {
+      "name": "Shell script",
+      "mime": "text/x-shellscript"
+    },
+    "shape": {
+      "name": "Dia shape",
+      "mime": "application/x-dia-shape"
+    },
+    "shar": {
+      "name": "Shell archive",
+      "mime": "application/x-shar"
+    },
+    "shn": {
+      "name": "Shorten audio",
+      "mime": "application/x-shorten"
+    },
+    "siag": {
+      "name": "Siag spreadsheet",
+      "mime": "application/x-siag"
+    },
+    "sid": {
+      "name": "Commodore 64 audio",
+      "mime": "audio/prs.sid"
+    },
+    "sieve": {
+      "name": "Sieve mail filter script",
+      "mime": "application/sieve"
+    },
+    "sig": {
+      "name": "Detached OpenPGP signature",
+      "mime": "application/pgp-signature"
+    },
+    "sik": {
+      "name": "Backup file",
+      "mime": "application/x-trash"
+    },
+    "sis": {
+      "name": "SIS package",
+      "mime": "application/vnd.symbian.install"
+    },
+    "sisx": {
+      "name": "SISX package",
+      "mime": "x-epoc/x-sisx-app"
+    },
+    "sit": {
+      "name": "StuffIt archive",
+      "mime": "application/x-stuffit"
+    },
+    "sitx": {
+      "name": "StuffIt X archive",
+      "mime": "application/x-stuffitx"
+    },
+    "siv": {
+      "name": "Sieve mail filter script",
+      "mime": "application/sieve"
+    },
+    "sk": {
+      "name": "Skencil document",
+      "mime": "image/x-skencil"
+    },
+    "sk1": {
+      "name": "Skencil document",
+      "mime": "image/x-skencil"
+    },
+    "skr": {
+      "name": "PGP keys",
+      "mime": "application/pgp-keys"
+    },
+    "sldm": {
+      "name": "PowerPoint slide",
+      "mime": "application/vnd.ms-powerpoint.slide.macroEnabled.12"
+    },
+    "sldx": {
+      "name": "PowerPoint 2007 slide",
+      "mime": "application/vnd.openxmlformats-officedocument.presentationml.slide"
+    },
+    "slice": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "slint": {
+      "name": "Slint Language",
+      "mime": "text/slint"
+    },
+    "slk": {
+      "name": "Spreadsheet interchange document",
+      "mime": "application/x-sylk"
+    },
+    "slt": {
+      "name": "ZX Spectrum SLT multiload snapshot",
+      "mime": "application/x-spectrum-slt"
+    },
+    "smaf": {
+      "name": "SMAF audio",
+      "mime": "application/vnd.smaf"
+    },
+    "smc": {
+      "name": "Super NES ROM",
+      "mime": "application/vnd.nintendo.snes.rom"
+    },
+    "smd": {
+      "name": "Genesis ROM (SMD dump)",
+      "mime": "application/x-genesis-rom-smd"
+    },
+    "smf": {
+      "name": "StarMath 5 formula",
+      "mime": "application/vnd.stardivision.math"
+    },
+    "smi": {
+      "name": "SMIL document",
+      "mime": "application/smil+xml"
+    },
+    "smil": {
+      "name": "SMIL document",
+      "mime": "application/smil+xml"
+    },
+    "smk": {
+      "name": "Smacker Video",
+      "mime": "video/vnd.radgamettools.smacker"
+    },
+    "sml": {
+      "name": "SMIL document",
+      "mime": "application/smil+xml"
+    },
+    "sms": {
+      "name": "Master System ROM",
+      "mime": "application/x-sms-rom"
+    },
+    "sna": {
+      "name": "ZX Spectrum SNA snapshot",
+      "mime": "application/x-spectrum-sna"
+    },
+    "snap": {
+      "name": "Snap package",
+      "mime": "application/vnd.snap"
+    },
+    "snd": {
+      "name": "ULAW (Sun) audio",
+      "mime": "audio/basic"
+    },
+    "so": {
+      "name": "Shared library",
+      "mime": "application/x-sharedlib"
+    },
+    "socket": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "spc": {
+      "name": "PKCS#7 certificate bundle",
+      "mime": "application/x-pkcs7-certificates"
+    },
+    "spd": {
+      "name": "Speedo font",
+      "mime": "application/x-font-speedo"
+    },
+    "spdx": {
+      "name": "SPDX document",
+      "mime": "text/spdx"
+    },
+    "spdx.json": {
+      "name": "SPDX SBOM document",
+      "mime": "application/spdx+json"
+    },
+    "spec": {
+      "name": "RPM spec file",
+      "mime": "text/x-rpm-spec"
+    },
+    "spl": {
+      "name": "Shockwave Flash file",
+      "mime": "application/vnd.adobe.flash.movie"
+    },
+    "spm": {
+      "name": "Source RPM package",
+      "mime": "application/x-source-rpm"
+    },
+    "spx": {
+      "name": "Speex audio",
+      "mime": "audio/x-speex"
+    },
+    "sqfs": {
+      "name": "Squashfs filesystem image",
+      "mime": "application/vnd.squashfs"
+    },
+    "sql": {
+      "name": "SQL code",
+      "mime": "application/sql"
+    },
+    "sqlite2": {
+      "name": "SQLite2 database",
+      "mime": "application/x-sqlite2"
+    },
+    "sqlite3": {
+      "name": "SQLite3 database",
+      "mime": "application/vnd.sqlite3"
+    },
+    "sqsh": {
+      "name": "Squashfs filesystem image",
+      "mime": "application/vnd.squashfs"
+    },
+    "squashfs": {
+      "name": "Squashfs filesystem image",
+      "mime": "application/vnd.squashfs"
+    },
+    "sr2": {
+      "name": "Sony SR2 raw image",
+      "mime": "image/x-sony-sr2"
+    },
+    "src": {
+      "name": "WAIS source code",
+      "mime": "application/x-wais-source"
+    },
+    "src.rpm": {
+      "name": "Source RPM package",
+      "mime": "application/x-source-rpm"
+    },
+    "srf": {
+      "name": "Sony SRF raw image",
+      "mime": "image/x-sony-srf"
+    },
+    "srt": {
+      "name": "SubRip subtitles",
+      "mime": "application/x-subrip"
+    },
+    "srw": {
+      "name": "Samsung SRW raw image",
+      "mime": "image/x-samsung-srw"
+    },
+    "srx": {
+      "name": "SPARQL query results",
+      "mime": "application/sparql-results+xml"
+    },
+    "ss": {
+      "name": "Scheme source code",
+      "mime": "text/x-scheme"
+    },
+    "ssa": {
+      "name": "SSA subtitles",
+      "mime": "text/x-ssa"
+    },
+    "stc": {
+      "name": "OpenOffice.org 1.0 Calc template",
+      "mime": "application/vnd.sun.xml.calc.template"
+    },
+    "std": {
+      "name": "OpenOffice.org 1.0 Draw template",
+      "mime": "application/vnd.sun.xml.draw.template"
+    },
+    "step": {
+      "name": "STEP 3D model",
+      "mime": "model/step"
+    },
+    "sti": {
+      "name": "Sinar STI raw image",
+      "mime": "image/x-sinar-sti"
+    },
+    "stk": {
+      "name": "Amiga SoundTracker audio",
+      "mime": "audio/x-mod"
+    },
+    "stl": {
+      "name": "STL 3D model",
+      "mime": "model/stl"
+    },
+    "stm": {
+      "name": "Scream Tracker audio",
+      "mime": "audio/x-stm"
+    },
+    "stp": {
+      "name": "STEP 3D model",
+      "mime": "model/step"
+    },
+    "stw": {
+      "name": "OpenOffice.org 1.0 Writer template",
+      "mime": "application/vnd.sun.xml.writer.template"
+    },
+    "sty": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "sub": {
+      "name": "MPlayer subtitles",
+      "mime": "text/x-mpsub"
+    },
+    "sun": {
+      "name": "Sun raster image",
+      "mime": "image/x-sun-raster"
+    },
+    "sv": {
+      "name": "SystemVerilog source code",
+      "mime": "text/x-svsrc"
+    },
+    "sv4cpio": {
+      "name": "SV4 CPIO archive",
+      "mime": "application/x-sv4cpio"
+    },
+    "sv4crc": {
+      "name": "SV4 CPIO archive (with CRC)",
+      "mime": "application/x-sv4crc"
+    },
+    "svg": {
+      "name": "SVG image",
+      "mime": "image/svg+xml"
+    },
+    "svg.gz": {
+      "name": "Compressed SVG image",
+      "mime": "image/svg+xml-compressed"
+    },
+    "svgz": {
+      "name": "Compressed SVG image",
+      "mime": "image/svg+xml-compressed"
+    },
+    "svh": {
+      "name": "SystemVerilog header",
+      "mime": "text/x-svhdr"
+    },
+    "swap": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "swf": {
+      "name": "Shockwave Flash file",
+      "mime": "application/vnd.adobe.flash.movie"
+    },
+    "swm": {
+      "name": "WIM disk image",
+      "mime": "application/x-ms-wim"
+    },
+    "sxc": {
+      "name": "OpenOffice.org 1.0 Calc spreadsheet",
+      "mime": "application/vnd.sun.xml.calc"
+    },
+    "sxd": {
+      "name": "OpenOffice.org 1.0 Draw drawing",
+      "mime": "application/vnd.sun.xml.draw"
+    },
+    "sxg": {
+      "name": "OpenOffice.org 1.0 Writer global document",
+      "mime": "application/vnd.sun.xml.writer.global"
+    },
+    "sxi": {
+      "name": "OpenOffice.org 1.0 Impress presentation",
+      "mime": "application/vnd.sun.xml.impress"
+    },
+    "sxm": {
+      "name": "OpenOffice.org 1.0 Math formula",
+      "mime": "application/vnd.sun.xml.math"
+    },
+    "sxw": {
+      "name": "OpenOffice.org 1.0 Writer document",
+      "mime": "application/vnd.sun.xml.writer"
+    },
+    "sylk": {
+      "name": "Spreadsheet interchange document",
+      "mime": "application/x-sylk"
+    },
+    "sys": {
+      "name": "Windows or EFI program",
+      "mime": "application/vnd.microsoft.portable-executable"
+    },
+    "szx": {
+      "name": "ZX Spectrum SZX snapshot",
+      "mime": "application/x-spectrum-szx"
+    },
+    "t": {
+      "name": "Perl script",
+      "mime": "application/x-perl"
+    },
+    "t2t": {
+      "name": "txt2tags document",
+      "mime": "text/x-txt2tags"
+    },
+    "t64": {
+      "name": "Commodore tape image",
+      "mime": "application/x-commodore-tape"
+    },
+    "tab.sf3": {
+      "name": "SF3 Table",
+      "mime": "application/x.sf3-table"
+    },
+    "tak": {
+      "name": "TAK audio",
+      "mime": "audio/x-tak"
+    },
+    "tap": {
+      "name": "Commodore tape image",
+      "mime": "application/x-commodore-tape"
+    },
+    "tar": {
+      "name": "Tar archive",
+      "mime": "application/x-tar"
+    },
+    "tar.br": {
+      "name": "Tar archive (brotli-compressed)",
+      "mime": "application/x-brotli-compressed-tar"
+    },
+    "tar.bz": {
+      "name": "Tar archive (bzip1-compressed)",
+      "mime": "application/x-bzip1-compressed-tar"
+    },
+    "tar.bz2": {
+      "name": "Tar archive (bzip2-compressed)",
+      "mime": "application/x-bzip2-compressed-tar"
+    },
+    "tar.bz3": {
+      "name": "Tar archive (bzip3-compressed)",
+      "mime": "application/x-bzip3-compressed-tar"
+    },
+    "tar.gz": {
+      "name": "Tar archive (gzip-compressed)",
+      "mime": "application/x-compressed-tar"
+    },
+    "tar.lrz": {
+      "name": "Tar archive (lrzip-compressed)",
+      "mime": "application/x-lrzip-compressed-tar"
+    },
+    "tar.lz": {
+      "name": "Tar archive (lzip-compressed)",
+      "mime": "application/x-lzip-compressed-tar"
+    },
+    "tar.lz4": {
+      "name": "Tar archive (LZ4-compressed)",
+      "mime": "application/x-lz4-compressed-tar"
+    },
+    "tar.lzma": {
+      "name": "Tar archive (LZMA-compressed)",
+      "mime": "application/x-lzma-compressed-tar"
+    },
+    "tar.lzo": {
+      "name": "Tar archive (LZO-compressed)",
+      "mime": "application/x-tzo"
+    },
+    "tar.rz": {
+      "name": "Tar archive (rzip-compressed)",
+      "mime": "application/x-rzip-compressed-tar"
+    },
+    "tar.xz": {
+      "name": "Tar archive (XZ-compressed)",
+      "mime": "application/x-xz-compressed-tar"
+    },
+    "tar.z": {
+      "name": "Tar archive (compressed)",
+      "mime": "application/x-tarz"
+    },
+    "tar.zst": {
+      "name": "Tar archive (Zstandard-compressed)",
+      "mime": "application/x-zstd-compressed-tar"
+    },
+    "target": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "taz": {
+      "name": "Tar archive (compressed)",
+      "mime": "application/x-tarz"
+    },
+    "tb2": {
+      "name": "Tar archive (bzip2-compressed)",
+      "mime": "application/x-bzip2-compressed-tar"
+    },
+    "tbr": {
+      "name": "Tar archive (brotli-compressed)",
+      "mime": "application/x-brotli-compressed-tar"
+    },
+    "tbz": {
+      "name": "Tar archive (bzip1-compressed)",
+      "mime": "application/x-bzip1-compressed-tar"
+    },
+    "tbz2": {
+      "name": "Tar archive (bzip2-compressed)",
+      "mime": "application/x-bzip2-compressed-tar"
+    },
+    "tbz3": {
+      "name": "Tar archive (bzip3-compressed)",
+      "mime": "application/x-bzip3-compressed-tar"
+    },
+    "tcl": {
+      "name": "Tcl script",
+      "mime": "text/tcl"
+    },
+    "tex": {
+      "name": "TeX document",
+      "mime": "text/x-tex"
+    },
+    "texi": {
+      "name": "TeXInfo document",
+      "mime": "application/texinfo"
+    },
+    "texinfo": {
+      "name": "TeXInfo document",
+      "mime": "application/texinfo"
+    },
+    "tga": {
+      "name": "TGA image",
+      "mime": "image/x-tga"
+    },
+    "tgz": {
+      "name": "Tar archive (gzip-compressed)",
+      "mime": "application/x-compressed-tar"
+    },
+    "theme": {
+      "name": "Theme",
+      "mime": "application/x-theme"
+    },
+    "themepack": {
+      "name": "Microsoft Windows theme pack",
+      "mime": "application/x-windows-themepack"
+    },
+    "thmx": {
+      "name": "Microsoft Office 2007 theme",
+      "mime": "application/vnd.ms-officetheme"
+    },
+    "tic": {
+      "name": "TIC-80 cartridge",
+      "mime": "application/x-tic80-item"
+    },
+    "tif": {
+      "name": "TIFF image",
+      "mime": "image/tiff"
+    },
+    "tiff": {
+      "name": "TIFF image",
+      "mime": "image/tiff"
+    },
+    "tim": {
+      "name": "PlayStation graphics",
+      "mime": "image/x-tim"
+    },
+    "timer": {
+      "name": "Systemd unit file",
+      "mime": "text/x-systemd-unit"
+    },
+    "tk": {
+      "name": "Tcl script",
+      "mime": "text/tcl"
+    },
+    "tlrz": {
+      "name": "Tar archive (lrzip-compressed)",
+      "mime": "application/x-lrzip-compressed-tar"
+    },
+    "tlz": {
+      "name": "Tar archive (LZMA-compressed)",
+      "mime": "application/x-lzma-compressed-tar"
+    },
+    "tmx": {
+      "name": "Tiled map files",
+      "mime": "application/x-tiled-tmx"
+    },
+    "tnef": {
+      "name": "TNEF message",
+      "mime": "application/vnd.ms-tnef"
+    },
+    "tnf": {
+      "name": "TNEF message",
+      "mime": "application/vnd.ms-tnef"
+    },
+    "toc": {
+      "name": "CD Table Of Contents",
+      "mime": "application/x-cdrdao-toc"
+    },
+    "toml": {
+      "name": "TOML document",
+      "mime": "application/toml"
+    },
+    "torrent": {
+      "name": "BitTorrent seed file",
+      "mime": "application/x-bittorrent"
+    },
+    "tpic": {
+      "name": "TGA image",
+      "mime": "image/x-tga"
+    },
+    "tr": {
+      "name": "Troff document",
+      "mime": "text/troff"
+    },
+    "tres": {
+      "name": "Godot Engine resource",
+      "mime": "application/x-godot-resource"
+    },
+    "trig": {
+      "name": "TriG RDF document",
+      "mime": "application/trig"
+    },
+    "trz": {
+      "name": "Tar archive (rzip-compressed)",
+      "mime": "application/x-rzip-compressed-tar"
+    },
+    "ts": {
+      "name": "Message catalog",
+      "mime": "text/vnd.trolltech.linguist"
+    },
+    "tscn": {
+      "name": "Godot Engine scene",
+      "mime": "application/x-godot-scene"
+    },
+    "tsv": {
+      "name": "TSV document",
+      "mime": "text/tab-separated-values"
+    },
+    "tsx": {
+      "name": "Tiled tileset files",
+      "mime": "application/x-tiled-tsx"
+    },
+    "tta": {
+      "name": "TrueAudio audio",
+      "mime": "audio/x-tta"
+    },
+    "ttc": {
+      "name": "Font collection",
+      "mime": "font/collection"
+    },
+    "ttf": {
+      "name": "TrueType font",
+      "mime": "font/ttf"
+    },
+    "ttl": {
+      "name": "Turtle document",
+      "mime": "text/turtle"
+    },
+    "ttx": {
+      "name": "TrueType XML font",
+      "mime": "application/x-font-ttx"
+    },
+    "twig": {
+      "name": "Twig template",
+      "mime": "text/x-twig"
+    },
+    "txt": {
+      "name": "Plain text document",
+      "mime": "text/plain"
+    },
+    "txt.sf3": {
+      "name": "SF3 Rich Text",
+      "mime": "application/x.sf3-text"
+    },
+    "txz": {
+      "name": "Tar archive (XZ-compressed)",
+      "mime": "application/x-xz-compressed-tar"
+    },
+    "typ": {
+      "name": "Typst document",
+      "mime": "text/vnd.typst"
+    },
+    "tzo": {
+      "name": "Tar archive (LZO-compressed)",
+      "mime": "application/x-tzo"
+    },
+    "tzst": {
+      "name": "Tar archive (Zstandard-compressed)",
+      "mime": "application/x-zstd-compressed-tar"
+    },
+    "tzx": {
+      "name": "ZX Spectrum TZX tape image",
+      "mime": "application/x-spectrum-tzx"
+    },
+    "udeb": {
+      "name": "Debian package",
+      "mime": "application/vnd.debian.binary-package"
+    },
+    "ufraw": {
+      "name": "UFRaw ID image",
+      "mime": "application/x-ufraw"
+    },
+    "ui": {
+      "name": "Qt Designer interface document",
+      "mime": "application/x-designer"
+    },
+    "uil": {
+      "name": "X-Motif UIL table",
+      "mime": "text/x-uil"
+    },
+    "ult": {
+      "name": "UltraTracker audio",
+      "mime": "audio/x-ult"
+    },
+    "unf": {
+      "name": "NES ROM",
+      "mime": "application/x-nes-rom"
+    },
+    "uni": {
+      "name": "Composer 669 audio",
+      "mime": "audio/x-669"
+    },
+    "unif": {
+      "name": "NES ROM",
+      "mime": "application/x-nes-rom"
+    },
+    "url": {
+      "name": "Internet shortcut",
+      "mime": "application/x-mswinurl"
+    },
+    "ustar": {
+      "name": "Ustar archive",
+      "mime": "application/x-ustar"
+    },
+    "uue": {
+      "name": "uuencoded file",
+      "mime": "text/x-uuencode"
+    },
+    "v": {
+      "name": "Verilog source code",
+      "mime": "text/x-verilog"
+    },
+    "v64": {
+      "name": "Nintendo64 ROM",
+      "mime": "application/x-n64-rom"
+    },
+    "vala": {
+      "name": "Vala source code",
+      "mime": "text/x-vala"
+    },
+    "vapi": {
+      "name": "Vala source code",
+      "mime": "text/x-vala"
+    },
+    "vb": {
+      "name": "Virtual Boy ROM",
+      "mime": "application/x-virtual-boy-rom"
+    },
+    "vbe": {
+      "name": "Encoded VBScript program",
+      "mime": "text/vbscript.encode"
+    },
+    "vbs": {
+      "name": "VBScript program",
+      "mime": "text/vbscript"
+    },
+    "vcard": {
+      "name": "Electronic business card",
+      "mime": "text/vcard"
+    },
+    "vcf": {
+      "name": "Electronic business card",
+      "mime": "text/vcard"
+    },
+    "vcs": {
+      "name": "VCS/ICS calendar",
+      "mime": "text/calendar"
+    },
+    "vct": {
+      "name": "Electronic business card",
+      "mime": "text/vcard"
+    },
+    "vda": {
+      "name": "TGA image",
+      "mime": "image/x-tga"
+    },
+    "vdi": {
+      "name": "VDI disk image",
+      "mime": "application/x-vdi-disk"
+    },
+    "vec.sf3": {
+      "name": "SF3 Vector Graphic",
+      "mime": "image/x.sf3-vector"
+    },
+    "vhd": {
+      "name": "VHD disk image",
+      "mime": "application/x-vhd-disk"
+    },
+    "vhdl": {
+      "name": "VHDL source code",
+      "mime": "text/x-vhdl"
+    },
+    "vhdx": {
+      "name": "VHDX disk image",
+      "mime": "application/x-vhdx-disk"
+    },
+    "viv": {
+      "name": "Vivo video",
+      "mime": "video/vnd.vivo"
+    },
+    "vivo": {
+      "name": "Vivo video",
+      "mime": "video/vnd.vivo"
+    },
+    "vlc": {
+      "name": "Media playlist",
+      "mime": "audio/x-mpegurl"
+    },
+    "vmdk": {
+      "name": "VMDK disk image",
+      "mime": "application/x-vmdk-disk"
+    },
+    "vob": {
+      "name": "MPEG video",
+      "mime": "video/mpeg"
+    },
+    "voc": {
+      "name": "VOC audio",
+      "mime": "audio/x-voc"
+    },
+    "vor": {
+      "name": "StarWriter 5 document",
+      "mime": "application/vnd.stardivision.writer"
+    },
+    "vpc": {
+      "name": "VHD disk image",
+      "mime": "application/x-vhd-disk"
+    },
+    "vrm": {
+      "name": "VRML document",
+      "mime": "model/vrml"
+    },
+    "vrml": {
+      "name": "VRML document",
+      "mime": "model/vrml"
+    },
+    "vsd": {
+      "name": "Microsoft Visio document",
+      "mime": "application/vnd.visio"
+    },
+    "vsdm": {
+      "name": "Office Open XML Visio drawing",
+      "mime": "application/vnd.ms-visio.drawing.macroEnabled.main+xml"
+    },
+    "vsdx": {
+      "name": "Office Open XML Visio drawing",
+      "mime": "application/vnd.ms-visio.drawing.main+xml"
+    },
+    "vss": {
+      "name": "Microsoft Visio document",
+      "mime": "application/vnd.visio"
+    },
+    "vssm": {
+      "name": "Office Open XML Visio stencil",
+      "mime": "application/vnd.ms-visio.stencil.macroEnabled.main+xml"
+    },
+    "vssx": {
+      "name": "Office Open XML Visio stencil",
+      "mime": "application/vnd.ms-visio.stencil.main+xml"
+    },
+    "vst": {
+      "name": "TGA image",
+      "mime": "image/x-tga"
+    },
+    "vstm": {
+      "name": "Office Open XML Visio template",
+      "mime": "application/vnd.ms-visio.template.macroEnabled.main+xml"
+    },
+    "vstx": {
+      "name": "Office Open XML Visio template",
+      "mime": "application/vnd.ms-visio.template.main+xml"
+    },
+    "vsw": {
+      "name": "Microsoft Visio document",
+      "mime": "application/vnd.visio"
+    },
+    "vtt": {
+      "name": "WebVTT subtitles",
+      "mime": "text/vtt"
+    },
+    "vxd": {
+      "name": "32-bit DOS executable",
+      "mime": "application/x-lx-executable"
+    },
+    "wad": {
+      "name": "Doom WAD file",
+      "mime": "application/x-doom-wad"
+    },
+    "wasm": {
+      "name": "WASM binary module",
+      "mime": "application/wasm"
+    },
+    "wav": {
+      "name": "WAV audio",
+      "mime": "audio/vnd.wave"
+    },
+    "wax": {
+      "name": "Microsoft ASX playlist",
+      "mime": "audio/x-ms-asx"
+    },
+    "wb1": {
+      "name": "Quattro Pro spreadsheet",
+      "mime": "application/x-quattropro"
+    },
+    "wb2": {
+      "name": "Quattro Pro spreadsheet",
+      "mime": "application/x-quattropro"
+    },
+    "wb3": {
+      "name": "Quattro Pro spreadsheet",
+      "mime": "application/x-quattropro"
+    },
+    "wbmp": {
+      "name": "WBMP image",
+      "mime": "image/vnd.wap.wbmp"
+    },
+    "wcm": {
+      "name": "Microsoft Works document",
+      "mime": "application/vnd.ms-works"
+    },
+    "wdb": {
+      "name": "Microsoft Works document",
+      "mime": "application/vnd.ms-works"
+    },
+    "wdp": {
+      "name": "JPEG XR image",
+      "mime": "image/jxr"
+    },
+    "webm": {
+      "name": "WebM video",
+      "mime": "video/webm"
+    },
+    "webp": {
+      "name": "WebP image",
+      "mime": "image/webp"
+    },
+    "wia": {
+      "name": "Wii disc image",
+      "mime": "application/x-wii-rom"
+    },
+    "wim": {
+      "name": "WIM disk image",
+      "mime": "application/x-ms-wim"
+    },
+    "wk1": {
+      "name": "Lotus 1-2-3 spreadsheet",
+      "mime": "application/vnd.lotus-1-2-3"
+    },
+    "wk3": {
+      "name": "Lotus 1-2-3 spreadsheet",
+      "mime": "application/vnd.lotus-1-2-3"
+    },
+    "wk4": {
+      "name": "Lotus 1-2-3 spreadsheet",
+      "mime": "application/vnd.lotus-1-2-3"
+    },
+    "wkdownload": {
+      "name": "Partially downloaded file",
+      "mime": "application/x-partial-download"
+    },
+    "wks": {
+      "name": "Lotus 1-2-3 spreadsheet",
+      "mime": "application/vnd.lotus-1-2-3"
+    },
+    "wma": {
+      "name": "Windows Media audio",
+      "mime": "audio/x-ms-wma"
+    },
+    "wmf": {
+      "name": "WMF image",
+      "mime": "image/wmf"
+    },
+    "wml": {
+      "name": "WML document",
+      "mime": "text/vnd.wap.wml"
+    },
+    "wmls": {
+      "name": "WMLScript program",
+      "mime": "text/vnd.wap.wmlscript"
+    },
+    "wmv": {
+      "name": "Windows Media video",
+      "mime": "video/x-ms-wmv"
+    },
+    "wmx": {
+      "name": "Microsoft ASX playlist",
+      "mime": "audio/x-ms-asx"
+    },
+    "woff": {
+      "name": "WOFF font",
+      "mime": "font/woff"
+    },
+    "woff2": {
+      "name": "WOFF2 font",
+      "mime": "font/woff2"
+    },
+    "wp": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wp4": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wp5": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wp6": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wpd": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wpg": {
+      "name": "WordPerfect/Drawperfect image",
+      "mime": "application/x-wpg"
+    },
+    "wpl": {
+      "name": "WPL playlist",
+      "mime": "application/vnd.ms-wpl"
+    },
+    "wpp": {
+      "name": "WordPerfect document",
+      "mime": "application/vnd.wordperfect"
+    },
+    "wps": {
+      "name": "Microsoft Works document",
+      "mime": "application/vnd.ms-works"
+    },
+    "wri": {
+      "name": "WRI document",
+      "mime": "application/x-mswrite"
+    },
+    "wrl": {
+      "name": "VRML document",
+      "mime": "model/vrml"
+    },
+    "ws": {
+      "name": "Bandai WonderSwan ROM",
+      "mime": "application/x-wonderswan-rom"
+    },
+    "wsc": {
+      "name": "Bandai WonderSwan Color ROM",
+      "mime": "application/x-wonderswan-color-rom"
+    },
+    "wsgi": {
+      "name": "Python script",
+      "mime": "text/x-python"
+    },
+    "wv": {
+      "name": "WavPack audio",
+      "mime": "audio/x-wavpack"
+    },
+    "wvc": {
+      "name": "WavPack audio correction file",
+      "mime": "audio/x-wavpack-correction"
+    },
+    "wvp": {
+      "name": "WavPack audio",
+      "mime": "audio/x-wavpack"
+    },
+    "wvx": {
+      "name": "Microsoft ASX playlist",
+      "mime": "audio/x-ms-asx"
+    },
+    "wwf": {
+      "name": "WWF document",
+      "mime": "application/x-wwf"
+    },
+    "x3f": {
+      "name": "Sigma X3F raw image",
+      "mime": "image/x-sigma-x3f"
+    },
+    "x64": {
+      "name": "Commodore C64 headered disk image",
+      "mime": "application/x-commodore-x64-disk"
+    },
+    "xac": {
+      "name": "GnuCash financial data",
+      "mime": "application/x-gnucash"
+    },
+    "xar": {
+      "name": "XAR archive",
+      "mime": "application/x-xar"
+    },
+    "xbel": {
+      "name": "XBEL bookmarks",
+      "mime": "application/x-xbel"
+    },
+    "xbl": {
+      "name": "XML document",
+      "mime": "application/xml"
+    },
+    "xbm": {
+      "name": "XBM image",
+      "mime": "image/x-xbitmap"
+    },
+    "xcf": {
+      "name": "GIMP image",
+      "mime": "image/x-xcf"
+    },
+    "xcf.bz2": {
+      "name": "Compressed GIMP image",
+      "mime": "image/x-compressed-xcf"
+    },
+    "xcf.gz": {
+      "name": "Compressed GIMP image",
+      "mime": "image/x-compressed-xcf"
+    },
+    "xci": {
+      "name": "Nintendo Switch encrypted ROM",
+      "mime": "application/x-nintendo-switch-xci"
+    },
+    "xdgapp": {
+      "name": "Flatpak application bundle",
+      "mime": "application/vnd.flatpak"
+    },
+    "xhe": {
+      "name": "USAC audio",
+      "mime": "audio/usac"
+    },
+    "xht": {
+      "name": "XHTML page",
+      "mime": "application/xhtml+xml"
+    },
+    "xhtml": {
+      "name": "XHTML page",
+      "mime": "application/xhtml+xml"
+    },
+    "xi": {
+      "name": "FastTracker II instrument",
+      "mime": "audio/x-xi"
+    },
+    "xla": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xlam": {
+      "name": "Excel add-in",
+      "mime": "application/vnd.ms-excel.addin.macroEnabled.12"
+    },
+    "xlc": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xld": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xlf": {
+      "name": "XLIFF translation file",
+      "mime": "application/xliff+xml"
+    },
+    "xliff": {
+      "name": "XLIFF translation file",
+      "mime": "application/xliff+xml"
+    },
+    "xll": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xlm": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xlr": {
+      "name": "Microsoft Works document",
+      "mime": "application/vnd.ms-works"
+    },
+    "xls": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xlsb": {
+      "name": "Excel 2007 binary spreadsheet",
+      "mime": "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+    },
+    "xlsm": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel.sheet.macroEnabled.12"
+    },
+    "xlsx": {
+      "name": "Excel 2007 spreadsheet",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    },
+    "xlt": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xltm": {
+      "name": "Excel spreadsheet template",
+      "mime": "application/vnd.ms-excel.template.macroEnabled.12"
+    },
+    "xltx": {
+      "name": "Excel 2007 spreadsheet template",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.template"
+    },
+    "xlw": {
+      "name": "Excel spreadsheet",
+      "mime": "application/vnd.ms-excel"
+    },
+    "xm": {
+      "name": "FastTracker II audio",
+      "mime": "audio/x-xm"
+    },
+    "xmf": {
+      "name": "XMF audio",
+      "mime": "audio/x-xmf"
+    },
+    "xmi": {
+      "name": "XMI file",
+      "mime": "text/x-xmi"
+    },
+    "xml": {
+      "name": "XML document",
+      "mime": "application/xml"
+    },
+    "xo8": {
+      "name": "CHIP-8 program",
+      "mime": "application/x-chip8-program"
+    },
+    "xpi": {
+      "name": "XPInstall installer module",
+      "mime": "application/x-xpinstall"
+    },
+    "xpm": {
+      "name": "XPM image",
+      "mime": "image/x-xpixmap"
+    },
+    "xps": {
+      "name": "XPS document",
+      "mime": "application/vnd.ms-xpsdocument"
+    },
+    "xsd": {
+      "name": "XML document",
+      "mime": "application/xml"
+    },
+    "xsl": {
+      "name": "XSLT stylesheet",
+      "mime": "application/xslt+xml"
+    },
+    "xslfo": {
+      "name": "XSL FO file",
+      "mime": "text/x-xslfo"
+    },
+    "xslt": {
+      "name": "XSLT stylesheet",
+      "mime": "application/xslt+xml"
+    },
+    "xspf": {
+      "name": "XSPF playlist",
+      "mime": "application/xspf+xml"
+    },
+    "xul": {
+      "name": "XUL interface document",
+      "mime": "application/vnd.mozilla.xul+xml"
+    },
+    "xwd": {
+      "name": "X window image",
+      "mime": "image/x-xwindowdump"
+    },
+    "xyze": {
+      "name": "Radiance HDR image",
+      "mime": "image/vnd.radiance"
+    },
+    "xz": {
+      "name": "XZ archive",
+      "mime": "application/x-xz"
+    },
+    "yaml": {
+      "name": "YAML document",
+      "mime": "application/yaml"
+    },
+    "yml": {
+      "name": "YAML document",
+      "mime": "application/yaml"
+    },
+    "yt": {
+      "name": "YouTube media archive",
+      "mime": "video/vnd.youtube.yt"
+    },
+    "z": {
+      "name": "UNIX-compressed file",
+      "mime": "application/x-compress"
+    },
+    "z64": {
+      "name": "Nintendo64 ROM",
+      "mime": "application/x-n64-rom"
+    },
+    "z80": {
+      "name": "ZX Spectrum Z80 snapshot",
+      "mime": "application/x-spectrum-z80"
+    },
+    "zabw": {
+      "name": "AbiWord document",
+      "mime": "application/x-abiword"
+    },
+    "zim": {
+      "name": "OpenZIM file",
+      "mime": "application/x-openzim"
+    },
+    "zip": {
+      "name": "Zip archive",
+      "mime": "application/zip"
+    },
+    "zipx": {
+      "name": "Zip archive",
+      "mime": "application/zip"
+    },
+    "zoo": {
+      "name": "Zoo archive",
+      "mime": "application/x-zoo"
+    },
+    "zpaq": {
+      "name": "Zpaq Archive",
+      "mime": "application/x-zpaq"
+    },
+    "zsav": {
+      "name": "SPSS data file",
+      "mime": "application/x-spss-sav"
+    },
+    "zst": {
+      "name": "Zstandard archive",
+      "mime": "application/zstd"
+    },
+    "zx-state": {
+      "name": "ZX Spectrum SZX snapshot",
+      "mime": "application/x-spectrum-szx"
+    },
+    "zz": {
+      "name": "Zlib archive",
+      "mime": "application/zlib"
+    }
+  }
+}

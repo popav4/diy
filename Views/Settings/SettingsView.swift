@@ -31,7 +31,7 @@ struct SettingsView: View {
                     Label("About", systemImage: "info.circle")
                 }
         }
-        .frame(width: 480, height: 560)
+        .frame(width: 480, height: 700)
     }
 }
 
@@ -39,6 +39,7 @@ struct GeneralSettingsTab: View {
     @AppStorage("showPhysicalSize") private var showPhysicalSize = true
     @AppStorage("showPackageContents") private var showPackageContents = false
     @AppStorage("ignoreCreatorCodes") private var ignoreCreatorCodes = true
+    @AppStorage("useExternalFileKinds") private var useExternalFileKinds = true
     @AppStorage("collapseUnknownFileTypes") private var collapseUnknownFileTypes = true
     @AppStorage("showFreeSpace") private var showFreeSpace = true
     @AppStorage("showOtherSpace") private var showOtherSpace = true
@@ -64,6 +65,13 @@ struct GeneralSettingsTab: View {
 
                     Toggle("Ignore creator codes when determining file type", isOn: $ignoreCreatorCodes)
                         .help("Use file extension instead of legacy creator codes")
+
+                    Toggle("Use extended file type catalog for unknown types", isOn: $useExternalFileKinds)
+                        .help("When macOS cannot determine a known type, use bundled external catalog names for file extensions")
+
+                    Text("Applied on next scan/refresh.")
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
 
                     Toggle("Collapse unknown file types into one group", isOn: $collapseUnknownFileTypes)
                         .help("Display only known file types and merge unknown ones into a single entry and color")

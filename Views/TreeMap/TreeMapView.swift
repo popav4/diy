@@ -323,6 +323,7 @@ struct TreeMapView: View {
 
 struct InfoBar: View {
     let node: FileNode
+    @AppStorage("collapseUnknownFileTypes") private var collapseUnknownFileTypes = true
 
     var body: some View {
         HStack(spacing: 16) {
@@ -336,7 +337,7 @@ struct InfoBar: View {
 
             Spacer()
 
-            Text(node.kindName)
+            Text(kindCaption)
                 .foregroundStyle(.secondary)
 
             Text(FileSizeFormatter.string(from: node.size))
@@ -347,6 +348,19 @@ struct InfoBar: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
         .background(.ultraThinMaterial)
+    }
+}
+
+private extension InfoBar {
+    var kindCaption: String {
+        normalizedKindName(node.kindName)
+    }
+
+    func normalizedKindName(_ kindName: String) -> String {
+        if collapseUnknownFileTypes && kindName.hasPrefix(".") && kindName.hasSuffix(" file") {
+            return "Document"
+        }
+        return kindName
     }
 }
 
