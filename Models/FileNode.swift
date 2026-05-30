@@ -34,7 +34,7 @@ class FileNode: Identifiable {
     // MARK: - Initialization
 
     init(path: String, isDirectory: Bool = false, isPackage: Bool = false,
-         size: UInt64 = 0, type: FileNodeType = .regular) {
+         size: UInt64 = 0, type: FileNodeType = .regular, kindIdOverride: UInt16? = nil) {
         self.path = path
         self.isDirectory = isDirectory
         self.isPackage = isPackage
@@ -48,7 +48,9 @@ class FileNode: Identifiable {
         case .otherSpace:
             self.kindId = FileKindRegistry.otherSpaceKindId
         case .regular:
-            if isDirectory && !isPackage {
+            if let kindIdOverride {
+                self.kindId = kindIdOverride
+            } else if isDirectory && !isPackage {
                 self.kindId = FileKindRegistry.folderKindId
             } else {
                 let ext = (path as NSString).pathExtension

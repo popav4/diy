@@ -63,6 +63,7 @@ actor FileScanner {
     func scan(
         url: URL,
         showPackageContents: Bool,
+        ignoreCreatorCodes: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool = false,
         useParallelScanning: Bool = true,
@@ -76,6 +77,7 @@ actor FileScanner {
                     url: url,
                     parent: nil,
                     showPackageContents: showPackageContents,
+                    ignoreCreatorCodes: ignoreCreatorCodes,
                     usePhysicalSize: usePhysicalSize,
                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
@@ -86,6 +88,7 @@ actor FileScanner {
                     url: url,
                     parent: nil,
                     showPackageContents: showPackageContents,
+                    ignoreCreatorCodes: ignoreCreatorCodes,
                     usePhysicalSize: usePhysicalSize,
                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                     counter: counter,
@@ -149,6 +152,7 @@ actor FileScanner {
     private static func makeNode(
         url: URL,
         parent: FileNode?,
+        ignoreCreatorCodes: Bool,
         usePhysicalSize: Bool,
         counter: ProgressCounter,
         progress: @escaping @Sendable (String, Int, Int) -> Void
@@ -168,11 +172,23 @@ actor FileScanner {
         }
 
         // Use path directly - more memory efficient than storing URL
+        let kindIdOverride: UInt16?
+        if isDirectory && !isPackage {
+            kindIdOverride = FileKindRegistry.folderKindId
+        } else {
+            kindIdOverride = FileKindRegistry.shared.kindId(
+                forFileAtPath: url.path,
+                contentType: values.contentType,
+                ignoreCreatorCodes: ignoreCreatorCodes
+            )
+        }
+
         let node = FileNode(
             path: url.path,
             isDirectory: isDirectory,
             isPackage: isPackage,
-            size: isDirectory ? 0 : size
+            size: isDirectory ? 0 : size,
+            kindIdOverride: kindIdOverride
         )
         node.parent = parent
 
@@ -199,6 +215,7 @@ actor FileScanner {
         url: URL,
         parent: FileNode?,
         showPackageContents: Bool,
+        ignoreCreatorCodes: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
@@ -209,6 +226,7 @@ actor FileScanner {
         let (node, _, isPackage, shouldDescend) = try makeNode(
             url: url,
             parent: parent,
+            ignoreCreatorCodes: ignoreCreatorCodes,
             usePhysicalSize: usePhysicalSize,
             counter: counter,
             progress: progress
@@ -245,6 +263,7 @@ actor FileScanner {
                         let (fileNode, _, _, _) = try makeNode(
                             url: childURL,
                             parent: node,
+                            ignoreCreatorCodes: ignoreCreatorCodes,
                             usePhysicalSize: usePhysicalSize,
                             counter: counter,
                             progress: progress
@@ -270,6 +289,7 @@ actor FileScanner {
                                     url: dirURL,
                                     parent: node,
                                     showPackageContents: showPackageContents,
+                                    ignoreCreatorCodes: ignoreCreatorCodes,
                                     usePhysicalSize: usePhysicalSize,
                                     avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                                     counter: counter,
@@ -306,6 +326,7 @@ actor FileScanner {
         url: URL,
         parent: FileNode?,
         showPackageContents: Bool,
+        ignoreCreatorCodes: Bool,
         usePhysicalSize: Bool,
         avoidAPFSDataDuplication: Bool,
         counter: ProgressCounter,
@@ -316,6 +337,7 @@ actor FileScanner {
         let (node, _, isPackage, shouldDescend) = try makeNode(
             url: url,
             parent: parent,
+            ignoreCreatorCodes: ignoreCreatorCodes,
             usePhysicalSize: usePhysicalSize,
             counter: counter,
             progress: progress
@@ -344,6 +366,7 @@ actor FileScanner {
                         url: childURL,
                         parent: node,
                         showPackageContents: showPackageContents,
+                        ignoreCreatorCodes: ignoreCreatorCodes,
                         usePhysicalSize: usePhysicalSize,
                         avoidAPFSDataDuplication: avoidAPFSDataDuplication,
                         counter: counter,

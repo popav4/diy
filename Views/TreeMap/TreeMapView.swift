@@ -13,6 +13,7 @@ struct TreeMapView: View {
     @Binding var selectedNode: FileNode?
     let colorProvider: (String) -> Color
     let onZoomIntoNode: (FileNode) -> Void
+    @AppStorage("cushionShading") private var cushionShading = true
 
     @State private var hoveredNode: FileNode?
 
@@ -48,9 +49,13 @@ struct TreeMapView: View {
                         layoutCache.rects = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
                     }
 
-                    // Draw all rectangles with cushion shading
+                    // Draw all rectangles with selected shading mode
                     for rect in rects {
-                        drawCushion(rect, context: context)
+                        if cushionShading {
+                            drawCushion(rect, context: context)
+                        } else {
+                            drawFlat(rect, context: context)
+                        }
                     }
 
                     // Draw selection group border (bright red around entire folder contents)
@@ -128,6 +133,18 @@ struct TreeMapView: View {
         )
 
         // Label if rect is large enough (diagonal text fits in smaller rects)
+        if rect.width > 30 && rect.height > 16 {
+            drawLabel(treeRect.node.name, in: rect, context: context)
+        }
+    }
+
+    private func drawFlat(_ treeRect: TreeMapRect, context: GraphicsContext) {
+        let rect = treeRect.rect
+        guard rect.width >= 1, rect.height >= 1 else { return }
+
+        let fillPath = Path(rect)
+        context.fill(fillPath, with: .color(treeRect.color))
+
         if rect.width > 30 && rect.height > 16 {
             drawLabel(treeRect.node.name, in: rect, context: context)
         }

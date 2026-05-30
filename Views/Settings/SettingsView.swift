@@ -31,7 +31,7 @@ struct SettingsView: View {
                     Label("About", systemImage: "info.circle")
                 }
         }
-        .frame(width: 450, height: 300)
+        .frame(width: 480, height: 560)
     }
 }
 
@@ -39,46 +39,52 @@ struct GeneralSettingsTab: View {
     @AppStorage("showPhysicalSize") private var showPhysicalSize = true
     @AppStorage("showPackageContents") private var showPackageContents = false
     @AppStorage("ignoreCreatorCodes") private var ignoreCreatorCodes = true
+    @AppStorage("collapseUnknownFileTypes") private var collapseUnknownFileTypes = true
     @AppStorage("showFreeSpace") private var showFreeSpace = true
     @AppStorage("showOtherSpace") private var showOtherSpace = true
     @AppStorage("useParallelScanning") private var useParallelScanning = true
 
     var body: some View {
-        Form {
-            Section("File Sizes") {
-                Toggle("Show physical file size (disk space used)", isOn: $showPhysicalSize)
-                    .help("Recommended: ON. Matches real disk usage in macOS Disk Utility. If OFF, values switch to logical file sizes and may not match actual space used on APFS volumes.")
+        ScrollView {
+            Form {
+                Section("File Sizes") {
+                    Toggle("Show physical file size (disk space used)", isOn: $showPhysicalSize)
+                        .help("Recommended: ON. Matches real disk usage in macOS Disk Utility. If OFF, values switch to logical file sizes and may not match actual space used on APFS volumes.")
 
-                Text(showPhysicalSize
-                     ? "Recommended mode: values match actual disk usage."
-                     : "Logical-size mode is enabled: totals can diverge from actual used space in Disk Utility, especially on APFS.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    Text(showPhysicalSize
+                         ? "Recommended mode: values match actual disk usage."
+                         : "Logical-size mode is enabled: totals can diverge from actual used space in Disk Utility, especially on APFS.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Section("Packages & Bundles") {
+                    Toggle("Show package contents", isOn: $showPackageContents)
+                        .help("Display contents of application bundles and packages")
+
+                    Toggle("Ignore creator codes when determining file type", isOn: $ignoreCreatorCodes)
+                        .help("Use file extension instead of legacy creator codes")
+
+                    Toggle("Collapse unknown file types into one group", isOn: $collapseUnknownFileTypes)
+                        .help("Display only known file types and merge unknown ones into a single entry and color")
+                }
+
+                Section("Volume Display") {
+                    Toggle("Show free space", isOn: $showFreeSpace)
+                        .help("Display free space on the volume in the treemap")
+
+                    Toggle("Show other space", isOn: $showOtherSpace)
+                        .help("Display space used by other files on the volume")
+                }
+
+                Section("Scanning") {
+                    Toggle("Parallel scanning", isOn: $useParallelScanning)
+                        .help("Scan directories in parallel for faster results. Disable for sequential scanning if you experience issues.")
+                }
             }
-
-            Section("Packages & Bundles") {
-                Toggle("Show package contents", isOn: $showPackageContents)
-                    .help("Display contents of application bundles and packages")
-
-                Toggle("Ignore creator codes when determining file type", isOn: $ignoreCreatorCodes)
-                    .help("Use file extension instead of legacy creator codes")
-            }
-
-            Section("Volume Display") {
-                Toggle("Show free space", isOn: $showFreeSpace)
-                    .help("Display free space on the volume in the treemap")
-
-                Toggle("Show other space", isOn: $showOtherSpace)
-                    .help("Display space used by other files on the volume")
-            }
-
-            Section("Scanning") {
-                Toggle("Parallel scanning", isOn: $useParallelScanning)
-                    .help("Scan directories in parallel for faster results. Disable for sequential scanning if you experience issues.")
-            }
+            .formStyle(.grouped)
+            .padding()
         }
-        .formStyle(.grouped)
-        .padding()
     }
 }
 
@@ -137,11 +143,15 @@ struct AboutTab: View {
 
             Divider()
 
-            Text("Originally by Tjark Derlien")
+            Text("Original author: Tjark Derlien")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
 
             Text("Swift rewrite - 2024")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+
+            Text("Fork and ongoing development - 2026: Alexander Popov")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
 

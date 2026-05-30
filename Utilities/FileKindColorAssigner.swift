@@ -51,6 +51,7 @@ class FileKindColorAssigner {
         let rawPredefined: [String: (CGFloat, CGFloat, CGFloat)] = [
             "Folder": (0.58, 0.58, 0.62),
             "Document": (0.66, 0.55, 0.40),
+            "Collapsed Unknown": (0.62, 0.62, 0.66),
             "Free Space": (0.72, 0.72, 0.76),
             "Other Space": (0.62, 0.62, 0.66),
             "Application": (0.34, 0.55, 0.74),

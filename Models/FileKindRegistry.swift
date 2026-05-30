@@ -76,6 +76,44 @@ final class FileKindRegistry: @unchecked Sendable {
         return newId
     }
 
+    /// Get kind ID for a specific file with optional metadata-aware resolution.
+    /// - When ignoreCreatorCodes is true, uses extension-only logic.
+    /// - When ignoreCreatorCodes is false, first prefers resource contentType description.
+    func kindId(forFileAtPath path: String, contentType: UTType?, ignoreCreatorCodes: Bool) -> UInt16 {
+        if ignoreCreatorCodes {
+            return kindId(forExtension: (path as NSString).pathExtension)
+        }
+
+        let ext = (path as NSString).pathExtension.lowercased()
+        let kindName: String
+
+        // Metadata/content-based type from the OS has priority in this mode.
+        if let contentType,
+           let description = contentType.localizedDescription,
+           !description.isEmpty {
+            kindName = description
+        } else if let utType = UTType(filenameExtension: ext),
+                  let description = utType.localizedDescription,
+                  !utType.identifier.hasPrefix("dyn.") {
+            kindName = description
+        } else {
+            kindName = ext.isEmpty ? "Document" : ".\(ext.uppercased()) file"
+        }
+
+        lock.lock()
+        if let existingIndex = idToKindName.firstIndex(of: kindName) {
+            let id = UInt16(existingIndex)
+            lock.unlock()
+            return id
+        }
+
+        let newId = UInt16(idToKindName.count)
+        idToKindName.append(kindName)
+        lock.unlock()
+
+        return newId
+    }
+
     /// Get kind name for display (fast lookup)
     func kindName(for kindId: UInt16) -> String {
         lock.lock()

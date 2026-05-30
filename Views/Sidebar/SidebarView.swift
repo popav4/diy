@@ -35,7 +35,10 @@ struct SidebarView: View {
             if !appState.kindStatistics.isEmpty {
                 Section("File Types") {
                     ForEach(appState.kindStatistics) { stat in
-                        FileKindRow(statistic: stat)
+                        FileKindRow(
+                            statistic: stat,
+                            displayName: appState.displayKindName(for: stat.kindName)
+                        )
                             .tag(stat.kindName)
                     }
                 }
@@ -48,6 +51,7 @@ struct SidebarView: View {
 
 struct FileKindRow: View {
     let statistic: FileKindStatistic
+    let displayName: String
 
     var body: some View {
         HStack(spacing: 8) {
@@ -56,7 +60,7 @@ struct FileKindRow: View {
                 .frame(width: 12, height: 12)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(statistic.kindName)
+                Text(displayName)
                     .lineLimit(1)
 
                 Text("\(statistic.formattedCount) files")
