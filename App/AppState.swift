@@ -67,7 +67,7 @@ class AppState: ObservableObject {
     private let bookmarkKey = "securityScopedBookmark.selectedFolder"
     private var userDefaultsObserver: NSObjectProtocol?
     private nonisolated static let collapsedUnknownKindKey = "Collapsed Unknown"
-    private nonisolated static let collapsedUnknownDisplayName = "Document"
+    private nonisolated static let collapsedUnknownDisplayName = "Unknown"
     private nonisolated static let mixedExtensionKey = "*"
 
     init() {
@@ -281,10 +281,10 @@ class AppState: ObservableObject {
             }.value
 
             kindStatistics = stats.map { kind, stat in
-                let key = Self.parseStorageKindKey(kind)
+                let extensionDisplay = stat.extensions.count == 1 ? stat.extensions.first : nil
                 return FileKindStatistic(
-                    kindName: key.kindName,
-                    extensionDisplay: key.extensionKey == Self.mixedExtensionKey ? "various" : key.extensionKey,
+                    kindName: kind,
+                    extensionDisplay: extensionDisplay,
                     kindSource: stat.source,
                     count: stat.count,
                     totalSize: stat.size,
@@ -308,11 +308,11 @@ class AppState: ObservableObject {
     private nonisolated static func collectStatistics(
         from root: FileNode,
         collapseUnknownFileTypes: Bool
-    ) -> [String: (count: Int, size: UInt64, source: FileKindSource)] {
-        var stats: [String: (count: Int, size: UInt64, source: FileKindSource)] = [:]
+    ) -> [String: (count: Int, size: UInt64, source: FileKindSource, extensions: Set<String>)] {
+        var stats: [String: (count: Int, size: UInt64, source: FileKindSource, extensions: Set<String>)] = [:]
 
         func collect(_ node: FileNode) {
-            if !node.isDirectory {
+            if !node.isDirectory && node.type == .regular {
                 let kind: String
                 let source: FileKindSource
                 if collapseUnknownFileTypes && Self.isUnknownKindName(node.kindName) {
@@ -327,12 +327,16 @@ class AppState: ObservableObject {
                     kind = Self.storageKindKey(
                         kindName: node.kindName,
                         source: source,
-                        extensionKey: node.pathExtension.lowercased()
+                        extensionKey: ""
                     )
                 }
-                var stat = stats[kind] ?? (count: 0, size: 0, source: source)
+                var stat = stats[kind] ?? (count: 0, size: 0, source: source, extensions: [])
                 stat.count += 1
                 stat.size += node.size
+                let extensionKey = node.pathExtension.lowercased()
+                if !extensionKey.isEmpty {
+                    stat.extensions.insert(extensionKey)
+                }
                 stats[kind] = stat
             }
 
@@ -377,7 +381,7 @@ class AppState: ObservableObject {
     }
 
     private nonisolated static func parseStorageKindKey(_ key: String) -> (source: FileKindSource, kindName: String, extensionKey: String) {
-        let parts = key.split(separator: "|", maxSplits: 2).map(String.init)
+        let parts = key.split(separator: "|", maxSplits: 2, omittingEmptySubsequences: false).map(String.init)
         guard parts.count == 3 else {
             return (.macOS, key, "")
         }

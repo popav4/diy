@@ -172,7 +172,7 @@ struct FileRow: View {
 
     private func normalizedKindName(_ kindName: String) -> String {
         if collapseUnknownFileTypes && kindName.hasPrefix(".") && kindName.hasSuffix(" file") {
-            return "Document"
+            return "Unknown"
         }
         return kindName
     }
