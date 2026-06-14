@@ -49,49 +49,136 @@ struct GeneralSettingsTab: View {
         ScrollView {
             Form {
                 Section("File Sizes") {
-                    Toggle("Show physical file size (disk space used)", isOn: $showPhysicalSize)
-                        .help("Recommended: ON. Matches real disk usage in macOS Disk Utility. If OFF, values switch to logical file sizes and may not match actual space used on APFS volumes.")
-
-                    Text(showPhysicalSize
-                         ? "Recommended mode: values match actual disk usage."
-                         : "Logical-size mode is enabled: totals can diverge from actual used space in Disk Utility, especially on APFS.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    SettingsToggleRow(
+                        title: "Show physical file size (disk space used)",
+                        detail: showPhysicalSize
+                            ? "Recommended mode: values match actual disk usage."
+                            : "Logical-size mode is enabled: totals can diverge from actual used space in Disk Utility, especially on APFS.",
+                        isOn: $showPhysicalSize
+                    )
+                    .help("Recommended: ON. Matches real disk usage in macOS Disk Utility. If OFF, values switch to logical file sizes and may not match actual space used on APFS volumes.")
                 }
 
                 Section("Packages & Bundles") {
-                    Toggle("Show package contents", isOn: $showPackageContents)
+                    SettingsToggleRow("Show package contents", isOn: $showPackageContents)
                         .help("Display contents of application bundles and packages")
 
-                    Toggle("Ignore creator codes when determining file type", isOn: $ignoreCreatorCodes)
+                    SettingsToggleRow("Ignore creator codes when determining file type", isOn: $ignoreCreatorCodes)
                         .help("Use file extension instead of legacy creator codes")
 
-                    Toggle("Use extended file type catalog for unknown types", isOn: $useExternalFileKinds)
+                    SettingsToggleRow("Use extended file type catalog for unknown types", isOn: $useExternalFileKinds)
                         .help("When macOS cannot determine a known type, use bundled external catalog names for file extensions")
 
-                    Text("Applied on next scan/refresh.")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-
-                    Toggle("Collapse unknown file types into one group", isOn: $collapseUnknownFileTypes)
+                    SettingsToggleRow("Collapse unknown file types into one group", isOn: $collapseUnknownFileTypes)
                         .help("Display only known file types and merge unknown ones into a single entry and color")
                 }
 
                 Section("Volume Display") {
-                    Toggle("Show free space", isOn: $showFreeSpace)
+                    SettingsToggleRow("Show free space", isOn: $showFreeSpace)
                         .help("Display free space on the volume in the treemap")
 
-                    Toggle("Show other space", isOn: $showOtherSpace)
+                    SettingsToggleRow("Show other space", isOn: $showOtherSpace)
                         .help("Display space used by other files on the volume")
                 }
 
                 Section("Scanning") {
-                    Toggle("Parallel scanning", isOn: $useParallelScanning)
+                    SettingsToggleRow("Parallel scanning", isOn: $useParallelScanning)
                         .help("Scan directories in parallel for faster results. Disable for sequential scanning if you experience issues.")
                 }
             }
             .formStyle(.grouped)
             .padding()
+        }
+    }
+}
+
+private struct SettingsValueRow<Content: View>: View {
+    let title: String
+    let detail: String?
+    @ViewBuilder let content: Content
+
+    init(_ title: String, detail: String? = nil, @ViewBuilder content: () -> Content = { EmptyView() }) {
+        self.title = title
+        self.detail = detail
+        self.content = content()
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                if let detail {
+                    Text(detail)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .textSelection(.enabled)
+                }
+            }
+
+            content
+        }
+    }
+}
+
+private struct SettingsToggleRow: View {
+    let title: String
+    let detail: String?
+    @Binding var isOn: Bool
+
+    init(_ title: String, detail: String? = nil, isOn: Binding<Bool>) {
+        self.title = title
+        self.detail = detail
+        self._isOn = isOn
+    }
+
+    init(title: String, detail: String? = nil, isOn: Binding<Bool>) {
+        self.title = title
+        self.detail = detail
+        self._isOn = isOn
+    }
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                if let detail {
+                    Text(detail)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+
+            Spacer(minLength: 16)
+
+            Toggle(title, isOn: $isOn)
+                .labelsHidden()
+                .toggleStyle(.switch)
+        }
+    }
+}
+
+private struct SettingsSectionHeader: View {
+    let title: String
+    let detail: String?
+
+    init(_ title: String, detail: String? = nil) {
+        self.title = title
+        self.detail = detail
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(title)
+            if let detail {
+                Text(detail)
+                    .font(.caption)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+                    .textCase(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
     }
 }
@@ -102,32 +189,43 @@ struct TreeMapSettingsTab: View {
     @AppStorage("minRectSize") private var minRectSize = 3.0
 
     var body: some View {
-        Form {
-            Section("Appearance") {
-                Toggle("Cushion shading", isOn: $cushionShading)
+        ScrollView {
+            Form {
+                Section("Appearance") {
+                    SettingsToggleRow("Cushion shading", isOn: $cushionShading)
                     .help("Apply gradient shading for a 3D cushion effect")
 
-                Toggle("Show file name labels", isOn: $showLabels)
-                    .help("Display file names on treemap rectangles")
-            }
-
-            Section("Performance") {
-                Slider(value: $minRectSize, in: 1...10, step: 1) {
-                    Text("Minimum rectangle size")
-                } minimumValueLabel: {
-                    Text("1")
-                } maximumValueLabel: {
-                    Text("10")
+                    SettingsToggleRow("Show file name labels", isOn: $showLabels)
+                        .help("Display file names on treemap rectangles")
                 }
-                .help("Minimum size in pixels for treemap rectangles")
 
-                Text("Smaller values show more detail but may be slower")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                Section("Performance") {
+                    SettingsValueRow(
+                        "Minimum rectangle size",
+                        detail: "Smaller values show more detail but may be slower"
+                    ) {
+                        HStack {
+                            Slider(value: $minRectSize, in: 1...10, step: 1) {
+                                Text("Minimum rectangle size")
+                            } minimumValueLabel: {
+                                Text("1")
+                            } maximumValueLabel: {
+                                Text("10")
+                            }
+                            .labelsHidden()
+
+                            Text("\(Int(minRectSize)) px")
+                                .monospacedDigit()
+                                .foregroundStyle(.secondary)
+                                .frame(width: 42, alignment: .trailing)
+                        }
+                    }
+                    .help("Minimum size in pixels for treemap rectangles")
+                }
             }
+            .formStyle(.grouped)
+            .padding()
         }
-        .formStyle(.grouped)
-        .padding()
     }
 }
 
@@ -178,47 +276,45 @@ private struct LogsSettingsTab: View {
     private var isTreeMapLayoutDiagnosticsEnabled = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Toggle("Enable logging", isOn: $isLoggingEnabled)
+        ScrollView {
+            Form {
+                Section("Logging") {
+                    SettingsToggleRow("Enable logging", isOn: $isLoggingEnabled)
 
-            Text("Current log file")
-                .font(.headline)
+                    SettingsValueRow("Current log file", detail: AppLogger.shared.logFileURL.path) {
+                        HStack(spacing: 12) {
+                            Button("Open Log") {
+                                NSWorkspace.shared.open(AppLogger.shared.logFileURL)
+                            }
+                            .disabled(!isLoggingEnabled)
 
-            Text(AppLogger.shared.logFileURL.path)
-                .font(.system(size: 12, weight: .regular, design: .monospaced))
-                .lineLimit(3)
-                .textSelection(.enabled)
+                            Button("Open Log Folder") {
+                                NSWorkspace.shared.open(AppLogger.shared.logFileURL.deletingLastPathComponent())
+                            }
+                            .disabled(!isLoggingEnabled)
 
-            HStack(spacing: 12) {
-                Button("Open Log") {
-                    NSWorkspace.shared.open(AppLogger.shared.logFileURL)
+                            Button("Clear Log") {
+                                AppLogger.shared.clearLog()
+                            }
+                            .disabled(!isLoggingEnabled)
+                        }
+                    }
                 }
-                .disabled(!isLoggingEnabled)
 
-                Button("Open Log Folder") {
-                    NSWorkspace.shared.open(AppLogger.shared.logFileURL.deletingLastPathComponent())
+                Section {
+                    SettingsToggleRow("TreeMap layout diagnostics", isOn: $isTreeMapLayoutDiagnosticsEnabled)
+                        .help("Temporary diagnostics can produce large logs and reduce performance. Keep them disabled unless you are actively investigating a specific issue.")
+                        .disabled(!isLoggingEnabled)
+                } header: {
+                    SettingsSectionHeader(
+                        "Temporary diagnostics",
+                        detail: "Enable only while investigating a specific issue. These diagnostics can produce large logs and reduce performance."
+                    )
                 }
-                .disabled(!isLoggingEnabled)
-
-                Button("Clear Log") {
-                    AppLogger.shared.clearLog()
-                }
-                .disabled(!isLoggingEnabled)
             }
-
-            Divider()
-                .padding(.vertical, 4)
-
-            Text("Temporary diagnostics")
-                .font(.headline)
-
-            Toggle("TreeMap layout diagnostics", isOn: $isTreeMapLayoutDiagnosticsEnabled)
-                .help("Log lost treemap layout bytes and skipped rectangles while investigating blank treemap areas")
-                .disabled(!isLoggingEnabled)
-
-            Spacer()
+            .formStyle(.grouped)
+            .padding()
         }
-        .padding()
     }
 }
 

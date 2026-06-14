@@ -14,6 +14,7 @@ struct TreeMapView: View {
     let colorProvider: (String) -> Color
     let onZoomIntoNode: (FileNode) -> Void
     @AppStorage("cushionShading") private var cushionShading = true
+    @AppStorage("minRectSize") private var minRectSize = 3.0
 
     @State private var hoveredNode: FileNode?
 
@@ -22,6 +23,7 @@ struct TreeMapView: View {
         var rects: [ObjectIdentifier: TreeMapRect] = [:]
         var cachedSize: CGSize = .zero
         var cachedRootId: ObjectIdentifier?
+        var cachedMinRectSize: Double = 3.0
         var cachedRectList: [TreeMapRect] = []
     }
     private let layoutCache = LayoutCache()
@@ -34,19 +36,26 @@ struct TreeMapView: View {
                     let rootId = ObjectIdentifier(root)
                     let rects: [TreeMapRect]
 
-                    if layoutCache.cachedSize == size && layoutCache.cachedRootId == rootId {
+                    if layoutCache.cachedSize == size
+                        && layoutCache.cachedRootId == rootId
+                        && layoutCache.cachedMinRectSize == minRectSize {
                         rects = layoutCache.cachedRectList
                     } else {
                         rects = TreeMapLayout.layout(
                             node: root,
                             rect: CGRect(origin: .zero, size: size),
-                            colorProvider: colorProvider
+                            colorProvider: colorProvider,
+                            minRectSize: minRectSize
                         )
                         // Cache for next draw
                         layoutCache.cachedSize = size
                         layoutCache.cachedRootId = rootId
+                        layoutCache.cachedMinRectSize = minRectSize
                         layoutCache.cachedRectList = rects
-                        layoutCache.rects = Dictionary(uniqueKeysWithValues: rects.map { (ObjectIdentifier($0.node), $0) })
+                        layoutCache.rects = Dictionary(
+                            rects.map { (ObjectIdentifier($0.node), $0) },
+                            uniquingKeysWith: { first, _ in first }
+                        )
                     }
 
                     // Draw all rectangles with selected shading mode
@@ -134,7 +143,7 @@ struct TreeMapView: View {
 
         // Label if rect is large enough (diagonal text fits in smaller rects)
         if rect.width > 30 && rect.height > 16 {
-            drawLabel(treeRect.node.name, in: rect, context: context)
+            drawLabel(treeRect.label ?? treeRect.node.name, in: rect, context: context)
         }
     }
 
@@ -146,7 +155,7 @@ struct TreeMapView: View {
         context.fill(fillPath, with: .color(treeRect.color))
 
         if rect.width > 30 && rect.height > 16 {
-            drawLabel(treeRect.node.name, in: rect, context: context)
+            drawLabel(treeRect.label ?? treeRect.node.name, in: rect, context: context)
         }
     }
 

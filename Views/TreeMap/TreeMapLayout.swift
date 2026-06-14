@@ -13,6 +13,8 @@ struct TreeMapRect {
     var rect: CGRect
     let color: Color
     let depth: Int  // Nesting depth for cushion shading
+    let representedSize: UInt64
+    let label: String?
 }
 
 enum TreeMapLayout {
@@ -41,11 +43,18 @@ enum TreeMapLayout {
         }
     }
 
+    private struct SmallItemAggregate {
+        var rect: CGRect
+        var size: UInt64
+        var count: Int
+    }
+
     /// Calculates treemap layout for the given node and its children
     static func layout(
         node: FileNode,
         rect: CGRect,
         colorProvider: (String) -> Color,
+        minRectSize: Double = 3.0,
         depth: Int = 0,
         maxDepth: Int = 30
     ) -> [TreeMapRect] {
@@ -56,12 +65,14 @@ enum TreeMapLayout {
 
         // If no children or at max depth, this is a leaf
         guard !sorted.isEmpty, depth < maxDepth else {
-            if rect.width >= 1 && rect.height >= 1 {
+            if rect.width >= minRectSize && rect.height >= minRectSize {
                 results.append(TreeMapRect(
                     node: node,
                     rect: rect,
                     color: colorProvider(node.kindName),
-                    depth: depth
+                    depth: depth,
+                    representedSize: node.size,
+                    label: nil
                 ))
             }
             return results
@@ -130,6 +141,27 @@ enum TreeMapLayout {
             }
 
             var left = parentLeft
+            var smallAggregate: SmallItemAggregate?
+
+            func flushSmallAggregate() {
+                guard let aggregate = smallAggregate else { return }
+                defer { smallAggregate = nil }
+
+                if let visibleRect = visibleRect(for: aggregate.rect, within: rect, minSize: minRectSize) {
+                    results.append(TreeMapRect(
+                        node: node,
+                        rect: visibleRect,
+                        color: mutedColor(colorProvider(node.kindName)),
+                        depth: depth + 1,
+                        representedSize: aggregate.size,
+                        label: "Small items"
+                    ))
+                    diagnostics.visibleBytes = addSaturating(diagnostics.visibleBytes, aggregate.size)
+                } else {
+                    diagnostics.skippedSmallNodes += aggregate.count
+                    diagnostics.skippedSmallBytes = addSaturating(diagnostics.skippedSmallBytes, aggregate.size)
+                }
+            }
 
             for (colIndex, child) in row.children.enumerated() {
                 var right = left + CGFloat(child.width) * parentWidth
@@ -147,42 +179,66 @@ enum TreeMapLayout {
                 }
 
                 // Skip very small rectangles
-                if childRect.width >= 1 && childRect.height >= 1 {
+                if childRect.width >= minRectSize && childRect.height >= minRectSize {
+                    flushSmallAggregate()
+
                     // Recursively layout children if this is a directory
                     if child.node.isDirectory && !child.node.children.isEmpty {
                         let childRects = layout(
                             node: child.node,
                             rect: childRect,
                             colorProvider: colorProvider,
+                            minRectSize: minRectSize,
                             depth: depth + 1,
                             maxDepth: maxDepth
                         )
                         if childRects.isEmpty {
-                            diagnostics.emptyRecursiveNodes += 1
-                            diagnostics.emptyRecursiveBytes = addSaturating(diagnostics.emptyRecursiveBytes, child.node.size)
+                            results.append(TreeMapRect(
+                                node: child.node,
+                                rect: childRect,
+                                color: colorProvider(child.node.kindName),
+                                depth: depth + 1,
+                                representedSize: child.node.size,
+                                label: nil
+                            ))
+                            diagnostics.visibleBytes = addSaturating(diagnostics.visibleBytes, child.node.size)
                         } else {
                             diagnostics.visibleBytes = addSaturating(
                                 diagnostics.visibleBytes,
-                                sumSizes(childRects.map(\.node))
+                                sumRepresentedSizes(childRects)
                             )
+                            results.append(contentsOf: childRects)
                         }
-                        results.append(contentsOf: childRects)
                     } else {
                         results.append(TreeMapRect(
                             node: child.node,
                             rect: childRect,
                             color: colorProvider(child.node.kindName),
-                            depth: depth + 1
+                            depth: depth + 1,
+                            representedSize: child.node.size,
+                            label: nil
                         ))
                         diagnostics.visibleBytes = addSaturating(diagnostics.visibleBytes, child.node.size)
                     }
                 } else {
-                    diagnostics.skippedSmallNodes += 1
-                    diagnostics.skippedSmallBytes = addSaturating(diagnostics.skippedSmallBytes, child.node.size)
+                    if var aggregate = smallAggregate {
+                        aggregate.rect = aggregate.rect.union(childRect)
+                        aggregate.size = addSaturating(aggregate.size, child.node.size)
+                        aggregate.count += 1
+                        smallAggregate = aggregate
+                    } else {
+                        smallAggregate = SmallItemAggregate(
+                            rect: childRect,
+                            size: child.node.size,
+                            count: 1
+                        )
+                    }
                 }
 
                 left = right
             }
+
+            flushSmallAggregate()
 
             top = bottom
         }
@@ -287,6 +343,49 @@ enum TreeMapLayout {
         nodes.reduce(UInt64(0)) { partialSize, node in
             addSaturating(partialSize, node.size)
         }
+    }
+
+    private static func sumRepresentedSizes<S: Sequence>(_ rects: S) -> UInt64 where S.Element == TreeMapRect {
+        rects.reduce(UInt64(0)) { partialSize, rect in
+            addSaturating(partialSize, rect.representedSize)
+        }
+    }
+
+    private static func mutedColor(_ color: Color) -> Color {
+        guard let rgbColor = NSColor(color).usingColorSpace(.sRGB) else {
+            return Color(white: 0.62)
+        }
+
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        rgbColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+
+        let mutedSaturation = saturation * 0.35
+        let mutedBrightness = min(0.82, max(0.48, brightness * 0.92))
+
+        return Color(
+            hue: Double(hue),
+            saturation: Double(mutedSaturation),
+            brightness: Double(mutedBrightness),
+            opacity: 1.0
+        )
+    }
+
+    private static func visibleRect(for rect: CGRect, within bounds: CGRect, minSize: Double) -> CGRect? {
+        guard rect.width > 0, rect.height > 0, bounds.width > 0, bounds.height > 0 else { return nil }
+
+        let targetWidth = min(max(rect.width, minSize), bounds.width)
+        let targetHeight = min(max(rect.height, minSize), bounds.height)
+        let centerX = rect.midX
+        let centerY = rect.midY
+
+        let minX = min(max(centerX - targetWidth / 2, bounds.minX), bounds.maxX - targetWidth)
+        let minY = min(max(centerY - targetHeight / 2, bounds.minY), bounds.maxY - targetHeight)
+
+        return CGRect(x: minX, y: minY, width: targetWidth, height: targetHeight)
     }
 
     private static func addSaturating(_ lhs: UInt64, _ rhs: UInt64) -> UInt64 {
