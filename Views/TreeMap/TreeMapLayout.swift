@@ -20,6 +20,27 @@ enum TreeMapLayout {
     /// Minimum aspect ratio for rectangles (prevents very thin rectangles)
     private static let minProportion: Double = 0.4
 
+    private struct LayoutDiagnostics {
+        var visibleBytes: UInt64 = 0
+        var skippedSmallNodes = 0
+        var skippedSmallBytes: UInt64 = 0
+        var emptyRecursiveNodes = 0
+        var emptyRecursiveBytes: UInt64 = 0
+        var unprocessedNodes = 0
+        var unprocessedBytes: UInt64 = 0
+
+        var lostNodes: Int {
+            skippedSmallNodes + emptyRecursiveNodes + unprocessedNodes
+        }
+
+        var lostBytes: UInt64 {
+            TreeMapLayout.addSaturating(
+                TreeMapLayout.addSaturating(skippedSmallBytes, emptyRecursiveBytes),
+                unprocessedBytes
+            )
+        }
+    }
+
     /// Calculates treemap layout for the given node and its children
     static func layout(
         node: FileNode,
@@ -48,6 +69,7 @@ enum TreeMapLayout {
         let totalWeight = Double(node.size)
 
         guard totalWeight > 0 else { return results }
+        var diagnostics = LayoutDiagnostics()
 
         // Determine if rows should be horizontal or vertical
         let horizontal = rect.width >= rect.height
@@ -81,6 +103,12 @@ enum TreeMapLayout {
 
             rows.append((rowHeight, rowChildren))
             childIndex += childsUsed
+        }
+
+        if childIndex < sorted.count {
+            let unprocessed = sorted[childIndex...]
+            diagnostics.unprocessedNodes = unprocessed.count
+            diagnostics.unprocessedBytes = sumSizes(unprocessed)
         }
 
         // Layout the rows
@@ -129,6 +157,15 @@ enum TreeMapLayout {
                             depth: depth + 1,
                             maxDepth: maxDepth
                         )
+                        if childRects.isEmpty {
+                            diagnostics.emptyRecursiveNodes += 1
+                            diagnostics.emptyRecursiveBytes = addSaturating(diagnostics.emptyRecursiveBytes, child.node.size)
+                        } else {
+                            diagnostics.visibleBytes = addSaturating(
+                                diagnostics.visibleBytes,
+                                sumSizes(childRects.map(\.node))
+                            )
+                        }
                         results.append(contentsOf: childRects)
                     } else {
                         results.append(TreeMapRect(
@@ -137,7 +174,11 @@ enum TreeMapLayout {
                             color: colorProvider(child.node.kindName),
                             depth: depth + 1
                         ))
+                        diagnostics.visibleBytes = addSaturating(diagnostics.visibleBytes, child.node.size)
                     }
+                } else {
+                    diagnostics.skippedSmallNodes += 1
+                    diagnostics.skippedSmallBytes = addSaturating(diagnostics.skippedSmallBytes, child.node.size)
                 }
 
                 left = right
@@ -146,6 +187,7 @@ enum TreeMapLayout {
             top = bottom
         }
 
+        logDiagnosticsIfNeeded(for: node, rect: rect, depth: depth, diagnostics: diagnostics)
         return results
     }
 
@@ -210,5 +252,52 @@ enum TreeMapLayout {
         }
 
         return (rowHeight, childWidths, childsUsed)
+    }
+
+    private static func logDiagnosticsIfNeeded(
+        for node: FileNode,
+        rect: CGRect,
+        depth: Int,
+        diagnostics: LayoutDiagnostics
+    ) {
+        guard AppLogger.shared.isTreeMapLayoutDiagnosticsEnabled else { return }
+
+        let expectedBytes = node.size
+        let observedLostBytes = expectedBytes > diagnostics.visibleBytes
+            ? expectedBytes - diagnostics.visibleBytes
+            : diagnostics.lostBytes
+
+        guard observedLostBytes > 0 || diagnostics.lostNodes > 0 else { return }
+
+        let lostPercentTimes10: UInt64
+        if expectedBytes > 0 {
+            lostPercentTimes10 = min(1000, observedLostBytes.saturatingMultiply(by: 1000) / expectedBytes)
+        } else {
+            lostPercentTimes10 = 0
+        }
+
+        guard observedLostBytes > 0 || diagnostics.lostNodes >= 100 else { return }
+
+        AppLogger.shared.log(
+            "TreeMapLayout diagnostics: node='\(node.path)' depth=\(depth) rect=\(Int(rect.width))x\(Int(rect.height)) expected-bytes=\(expectedBytes) visible-bytes=\(diagnostics.visibleBytes) lost-bytes=\(observedLostBytes) lost-percent=\(lostPercentTimes10 / 10).\(lostPercentTimes10 % 10) skipped-small-nodes=\(diagnostics.skippedSmallNodes) skipped-small-bytes=\(diagnostics.skippedSmallBytes) empty-recursive-nodes=\(diagnostics.emptyRecursiveNodes) empty-recursive-bytes=\(diagnostics.emptyRecursiveBytes) unprocessed-nodes=\(diagnostics.unprocessedNodes) unprocessed-bytes=\(diagnostics.unprocessedBytes)"
+        )
+    }
+
+    private static func sumSizes<S: Sequence>(_ nodes: S) -> UInt64 where S.Element == FileNode {
+        nodes.reduce(UInt64(0)) { partialSize, node in
+            addSaturating(partialSize, node.size)
+        }
+    }
+
+    private static func addSaturating(_ lhs: UInt64, _ rhs: UInt64) -> UInt64 {
+        let result = lhs.addingReportingOverflow(rhs)
+        return result.overflow ? UInt64.max : result.partialValue
+    }
+}
+
+private extension UInt64 {
+    func saturatingMultiply(by multiplier: UInt64) -> UInt64 {
+        let result = multipliedReportingOverflow(by: multiplier)
+        return result.overflow ? UInt64.max : result.partialValue
     }
 }

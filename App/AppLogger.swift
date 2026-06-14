@@ -10,6 +10,7 @@ import Foundation
 final class AppLogger {
     static let shared = AppLogger()
     static let loggingEnabledKey = "loggingEnabled"
+    static let treeMapLayoutDiagnosticsEnabledKey = "treeMapLayoutDiagnosticsEnabled"
 
     private let queue = DispatchQueue(label: "diy.logger")
     private let formatter = ISO8601DateFormatter()
@@ -32,6 +33,10 @@ final class AppLogger {
         set {
             UserDefaults.standard.set(newValue, forKey: Self.loggingEnabledKey)
         }
+    }
+
+    var isTreeMapLayoutDiagnosticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: Self.treeMapLayoutDiagnosticsEnabledKey)
     }
 
     func log(_ message: String) {

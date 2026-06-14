@@ -174,6 +174,8 @@ struct AboutTab: View {
 private struct LogsSettingsTab: View {
     @AppStorage(AppLogger.loggingEnabledKey)
     private var isLoggingEnabled = true
+    @AppStorage(AppLogger.treeMapLayoutDiagnosticsEnabledKey)
+    private var isTreeMapLayoutDiagnosticsEnabled = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -203,6 +205,16 @@ private struct LogsSettingsTab: View {
                 }
                 .disabled(!isLoggingEnabled)
             }
+
+            Divider()
+                .padding(.vertical, 4)
+
+            Text("Temporary diagnostics")
+                .font(.headline)
+
+            Toggle("TreeMap layout diagnostics", isOn: $isTreeMapLayoutDiagnosticsEnabled)
+                .help("Log lost treemap layout bytes and skipped rectangles while investigating blank treemap areas")
+                .disabled(!isLoggingEnabled)
 
             Spacer()
         }
